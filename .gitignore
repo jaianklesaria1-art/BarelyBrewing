@@ -1,0 +1,8 @@
+# allowlist: only the site itself is published
+/*
+!/index.html
+!/img/
+/img/*
+!/img/*.webp
+!/README.md
+!/.gitignore
