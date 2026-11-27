@@ -641,35 +641,48 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 .dw-alt:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
 /* Now pouring heading fits its column */
 .pour .phead h2{font-size:clamp(40px,4.6vw,74px)}
-/* Now pouring: beer mats on a bar top */
-.bartop{position:relative;margin-top:50px;border-radius:var(--r-lg);background:radial-gradient(120% 90% at 50% 0%,#2A5A37 0%,var(--green-2) 70%);box-shadow:inset 0 2px 0 rgba(255,255,255,.06),inset 0 -30px 60px rgba(0,0,0,.25),0 40px 70px -40px rgba(0,0,0,.7);padding:22px 0 0;overflow:hidden}
-.bartop::before{content:"";position:absolute;inset:12px;border:1.5px dashed rgba(167,184,132,.22);border-radius:calc(var(--r-lg) - 8px);pointer-events:none}
-.mhint{position:relative;margin:0;text-align:center;font:400 24px Yellowtail;color:var(--sage)}
-.mhint .tp{display:none}
-@media (hover:none){.mhint .hv{display:none}.mhint .tp{display:inline}}
-.mats{--s:clamp(140px,13vw,184px);position:relative;list-style:none;margin:0;padding:0;height:clamp(440px,40vw,560px)}
-.mat{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);perspective:900px;cursor:grab;touch-action:none;outline:none;
-  translate:var(--dx,0px) var(--dy,0px);rotate:var(--r);transition:rotate .5s var(--out),scale .35s var(--out);opacity:0;scale:1.5}
-.mats.in .mat{opacity:1;scale:1;transition:opacity .45s var(--d) ease-out,scale .6s var(--d) cubic-bezier(.3,1.4,.5,1),rotate .5s var(--out)}
-.mat:hover{scale:1.06}
-.mat.grab{cursor:grabbing;scale:1.1;rotate:calc(var(--r) * .4);transition:scale .25s,rotate .3s}
-.mat.grab .mat-in{box-shadow:0 40px 40px -16px rgba(0,0,0,.6)}
-.mat-in{position:relative;width:100%;height:100%;border-radius:50%;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.3,1.3,.5,1),box-shadow .3s;box-shadow:0 16px 20px -10px rgba(0,0,0,.55)}
-.mat.flip .mat-in{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;overflow:hidden}
-.face.f{background:var(--cream)}
-.face.f::after{content:"";position:absolute;inset:7px;border:2px dashed rgba(34,75,46,.35);border-radius:50%}
-.face.f img{width:76%;height:76%;border-radius:50%;object-fit:cover;pointer-events:none}
-.face.b{background:var(--sage);color:var(--green);transform:rotateY(180deg);text-align:center;align-content:center;gap:4px;padding:14px}
-.face.b::after{content:"";position:absolute;inset:7px;border:2px dashed rgba(34,75,46,.4);border-radius:50%}
-.face.b small{font:700 10px Jost;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
-.face.b b{font:800 clamp(18px,1.7vw,24px)/1 Jost;text-transform:uppercase}
-.face.b span{font:400 20px/1 Yellowtail}
-.mat:focus-visible .mat-in{outline:3px solid var(--sage);outline-offset:5px}
-@media (max-width:900px){.bartop{margin-top:32px;padding:18px 0 22px}
-  .mats{--s:min(42vw,170px);height:auto;display:grid;grid-template-columns:1fr 1fr;gap:16px 10px;justify-items:center;padding:18px 14px 0}
-  .mat{position:relative;left:auto;top:auto;margin:0;translate:none!important;cursor:pointer}
-  .mat:nth-child(odd){--r:-5deg!important}.mat:nth-child(even){--r:5deg!important}}
+/* Now pouring: tap wall (taps only, no beer) */
+.pside{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:8px}
+.ticket{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;column-gap:22px;min-width:300px;background:var(--cream);color:var(--green);padding:16px 26px 14px;border-radius:var(--r-sm);transform:rotate(-2deg);box-shadow:0 26px 40px -24px rgba(0,0,0,.7);
+  -webkit-mask:radial-gradient(circle at 0 50%,transparent 10px,#000 11px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 10px,#000 11px) right/51% 100% no-repeat;
+  mask:radial-gradient(circle at 0 50%,transparent 10px,#000 11px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 10px,#000 11px) right/51% 100% no-repeat}
+.ticket::after{content:"";position:absolute;top:10px;bottom:10px;right:96px;border-left:2px dashed rgba(34,75,46,.3)}
+.ticket small{grid-column:1/-1;font:700 11px Jost;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.ticket b{font:400 38px/1.1 Yellowtail;white-space:nowrap;display:inline-block}
+.ticket b.flip{animation:tk .55s cubic-bezier(.3,1.5,.5,1)}
+@keyframes tk{from{opacity:0;transform:translateY(14px) rotate(-4deg)}}
+.tk-n{font:800 15px Jost;letter-spacing:.06em;padding-bottom:6px;font-variant-numeric:tabular-nums}
+.backbar{position:relative;margin-top:44px;padding:20px 0 0;background:linear-gradient(180deg,var(--green-2),#163220);border-radius:var(--r-lg);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 40px 70px -40px rgba(0,0,0,.7);overflow:hidden}
+.backbar::before{content:"";position:absolute;inset:12px;border:1.5px dashed rgba(167,184,132,.22);border-radius:calc(var(--r-lg) - 8px);pointer-events:none}
+.backbar .taphint{margin:4px 0 0}
+.backbar .taps{margin-top:18px}
+.tray{position:relative;height:18px;margin:-2px 34px 30px;border-radius:var(--r-pill);background:repeating-linear-gradient(90deg,#8F8B7D 0 3px,#D8D3C2 3px 11px);box-shadow:0 10px 16px -8px rgba(0,0,0,.6)}
+.taphint{margin:18px 0 0;font:400 24px Yellowtail;color:var(--sage);text-align:center}
+.taphint .tp{display:none}
+@media (hover:none){.taphint .hv{display:none}.taphint .tp{display:inline}}
+.taps{margin-top:34px}
+.tapline{list-style:none;margin:0 auto;padding:0 24px 10px;display:flex;justify-content:center;max-width:1240px;scrollbar-width:none}
+.tapline::-webkit-scrollbar{display:none}
+.tap{position:relative;flex:0 0 112px;display:flex;flex-direction:column;align-items:center;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.tap::before{content:"";position:absolute;left:0;right:0;top:146px;height:18px;background:linear-gradient(#F4F1E6,#C9C4B2 55%,#8F8B7D);box-shadow:0 10px 16px -8px rgba(0,0,0,.6)}
+.tap:first-child::before{left:14px;border-radius:9px 0 0 9px}
+.tap:last-child::before{right:14px;border-radius:0 9px 9px 0}
+.lever{position:relative;z-index:2;height:156px;display:flex;flex-direction:column;align-items:center;transform-origin:50% 100%;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
+.lever .badge{width:84px;height:84px;flex:0 0 auto;border-radius:50%;overflow:hidden;background:var(--cream);border:3px solid var(--sage);box-shadow:0 14px 24px -12px rgba(0,0,0,.7);transition:border-color .3s,transform .4s var(--out)}
+.lever .badge img{width:100%;height:100%;object-fit:cover}
+.lever .handle{width:18px;flex:1;margin-top:-4px;background:linear-gradient(90deg,#8FA06C,#D3DDB6 45%,#8FA06C);border-radius:0 0 6px 6px}
+.tbody{position:relative;z-index:3;width:36px;height:26px;margin-top:-4px;background:linear-gradient(90deg,#A9A495,#F4F1E6 50%,#A9A495);border-radius:0 0 12px 12px;display:flex;justify-content:center}
+.tbody::after{content:"";position:absolute;top:100%;width:12px;height:18px;background:linear-gradient(90deg,#9F9B8C,#E9E6DA 50%,#9F9B8C);border-radius:0 0 4px 4px}
+.tap .nm{margin-top:32px;font:700 11.5px Jost;letter-spacing:.12em;text-transform:uppercase;color:#C9D4C4;white-space:nowrap;transition:color .3s}
+.tap.on .lever{transform:rotate(-22deg)}
+.tap.on .lever .badge{border-color:var(--cream);transform:scale(1.06)}
+.tap.on .nm{color:var(--sage)}
+.tap:focus-visible .badge{outline:3px solid var(--sage);outline-offset:4px}
+@media (max-width:1200px){.tapline{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px}.tap{flex-basis:104px;scroll-snap-align:center}}
+@media (max-width:900px){.ticket{min-width:0;width:100%;max-width:340px}.backbar{margin-top:30px}.tray{margin:-2px 16px 22px}}
+.backbar .taps{margin-top:22px}
+.tap .tbody{transition:transform .5s var(--out)}
+.tap.on .tbody{transform:translateY(2px)}
 </style>
 </head>
 <body class="loading">
@@ -798,11 +811,13 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 <section class="pour on-green" id="bars">
   <div class="wrap phead">
     <div><span class="script">Find a tap</span><h2 class="display">Now pouring at <br><span class="ten">10+</span> bars in Pune</h2></div>
-    <p class="sub">Ask for Barely on tap at these spots.</p>
+    <div class="pside"><p class="sub">Ask for Barely on tap at these spots.</p>
+      <div class="ticket"><small>Now pouring at</small><b id="nowBar" aria-live="polite">Murphies</b><span class="tk-n" id="nowN">01 / 10</span></div></div>
   </div>
-  <div class="wrap"><div class="bartop">
-    <p class="mhint" aria-hidden="true"><span class="hv">Drag the mats around. Click one to flip it.</span><span class="tp">Tap a mat to flip it.</span></p>
-    <ul class="mats" id="mats" aria-label="Bars pouring Barely"></ul>
+  <div class="wrap"><div class="backbar">
+    <p class="taphint" aria-hidden="true"><span class="hv">Hover a tap to pull it</span><span class="tp">Tap a tap to pull it</span></p>
+    <div class="taps"><ul class="tapline" id="tapline" aria-label="Bars pouring Barely"></ul></div>
+    <div class="tray" aria-hidden="true"></div>
   </div></div>
 </section>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
@@ -1173,29 +1188,25 @@ addEventListener('keydown',e=>{if(tko.hidden)return;e.stopImmediatePropagation()
 /* bar logos (Barely's own "Now pouring" list) */
 const LOGOS=['Murphies_Logo.png','bntr.jpg','Grove_Logo.png','Layers_Logo.jpg','Trooh_logo.jpg','Oi_Logo_62f5d1ec-6e10-4ded-84b5-923ebdcea104.jpg','LP_Logo.jpg','Malaka_Logo.png','Sante_Logo.png','Gulp_logo.jpg'];
 const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malaka Spice','Santé','Gulp'];
-/* beer mats: drag around (desktop), click / tap flips to the bar name */
-(()=>{const box=$('#mats'),logoUrl=f=>`https://barelybrewing.com/cdn/shop/files/${f}?height=360`;
-  const P=[[11,30,-12],[30,24,7],[50,32,-4],[69,22,10],[89,31,-8],[12,73,9],[31,77,-6],[51,70,12],[70,78,-10],[89,71,5]];
-  let z=10;
-  LOGOS.forEach((f,i)=>{const li=document.createElement('li'),[x,y,r]=P[i%P.length];li.className='mat';li.tabIndex=0;li.setAttribute('role','button');
-    li.setAttribute('aria-label',NAMES[i]+', flip to read');li.style.cssText=`--x:${x}%;--y:${y}%;--r:${r}deg;--d:${i*70}ms;z-index:${i+1}`;
-    li.innerHTML=`<div class="mat-in"><div class="face f"><img src="${logoUrl(f)}" alt="" draggable="false" loading="lazy"></div><div class="face b"><small>No. ${String(i+1).padStart(2,'0')}</small><b>${NAMES[i]}</b><span>on tap</span></div></div>`;
-    box.appendChild(li)});
-  const mats=$$('.mat',box);
-  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){box.classList.add('in');o.disconnect()}}),{threshold:.25}).observe(box);
-  const desk=()=>matchMedia('(min-width:901px) and (hover:hover)').matches;
-  mats.forEach(m=>{let d=null;
-    m.addEventListener('pointerdown',e=>{if(e.button!==0)return;m.style.zIndex=++z;d={x:e.clientX,y:e.clientY,dx:parseFloat(m.style.getPropertyValue('--dx'))||0,dy:parseFloat(m.style.getPropertyValue('--dy'))||0,moved:false};
-      if(desk()){try{m.setPointerCapture(e.pointerId)}catch(_){}}});
-    m.addEventListener('pointermove',e=>{if(!d||!desk())return;const mx=e.clientX-d.x,my=e.clientY-d.y;if(!d.moved&&Math.hypot(mx,my)<6)return;
-      if(!d.moved){d.moved=true;m.classList.add('grab')}
-      const bx=box.getBoundingClientRect(),mr=m.getBoundingClientRect(),cx=mr.left+mr.width/2-(parseFloat(m.style.getPropertyValue('--dx'))||0),cy=mr.top+mr.height/2-(parseFloat(m.style.getPropertyValue('--dy'))||0),h=mr.width/2;
-      const nx=Math.max(bx.left+h-cx,Math.min(bx.right-h-cx,d.dx+mx)),ny=Math.max(bx.top+h-cy,Math.min(bx.bottom-h-cy,d.dy+my));
-      m.style.setProperty('--dx',nx+'px');m.style.setProperty('--dy',ny+'px')});
-    const up=()=>{if(!d)return;const moved=d.moved;d=null;m.classList.remove('grab');if(moved)m.style.setProperty('--r',(Math.random()*24-12).toFixed(1)+'deg');else m.classList.toggle('flip')};
-    m.addEventListener('pointerup',up);m.addEventListener('pointercancel',()=>{d=null;m.classList.remove('grab')});
-    m.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();m.classList.toggle('flip')}})});
+const tapline=$('#tapline');
+LOGOS.forEach((f,i)=>{const li=document.createElement('li');li.className='tap';li.tabIndex=0;li.setAttribute('aria-label',NAMES[i]);
+  li.innerHTML=`<div class="lever" aria-hidden="true"><span class="badge"><img src="https://barelybrewing.com/cdn/shop/files/${f}?height=240" alt=""></span><span class="handle"></span></div><span class="tbody" aria-hidden="true"></span><b class="nm">${NAMES[i]}</b>`;
+  tapline.appendChild(li)});
+(()=>{const taps=$$('.tap'),T=taps.length;let ti=-1,hold=false,timer=null,seen=false,holdT=0;
+  const nb=$('#nowBar');
+  const pour=i=>{if(i!==ti){nb.textContent=NAMES[i];$('#nowN').textContent=String(i+1).padStart(2,'0')+' / '+String(T).padStart(2,'0');nb.classList.remove('flip');void nb.offsetWidth;nb.classList.add('flip')}ti=i;taps.forEach((t,k)=>t.classList.toggle('on',k===i))};
+  const next=()=>{if(!hold)pour((ti+1)%T)};
+  const start=()=>{if(reduce||timer)return;next();timer=setInterval(next,2600)};
+  const stop=()=>{clearInterval(timer);timer=null};
+  new IntersectionObserver(es=>{es[0].isIntersecting?start():stop()},{threshold:.35}).observe(tapline);
+  if(reduce)pour(0);
+  taps.forEach((t,i)=>{t.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hold=true;pour(i)}});
+    t.addEventListener('focus',()=>{hold=true;pour(i)});t.addEventListener('blur',()=>{hold=false});
+    t.addEventListener('click',()=>{hold=true;pour(i);clearTimeout(holdT);holdT=setTimeout(()=>hold=false,5000)});
+    t.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pour(i)}})});
+  tapline.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hold=false});
 })();
+
 
 /* forms: concept only, nothing is sent */
 const ok=/^\S+@\S+\.\S+$/;
