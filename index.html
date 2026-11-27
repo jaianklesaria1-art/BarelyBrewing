@@ -641,28 +641,35 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 .dw-alt:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
 /* Now pouring heading fits its column */
 .pour .phead h2{font-size:clamp(40px,4.6vw,74px)}
-/* Now pouring: bar list with a floating logo */
-.pour .sub{max-width:300px;justify-self:end;text-align:left;margin:0 0 10px}
-.barlist{list-style:none;text-align:left;margin:56px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:56px;counter-reset:bar}
-.bl{position:relative;display:flex;align-items:center;gap:18px;padding:20px 14px;border-bottom:1.5px dashed rgba(255,254,250,.28);cursor:default;isolation:isolate;outline:none}
-.barlist .bl:nth-child(-n+2){border-top:1.5px dashed rgba(255,254,250,.28)}
-.bl::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--sage);border-radius:var(--r-sm);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
-.bl .no{font:700 13px Jost;letter-spacing:.14em;color:var(--sage);min-width:28px;transition:color .3s,transform .45s var(--out)}
-.bl .mini{display:none;width:44px;height:44px;flex:0 0 auto;border-radius:50%;overflow:hidden;background:var(--cream);border:2px solid var(--sage)}
-.bl .mini img{width:100%;height:100%;object-fit:cover}
-.bl .nm{flex:1;white-space:nowrap;font:800 clamp(28px,3.2vw,48px)/1 Jost;text-transform:uppercase;letter-spacing:-.01em;color:var(--cream);transition:color .3s,transform .5s var(--out)}
-.bl .on{font:700 11px Jost;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:var(--r-pill);border:1.5px solid rgba(255,254,250,.4);color:#D6E0D2;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
-.bl .on i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--sage);margin-right:7px;vertical-align:1px;animation:blink 1.6s infinite}
-.bl.hot::before{transform:scaleX(1)}
-.bl.hot .nm{color:var(--green);transform:translateX(10px)}
-.bl.hot .no{color:var(--green);transform:translateX(4px)}
-.bl.hot .on{background:var(--green);color:var(--cream);border-color:var(--green)}
-.bl:focus-visible{outline:3px solid var(--sage);outline-offset:3px;border-radius:var(--r-sm)}
-.barlogo{position:fixed;left:0;top:0;z-index:40;width:170px;height:170px;margin:-85px 0 0 -85px;border-radius:50%;overflow:hidden;background:var(--cream);border:4px solid var(--cream);box-shadow:0 30px 50px -20px rgba(0,0,0,.6);pointer-events:none;transform:scale(0);transition:transform .45s cubic-bezier(.3,1.5,.5,1)}
-.barlogo.show{transform:scale(1)}
-.barlogo img{width:100%;height:100%;object-fit:cover;transition:opacity .2s}
-@media (hover:none),(max-width:900px){.barlogo{display:none}.bl .mini{display:block}.bl .no{display:none}}
-@media (max-width:900px){.barlist{grid-template-columns:1fr;margin-top:34px}.barlist .bl:nth-child(2){border-top:0}.bl{padding:14px 8px;gap:14px}.bl .nm{font-size:clamp(20px,5.8vw,28px)}.pour .sub{justify-self:start}}
+/* Now pouring: beer mats on a bar top */
+.bartop{position:relative;margin-top:50px;border-radius:var(--r-lg);background:radial-gradient(120% 90% at 50% 0%,#2A5A37 0%,var(--green-2) 70%);box-shadow:inset 0 2px 0 rgba(255,255,255,.06),inset 0 -30px 60px rgba(0,0,0,.25),0 40px 70px -40px rgba(0,0,0,.7);padding:22px 0 0;overflow:hidden}
+.bartop::before{content:"";position:absolute;inset:12px;border:1.5px dashed rgba(167,184,132,.22);border-radius:calc(var(--r-lg) - 8px);pointer-events:none}
+.mhint{position:relative;margin:0;text-align:center;font:400 24px Yellowtail;color:var(--sage)}
+.mhint .tp{display:none}
+@media (hover:none){.mhint .hv{display:none}.mhint .tp{display:inline}}
+.mats{--s:clamp(140px,13vw,184px);position:relative;list-style:none;margin:0;padding:0;height:clamp(440px,40vw,560px)}
+.mat{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);perspective:900px;cursor:grab;touch-action:none;outline:none;
+  translate:var(--dx,0px) var(--dy,0px);rotate:var(--r);transition:rotate .5s var(--out),scale .35s var(--out);opacity:0;scale:1.5}
+.mats.in .mat{opacity:1;scale:1;transition:opacity .45s var(--d) ease-out,scale .6s var(--d) cubic-bezier(.3,1.4,.5,1),rotate .5s var(--out)}
+.mat:hover{scale:1.06}
+.mat.grab{cursor:grabbing;scale:1.1;rotate:calc(var(--r) * .4);transition:scale .25s,rotate .3s}
+.mat.grab .mat-in{box-shadow:0 40px 40px -16px rgba(0,0,0,.6)}
+.mat-in{position:relative;width:100%;height:100%;border-radius:50%;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.3,1.3,.5,1),box-shadow .3s;box-shadow:0 16px 20px -10px rgba(0,0,0,.55)}
+.mat.flip .mat-in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;overflow:hidden}
+.face.f{background:var(--cream)}
+.face.f::after{content:"";position:absolute;inset:7px;border:2px dashed rgba(34,75,46,.35);border-radius:50%}
+.face.f img{width:76%;height:76%;border-radius:50%;object-fit:cover;pointer-events:none}
+.face.b{background:var(--sage);color:var(--green);transform:rotateY(180deg);text-align:center;align-content:center;gap:4px;padding:14px}
+.face.b::after{content:"";position:absolute;inset:7px;border:2px dashed rgba(34,75,46,.4);border-radius:50%}
+.face.b small{font:700 10px Jost;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+.face.b b{font:800 clamp(18px,1.7vw,24px)/1 Jost;text-transform:uppercase}
+.face.b span{font:400 20px/1 Yellowtail}
+.mat:focus-visible .mat-in{outline:3px solid var(--sage);outline-offset:5px}
+@media (max-width:900px){.bartop{margin-top:32px;padding:18px 0 22px}
+  .mats{--s:min(42vw,170px);height:auto;display:grid;grid-template-columns:1fr 1fr;gap:16px 10px;justify-items:center;padding:18px 14px 0}
+  .mat{position:relative;left:auto;top:auto;margin:0;translate:none!important;cursor:pointer}
+  .mat:nth-child(odd){--r:-5deg!important}.mat:nth-child(even){--r:5deg!important}}
 </style>
 </head>
 <body class="loading">
@@ -793,8 +800,10 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
     <div><span class="script">Find a tap</span><h2 class="display">Now pouring at <br><span class="ten">10+</span> bars in Pune</h2></div>
     <p class="sub">Ask for Barely on tap at these spots.</p>
   </div>
-  <div class="wrap"><ol class="barlist" id="barlist" aria-label="Bars pouring Barely"></ol></div>
-  <div class="barlogo" id="barlogo" aria-hidden="true"><img src="" alt=""></div>
+  <div class="wrap"><div class="bartop">
+    <p class="mhint" aria-hidden="true"><span class="hv">Drag the mats around. Click one to flip it.</span><span class="tp">Tap a mat to flip it.</span></p>
+    <ul class="mats" id="mats" aria-label="Bars pouring Barely"></ul>
+  </div></div>
 </section>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
 
@@ -1164,21 +1173,28 @@ addEventListener('keydown',e=>{if(tko.hidden)return;e.stopImmediatePropagation()
 /* bar logos (Barely's own "Now pouring" list) */
 const LOGOS=['Murphies_Logo.png','bntr.jpg','Grove_Logo.png','Layers_Logo.jpg','Trooh_logo.jpg','Oi_Logo_62f5d1ec-6e10-4ded-84b5-923ebdcea104.jpg','LP_Logo.jpg','Malaka_Logo.png','Sante_Logo.png','Gulp_logo.jpg'];
 const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malaka Spice','Santé','Gulp'];
-const barlist=$('#barlist'),blogo=$('#barlogo'),bimg=blogo.querySelector('img');
-const logoUrl=f=>`https://barelybrewing.com/cdn/shop/files/${f}?height=340`;
-LOGOS.forEach((f,i)=>{const li=document.createElement('li');li.className='bl';li.tabIndex=0;
-  li.innerHTML=`<span class="no">${String(i+1).padStart(2,'0')}</span><span class="mini"><img src="${logoUrl(f)}" alt="" loading="lazy"></span><span class="nm">${NAMES[i]}</span><span class="on"><i></i>On tap</span>`;
-  barlist.appendChild(li);(new Image()).src=logoUrl(f)});
-(()=>{const bars=$$('.bl');let tx=0,ty=0,x=0,y=0,raf=0,vis=false,cur=-1;
-  const set=i=>{bars.forEach((b,k)=>b.classList.toggle('hot',k===i));if(i!==cur&&i>=0){bimg.src=logoUrl(LOGOS[i]);bimg.alt=''}cur=i};
-  const loop=()=>{const dx=tx-x;x+=dx*.16;y+=(ty-y)*.16;blogo.style.translate=`${x}px ${y}px`;blogo.style.rotate=Math.max(-18,Math.min(18,dx*.12))+'deg';raf=vis||Math.abs(dx)>.5?requestAnimationFrame(loop):0};
-  bars.forEach((b,i)=>{
-    b.addEventListener('pointerenter',e=>{set(i);if(e.pointerType==='mouse'){if(!vis){x=tx=e.clientX+150;y=ty=e.clientY-70}vis=true;blogo.classList.add('show');if(!raf)raf=requestAnimationFrame(loop)}});
-    b.addEventListener('pointermove',e=>{tx=e.clientX+150;ty=e.clientY-70});
-    b.addEventListener('focus',()=>set(i));b.addEventListener('blur',()=>set(-1));
-    b.addEventListener('click',()=>set(i))});
-  barlist.addEventListener('pointerleave',()=>{vis=false;blogo.classList.remove('show');set(-1)});
-  addEventListener('scroll',()=>{if(vis){vis=false;blogo.classList.remove('show');set(-1)}},{passive:true});
+/* beer mats: drag around (desktop), click / tap flips to the bar name */
+(()=>{const box=$('#mats'),logoUrl=f=>`https://barelybrewing.com/cdn/shop/files/${f}?height=360`;
+  const P=[[11,30,-12],[30,24,7],[50,32,-4],[69,22,10],[89,31,-8],[12,73,9],[31,77,-6],[51,70,12],[70,78,-10],[89,71,5]];
+  let z=10;
+  LOGOS.forEach((f,i)=>{const li=document.createElement('li'),[x,y,r]=P[i%P.length];li.className='mat';li.tabIndex=0;li.setAttribute('role','button');
+    li.setAttribute('aria-label',NAMES[i]+', flip to read');li.style.cssText=`--x:${x}%;--y:${y}%;--r:${r}deg;--d:${i*70}ms;z-index:${i+1}`;
+    li.innerHTML=`<div class="mat-in"><div class="face f"><img src="${logoUrl(f)}" alt="" draggable="false" loading="lazy"></div><div class="face b"><small>No. ${String(i+1).padStart(2,'0')}</small><b>${NAMES[i]}</b><span>on tap</span></div></div>`;
+    box.appendChild(li)});
+  const mats=$$('.mat',box);
+  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){box.classList.add('in');o.disconnect()}}),{threshold:.25}).observe(box);
+  const desk=()=>matchMedia('(min-width:901px) and (hover:hover)').matches;
+  mats.forEach(m=>{let d=null;
+    m.addEventListener('pointerdown',e=>{if(e.button!==0)return;m.style.zIndex=++z;d={x:e.clientX,y:e.clientY,dx:parseFloat(m.style.getPropertyValue('--dx'))||0,dy:parseFloat(m.style.getPropertyValue('--dy'))||0,moved:false};
+      if(desk()){try{m.setPointerCapture(e.pointerId)}catch(_){}}});
+    m.addEventListener('pointermove',e=>{if(!d||!desk())return;const mx=e.clientX-d.x,my=e.clientY-d.y;if(!d.moved&&Math.hypot(mx,my)<6)return;
+      if(!d.moved){d.moved=true;m.classList.add('grab')}
+      const bx=box.getBoundingClientRect(),mr=m.getBoundingClientRect(),cx=mr.left+mr.width/2-(parseFloat(m.style.getPropertyValue('--dx'))||0),cy=mr.top+mr.height/2-(parseFloat(m.style.getPropertyValue('--dy'))||0),h=mr.width/2;
+      const nx=Math.max(bx.left+h-cx,Math.min(bx.right-h-cx,d.dx+mx)),ny=Math.max(bx.top+h-cy,Math.min(bx.bottom-h-cy,d.dy+my));
+      m.style.setProperty('--dx',nx+'px');m.style.setProperty('--dy',ny+'px')});
+    const up=()=>{if(!d)return;const moved=d.moved;d=null;m.classList.remove('grab');if(moved)m.style.setProperty('--r',(Math.random()*24-12).toFixed(1)+'deg');else m.classList.toggle('flip')};
+    m.addEventListener('pointerup',up);m.addEventListener('pointercancel',()=>{d=null;m.classList.remove('grab')});
+    m.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();m.classList.toggle('flip')}})});
 })();
 
 /* forms: concept only, nothing is sent */
