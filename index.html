@@ -135,6 +135,7 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 /* wavy edges */
 .wave{display:block;width:100%;height:60px}
 .wave path{fill:var(--green)}
+.wave.bw path{fill:var(--brewbg,var(--green));transition:fill .9s var(--ease)}
 
 /* 2. about: product-centred statements (Bunta) + tilted fact cards */
 .about{padding:120px 0 140px;position:relative;overflow:hidden}
@@ -173,7 +174,7 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 @keyframes stamp{from{transform:scale(2.2) rotate(-12deg);opacity:0}}
 
 /* 3. OUR BREWS: product carousel (same layout as royalbev.com's 3rd section) */
-.brews{position:relative;background:var(--green);color:var(--cream);overflow:hidden;padding:40px 0 90px}
+.brews{position:relative;background:var(--brewbg,var(--green));transition:background-color .9s var(--ease);color:var(--cream);overflow:hidden;padding:40px 0 90px}
 .brews .rings{position:absolute;left:50%;top:600px;width:2000px;height:2000px;transform:translate(-50%,-50%);pointer-events:none}
 .brews .rings i{position:absolute;border:2px solid rgba(167,184,132,.22);border-radius:50%}
 .brews .rings i:nth-child(1){inset:0}.brews .rings i:nth-child(2){inset:12%}.brews .rings i:nth-child(3){inset:24%}.brews .rings i:nth-child(4){inset:33%}
@@ -232,6 +233,9 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .lb button:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
 .lb-stage{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:0 24px;min-height:0;touch-action:pan-y}
 .lb-fig{margin:0;height:100%;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.lb-fig{position:relative}
+.lb-fig.loading img{opacity:.25;filter:blur(6px)}
+.lb-fig.loading::after{content:"";position:absolute;left:50%;top:45%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;border:3px solid rgba(255,254,250,.25);border-top-color:var(--sage);animation:spin .8s linear infinite}
 .lb-fig img{max-width:100%;max-height:calc(100vh - 230px);object-fit:contain;border-radius:var(--r-lg);box-shadow:0 40px 80px -40px #000;transition:opacity .35s,transform .5s var(--out)}
 .lb-fig img.swap{opacity:0;transform:scale(.94) translateX(var(--sx,0))}
 .lb-fig figcaption{font-size:14px;color:#C9D4C4;text-align:center}
@@ -239,7 +243,7 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .lb-rail button{all:unset;cursor:pointer;width:64px;height:64px;border-radius:var(--r-sm);overflow:hidden;opacity:.45;border:2px solid transparent;transition:opacity .3s,border-color .3s,transform .3s var(--out)}
 .lb-rail button[aria-current="true"]{opacity:1;border-color:var(--sage);transform:translateY(-4px)}
 .lb-rail img{width:100%;height:100%;object-fit:cover}
-@media (max-width:600px){.lb-stage{grid-template-columns:1fr;padding:0 12px}.lb-arr{display:none}.lb-fig img{max-height:calc(100vh - 220px)}.lb-rail button{width:52px;height:52px}.dw-thumbs button{width:50px;height:50px}}
+@media (max-width:600px){.lb-stage{grid-template-columns:1fr;padding:0 12px;position:relative}.lb-arr{position:absolute;top:44%;z-index:2;width:44px;height:44px;background:rgba(18,40,25,.7);border-color:rgba(255,254,250,.6)}.lb-arr.l{left:18px}.lb-arr.r{right:18px}.lb-fig img{max-height:calc(100vh - 220px)}.lb-rail button{width:52px;height:52px}.dw-thumbs button{width:50px;height:50px}}
 
 /* product drawer */
 .dw{position:fixed;inset:0;z-index:80}
@@ -380,6 +384,7 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .sarr:focus-visible,.strip:focus-visible,.strip figure:focus-visible{outline:3px solid var(--sage);outline-offset:4px}
 .strip{display:flex;gap:22px;margin-top:40px;padding:30px max(32px,calc((100vw - 1240px)/2)) 50px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:max(32px,calc((100vw - 1240px)/2));scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain}
 .strip::-webkit-scrollbar{display:none}
+.strip.pinned{overflow:visible;scroll-snap-type:none;cursor:auto;will-change:transform}
 .strip.drag{cursor:grabbing;scroll-snap-type:none}
 .strip.drag img{pointer-events:none}
 .strip figure{scroll-snap-align:start;cursor:zoom-in}
@@ -392,6 +397,24 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 /* 5. now pouring */
 .pour{background:var(--green);color:var(--cream);padding:30px 0 100px;position:relative}
 .pour .wrap{text-align:center}
+.pour .phead{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:end;text-align:left}
+.pour h2 .ten{color:var(--sage)}
+.pside{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:8px}
+.ticket{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;column-gap:22px;min-width:300px;background:var(--cream);color:var(--green);padding:16px 26px 14px;border-radius:var(--r-sm);transform:rotate(-2deg);box-shadow:0 26px 40px -24px rgba(0,0,0,.7);
+  -webkit-mask:radial-gradient(circle at 0 50%,transparent 10px,#000 11px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 10px,#000 11px) right/51% 100% no-repeat;
+  mask:radial-gradient(circle at 0 50%,transparent 10px,#000 11px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 10px,#000 11px) right/51% 100% no-repeat}
+.ticket::after{content:"";position:absolute;top:10px;bottom:10px;right:96px;border-left:2px dashed rgba(34,75,46,.3)}
+.ticket small{grid-column:1/-1;font:700 11px Jost;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.ticket b{font:400 38px/1.1 Yellowtail;white-space:nowrap;display:inline-block}
+.ticket b.flip{animation:tk .55s cubic-bezier(.3,1.5,.5,1)}
+@keyframes tk{from{opacity:0;transform:translateY(14px) rotate(-4deg)}}
+.tk-n{font:800 15px Jost;letter-spacing:.06em;padding-bottom:6px;font-variant-numeric:tabular-nums}
+.backbar{position:relative;margin-top:44px;padding:20px 0 0;background:linear-gradient(180deg,var(--green-2),#163220);border-radius:var(--r-lg);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 40px 70px -40px rgba(0,0,0,.7);overflow:hidden}
+.backbar::before{content:"";position:absolute;inset:12px;border:1.5px dashed rgba(167,184,132,.22);border-radius:calc(var(--r-lg) - 8px);pointer-events:none}
+.backbar .taphint{margin:4px 0 0}
+.backbar .taps{margin-top:18px}
+.tray{position:relative;height:18px;margin:-2px 34px 30px;border-radius:var(--r-pill);background:repeating-linear-gradient(90deg,#8F8B7D 0 3px,#D8D3C2 3px 11px);box-shadow:0 10px 16px -8px rgba(0,0,0,.6)}
+@media (max-width:900px){.pour .phead{grid-template-columns:1fr;gap:18px}.ticket{min-width:0;width:100%;max-width:340px}.backbar{margin-top:30px}.tray{margin:-2px 16px 22px}}
 .pour h2{margin:0;font-size:clamp(44px,6vw,96px)}
 @media (max-width:600px){.pour h2{font-size:clamp(30px,9vw,40px)}.pour h2 br{display:none}}
 .pour .sub{color:#D6E0D2;margin:10px 0 0}
@@ -591,6 +614,76 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 .plan .pill::after{content:"\2192";display:inline-block;margin-left:2px;transition:transform .35s var(--out)}
 .plan .pill:hover::after{transform:translateX(5px)}
 @media (prefers-reduced-motion:reduce){.nav .cta,.hcta .btn-primary::before{animation:none}}
+.tear-ticket { --tt-w: 460px; --tt-h: 250px; --tt-stub: 150px; --tt-bg: #27272a; --tt-stub-bg: #27272a; --tt-ink: #f5f5f5; --tt-edge: transparent; --tt-edge-w: 1;
+  --tt-parallax: 6px; --tt-body-w: 310px; --tt-body-h: 250px; --tt-inset: 8px; --tt-span: .78; --tt-art-radius: 8px; --tt-fit: 1;
+  position: relative; width: min(var(--tt-w), 100%); color: var(--tt-ink); user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+.tear-ticket__stage { position: absolute; top: 0; left: 0; width: var(--tt-w); height: var(--tt-h); transform: scale(var(--tt-fit)); transform-origin: top left; transition: transform 650ms cubic-bezier(.22, 1, .36, 1); }
+.tear-ticket[data-shift='x'] .tear-ticket__stage { transform: translateX(calc(var(--tt-stub) * var(--tt-fit) / 2)) scale(var(--tt-fit)); }
+.tear-ticket[data-shift='y'] .tear-ticket__stage { transform: translateY(calc(var(--tt-stub) * var(--tt-fit) / 2)) scale(var(--tt-fit)); }
+.tear-ticket__plane { position: absolute; inset: 0; }
+.tear-ticket__piece { position: absolute; inset: 0; pointer-events: none; }
+.tear-ticket__piece--stub { outline: none; will-change: transform; }
+.tear-ticket__piece--stub:focus-visible .tear-ticket__paper--stub { box-shadow: inset 0 0 0 4px #141414; }
+.tear-ticket__edge { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.tear-ticket__edge path { fill: none; stroke: var(--tt-edge); stroke-width: var(--tt-edge-w); }
+.tear-ticket__paper { position: absolute; inset: 0; background: var(--tt-bg); pointer-events: auto; }
+.tear-ticket__paper--stub { background: var(--tt-stub-bg); cursor: grab; touch-action: none; }
+.tear-ticket[data-grabbing] .tear-ticket__paper--stub { cursor: grabbing; }
+.tear-ticket__art { position: absolute; top: var(--tt-inset); left: var(--tt-inset); width: calc(var(--tt-body-w) - var(--tt-inset) * 2); height: calc(var(--tt-body-h) * var(--tt-span) - var(--tt-inset) * 2); border-radius: var(--tt-art-radius); overflow: hidden; }
+.tear-ticket__image { position: absolute; top: calc(var(--tt-parallax) * -1); left: calc(var(--tt-parallax) * -1); width: calc(100% + var(--tt-parallax) * 2); max-width: none; height: calc(100% + var(--tt-parallax) * 2); object-fit: cover; -webkit-user-drag: none; transition: filter 700ms ease; }
+.tear-ticket[data-used] .tear-ticket__image { filter: grayscale(1) brightness(.75); }
+.tear-ticket__scrim { position: absolute; inset: 0; background: linear-gradient(to top, var(--tt-bg) 0%, color-mix(in srgb, var(--tt-bg) 72%, transparent) 30%, color-mix(in srgb, var(--tt-bg) 18%, transparent) 58%, transparent 80%); }
+.tear-ticket__content { position: absolute; top: 0; bottom: 0; left: 0; width: calc(var(--tt-w) - var(--tt-stub)); transition: opacity 500ms ease; }
+.tear-ticket[data-used] .tear-ticket__content { opacity: .55; }
+.tear-ticket__stub { position: absolute; top: 0; right: 0; bottom: 0; width: var(--tt-stub); }
+.tear-ticket[data-orientation='vertical'] .tear-ticket__content { bottom: auto; width: 100%; height: calc(var(--tt-h) - var(--tt-stub)); }
+.tear-ticket[data-orientation='vertical'] .tear-ticket__stub { top: auto; left: 0; width: auto; height: var(--tt-stub); }
+.tear-ticket[data-instant] .tear-ticket__stage, .tear-ticket[data-instant] .tear-ticket__content, .tear-ticket[data-instant] .tear-ticket__image { transition-duration: 0ms; }
+.tear-ticket__fibres { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.tear-ticket__fibres path { fill: none; stroke: var(--tt-bg); stroke-linecap: round; opacity: 0; }
+.tear-ticket__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .tear-ticket__stage { transition: none; } }
+
+/* pre-order ticket overlay (TearTicket from the Rolling Mills build) */
+.tko{position:fixed;inset:0;z-index:97;background:rgba(18,40,25,.92);backdrop-filter:blur(6px);display:grid;place-items:center;padding:24px 16px;overflow-y:auto;opacity:0;transition:opacity .35s}
+.tko[hidden]{display:none}.tko.open{opacity:1}
+.tko-in{position:relative;width:min(680px,100%);text-align:center;color:var(--cream);transform:translateY(-40px);transition:transform .8s cubic-bezier(.2,1.25,.36,1)}
+.tko.open .tko-in{transform:none}
+.tko .script{color:var(--sage);font-size:28px}
+.tko h2{margin:0;font-size:clamp(40px,6vw,72px)}
+.tko-sub{margin:8px 0 26px;color:#C9D4C4;min-height:1.4em}
+.tko-box{display:flex;justify-content:center;margin:0 auto 26px}
+.tko-box .tear-ticket{margin:0 auto}
+.tkb{position:absolute;inset:0;padding:22px 26px;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left}
+.tkb .k{font:400 24px/1 Yellowtail;color:var(--sage)}
+.tkb b{font:800 clamp(30px,5vw,42px)/1 Jost;text-transform:uppercase;margin-top:4px}
+.tkb .r{font:600 12px Jost;letter-spacing:.14em;text-transform:uppercase;margin-top:8px;opacity:.85}
+.tkb .p{font:800 30px/1 Jost;margin-top:8px}
+.tks{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--green);padding:10px;text-align:center}
+.tks small{font:700 11px Jost;letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.tks b{font:800 26px Jost;letter-spacing:.02em}
+.tks span{font:400 22px Yellowtail}
+.tko-act,.tko-done{display:flex;flex-direction:column;align-items:center;gap:10px;max-width:400px;margin:0 auto}
+.tko-act[hidden],.tko-done[hidden]{display:none}
+.tko-back{all:unset;cursor:pointer;font:600 13px Jost;letter-spacing:.12em;text-transform:uppercase;color:#C9D4C4;padding:8px 12px}
+.tko-back:hover{color:var(--cream)}
+.tko-rows{display:grid;grid-template-columns:1fr 1fr;width:100%;margin:0;border-top:1.5px dashed rgba(255,254,250,.4);text-align:left}
+.tko-rows div{padding:12px 0 10px;border-bottom:1.5px dashed rgba(255,254,250,.4)}
+.tko-rows div:nth-child(odd){border-right:1.5px dashed rgba(255,254,250,.4);padding-right:12px}
+.tko-rows div:nth-child(even){padding-left:16px}
+.tko-rows dt{font:400 19px Yellowtail;color:var(--sage)}
+.tko-rows dd{margin:2px 0 0;font:800 20px Jost;text-transform:uppercase}
+.tko-note{font-size:13px;color:#C9D4C4;margin:6px 0 8px}
+.tko-done .dw-go,.tko-act .dw-go{background:var(--sage);color:var(--green)}
+.tko-done .dw-go .ar,.tko-act .dw-go .ar{background:var(--green);color:var(--cream)}
+.tko-x{all:unset;cursor:pointer;position:absolute;right:0;top:0;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--cream);color:var(--green);font-size:26px;transition:transform .3s var(--out)}
+.tko-x:hover{transform:rotate(90deg)}
+.tko button:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
+.dw-alt{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;margin-top:10px;padding:13px;text-align:center;font:700 13px Jost;letter-spacing:.1em;text-transform:uppercase;border:2px solid currentColor;border-radius:var(--r-pill);transition:background .3s,color .3s}
+.dw-alt:hover{background:var(--fg);color:var(--bg)}
+.dw-alt:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
+/* Now pouring heading fits its column */
+.pour .phead h2{font-size:clamp(40px,4.6vw,74px)}
 </style>
 </head>
 <body class="loading">
@@ -657,7 +750,7 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 </section>
 
 <!-- 3. OUR BREWS (product carousel) -->
-<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V28C180 6 320 4 480 22s300 34 480 14 340-38 480-8v32z"/></svg>
+<svg class="wave bw" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V28C180 6 320 4 480 22s300 34 480 14 340-38 480-8v32z"/></svg>
 <section class="brews on-green" id="brews" aria-roledescription="carousel" aria-label="Our brews">
   <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="wrap head">
@@ -693,7 +786,7 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
   </div>
   <div class="dots" id="dots" role="tablist" aria-label="Choose a brew"></div>
 </section>
-<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V28C180 6 320 4 480 22s300 34 480 14 340-38 480-8v32z"/></svg>
+<svg class="wave bw" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V28C180 6 320 4 480 22s300 34 480 14 340-38 480-8v32z"/></svg>
 
 <div class="bigmq" aria-hidden="true"><div class="tape t2"><div class="track" id="tapeB"><span>Real hops</span><i>&#10042;</i><span>Real ferment</span><i>&#10042;</i><span>0.0&ndash;0.5% ABV</span><i>&#10042;</i><span>80 cal a pint</span><i>&#10042;</i><span>Brewed in Pune</span><i>&#10042;</i><span>Real hops</span><i>&#10042;</i><span>Real ferment</span><i>&#10042;</i><span>0.0&ndash;0.5% ABV</span><i>&#10042;</i><span>80 cal a pint</span><i>&#10042;</i><span>Brewed in Pune</span><i>&#10042;</i><span>Real hops</span><i>&#10042;</i><span>Real ferment</span><i>&#10042;</i><span>0.0&ndash;0.5% ABV</span><i>&#10042;</i><span>80 cal a pint</span><i>&#10042;</i><span>Brewed in Pune</span><i>&#10042;</i><span>Real hops</span><i>&#10042;</i><span>Real ferment</span><i>&#10042;</i><span>0.0&ndash;0.5% ABV</span><i>&#10042;</i><span>80 cal a pint</span><i>&#10042;</i><span>Brewed in Pune</span><i>&#10042;</i></div></div><div class="tape t1"><div class="track" id="bigTrack"><span>Ritual,</span><em>not intoxication</em><i>&#10042;</i><span>Craft beer.</span><em>zero compromise</em><i>&#10042;</i><span>Tomorrow</span><em>over tonight</em><i>&#10042;</i><span>Ritual,</span><em>not intoxication</em><i>&#10042;</i><span>Craft beer.</span><em>zero compromise</em><i>&#10042;</i><span>Tomorrow</span><em>over tonight</em><i>&#10042;</i><span>Ritual,</span><em>not intoxication</em><i>&#10042;</i><span>Craft beer.</span><em>zero compromise</em><i>&#10042;</i><span>Tomorrow</span><em>over tonight</em><i>&#10042;</i><span>Ritual,</span><em>not intoxication</em><i>&#10042;</i><span>Craft beer.</span><em>zero compromise</em><i>&#10042;</i><span>Tomorrow</span><em>over tonight</em><i>&#10042;</i></div></div></div>
 <!-- 4. RITUAL -->
@@ -703,7 +796,7 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
     <div class="rtop-r"><p class="rv">Same pint, same clink, same Friday. Just a clear head the morning after.</p>
       <div class="sctl"><span class="sct"><b id="sNow">1</b> / <span id="sN">7</span></span><div class="sbar"><i id="sBar"></i></div><button type="button" class="sarr" id="sPrev" aria-label="Previous photos">&larr;</button><button type="button" class="sarr" id="sNext" aria-label="Next photos">&rarr;</button></div></div>
   </div>
-  <div class="strip" id="strip" tabindex="0" aria-label="Photos of Barely moments" data-lenis-prevent>
+  <div class="strip" id="strip" tabindex="0" aria-label="Photos of Barely moments">
     <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.35.52_6.jpg?width=700" alt="Friends with glasses of Barely"></figure>
     <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/2_102b5a56-b785-49ce-8b18-8c80c1def809.png?width=700" alt="A Barely moment"></figure>
     <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.35.52_3.jpg?width=700" alt="Cheers with Barely"></figure>
@@ -717,9 +810,16 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 <!-- 5. NOW POURING -->
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
 <section class="pour on-green" id="bars">
-  <div class="wrap"><span class="script">Find a tap</span><h2 class="display">Now pouring at <br>10+ bars in Pune</h2><p class="sub">Ask for Barely on tap at these spots.</p></div>
-  <p class="taphint" aria-hidden="true"><span class="hv">Hover a tap to pour</span><span class="tp">Tap a tap to pour</span></p>
-  <div class="taps"><ul class="tapline" id="tapline" aria-label="Bars pouring Barely"></ul></div>
+  <div class="wrap phead">
+    <div><span class="script">Find a tap</span><h2 class="display">Now pouring at <br><span class="ten">10+</span> bars in Pune</h2></div>
+    <div class="pside"><p class="sub">Ask for Barely on tap at these spots.</p>
+      <div class="ticket"><small>Now pouring at</small><b id="nowBar" aria-live="polite">Murphies</b><span class="tk-n" id="nowN">01 / 10</span></div></div>
+  </div>
+  <div class="wrap"><div class="backbar">
+    <p class="taphint" aria-hidden="true"><span class="hv">Hover a tap to pour</span><span class="tp">Tap a tap to pour</span></p>
+    <div class="taps"><ul class="tapline" id="tapline" aria-label="Bars pouring Barely"></ul></div>
+    <div class="tray" aria-hidden="true"></div>
+  </div></div>
 </section>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
 
@@ -766,7 +866,18 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
     <div class="sign" aria-hidden="true">Barely</div>
   </div>
 </footer>
-<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photos">
+<div class="tko" id="tko" hidden role="dialog" aria-modal="true" aria-labelledby="tkH" data-lenis-prevent>
+  <div class="tko-in">
+    <button type="button" class="tko-x" id="tkX" aria-label="Close">&times;</button>
+    <span class="script">Pre-order</span>
+    <h2 class="display" id="tkH">Almost yours!</h2>
+    <p class="tko-sub" id="tkSub">Tear off the stub to reserve your pack.</p>
+    <div class="tko-box" id="tkBox"></div>
+    <div class="tko-act" id="tkAct"><button type="button" class="dw-go" id="tkTear">Tear &amp; reserve <span class="ar" aria-hidden="true"><span class="a1">&rarr;</span><span class="a2">&rarr;</span></span></button><button type="button" class="tko-back" id="tkBack">Change pack</button></div>
+    <div class="tko-done" id="tkDone" hidden><dl class="tko-rows" id="tkRows"></dl><p class="tko-note">Concept page: nothing was sent and nothing was charged. Barely&rsquo;s online orders open January 2027.</p><button type="button" class="dw-go" id="tkOk">Done <span class="ar" aria-hidden="true"><span class="a1">&rarr;</span><span class="a2">&rarr;</span></span></button></div>
+  </div>
+</div>
+<div class="lb" id="lb" hidden data-lenis-prevent role="dialog" aria-modal="true" aria-label="Photos">
   <div class="lb-top"><span class="lb-ct"><b id="lbNow">1</b> / <span id="lbN">3</span></span><span class="lb-name" id="lbName">Hazy Wit</span><button type="button" class="lb-x" id="lbX" aria-label="Close photos">&times;</button></div>
   <div class="lb-stage" id="lbStage"><button type="button" class="lb-arr l" id="lbPrev" aria-label="Previous photo">&larr;</button><figure class="lb-fig"><img id="lbImg" src="" alt=""><figcaption id="lbCap"></figcaption></figure><button type="button" class="lb-arr r" id="lbNext" aria-label="Next photo">&rarr;</button></div>
   <div class="lb-rail" id="lbRail"></div>
@@ -799,12 +910,14 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
         <div class="dw-packs" role="radiogroup" aria-label="Pack size"><button type="button" role="radio" data-n="4">4-pack</button><button type="button" role="radio" data-n="6">6-pack</button></div>
         <div class="dw-price" aria-live="polite"><b>&#8377;<span id="dwPrice">799</span></b><small id="dwPer">about &#8377;200 a bottle</small></div>
       </div>
-      <button type="button" class="dw-go" id="dwGo">Get early access <span class="ar" aria-hidden="true"><span class="a1">&rarr;</span><span class="a2">&rarr;</span></span></button>
+      <button type="button" class="dw-go" id="dwOrder">Pre-order this pack <span class="ar" aria-hidden="true"><span class="a1">&rarr;</span><span class="a2">&rarr;</span></span></button>
+      <button type="button" class="dw-alt" id="dwGo">Get early access</button>
       <p class="dw-note">Online orders open January 2027. <a id="dwLive" href="https://barelybrewing.com" target="_blank" rel="noopener">Live product page <span aria-hidden="true">&nearr;</span><span class="sr"> (opens barelybrewing.com)</span></a></p>
     </div>
   </aside>
 </div>
 
+<script src="js/tear-ticket.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
@@ -862,7 +975,7 @@ const onS=()=>{$('#nav').classList.toggle('scrolled',scrollY>20);const m=documen
 addEventListener('scroll',onS,{passive:true});onS();
 /* mobile menu */
 const mm=$('#mmenu'),bg=$('#burger');
-function menu(o){mm.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Close menu':'Menu');document.body.style.overflow=o?'hidden':'';if(lenis)o?lenis.stop():lenis.start();if(o)setTimeout(()=>mm.querySelector('a').focus(),300)}
+function menu(o){mm.classList.toggle('open',o);bg.setAttribute('aria-expanded',o);bg.setAttribute('aria-label',o?'Close menu':'Menu');document.documentElement.style.overflow=o?'hidden':'';if(lenis)o?lenis.stop():lenis.start();if(o)setTimeout(()=>mm.querySelector('a').focus(),300)}
 bg.onclick=()=>menu(!mm.classList.contains('open'));
 mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu(false),true));
 addEventListener('keydown',e=>{if(e.key==='Escape'&&mm.classList.contains('open')){menu(false);bg.focus()}});
@@ -937,6 +1050,7 @@ function render(dir){
     $('#ghost').textContent=b.name;$('#ghost').classList.remove('swap');
     $('#iLink').setAttribute('aria-label','View product: '+b.name);
     setPrice(false);
+    document.documentElement.style.setProperty('--brewbg',['#2F5383','#224B2E','#7A4A22'][cur]);
     void info.offsetWidth;info.classList.remove('swap');
   },dir?380:0);
   const now=$('#bNow');now.style.transform=`translateY(${dir>0?'-100%':dir<0?'100%':'0'})`;
@@ -969,14 +1083,15 @@ function dwFill(){const b=BREWS[dwi],x=DX[dwi];dS.style.setProperty('--bg',x.bg)
 const lb=$('#lb'),lI=$('#lbImg');let li=0,lbLast=null,lT=0;
 let LG=[];
 function lbShow(i,dir){const g=LG;li=(i+g.length)%g.length;const f=g[li];
-  const put=()=>{lI.src=sz(f[0],1600);lI.alt=f[1];$('#lbCap').textContent=f[1]+'. Photo: Barely Brewing';$('#lbNow').textContent=li+1;
+  const put=()=>{const fig=lI.parentElement,src=sz(f[0],1600);fig.classList.add('loading');const pre=new Image();pre.onload=pre.onerror=()=>{if(LG[li]!==f)return;lI.src=src;fig.classList.remove('loading')};pre.src=src;
+    [1,-1].forEach(o=>{const g2=LG[(li+o+LG.length)%LG.length];if(g2)(new Image()).src=sz(g2[0],1600)});lI.alt=f[1];$('#lbCap').textContent=f[1]+'. Photo: Barely Brewing';$('#lbNow').textContent=li+1;
     [...$('#lbRail').children].forEach((r,k)=>r.setAttribute('aria-current',k===li));lI.style.setProperty('--sx','0px');lI.classList.remove('swap')};
   clearTimeout(lT);if(!dir||reduce){put();return}lI.style.setProperty('--sx',(dir>0?-40:40)+'px');lI.classList.add('swap');lT=setTimeout(put,260)}
 function lbOpen(i,gal,name){lbLast=document.activeElement;const g=LG=gal||GAL[dwi];$('#lbN').textContent=g.length;$('#lbName').textContent=name||BREWS[dwi].name;
   $('#lbRail').innerHTML=g.map((f,k)=>`<button type="button" aria-label="Photo ${k+1}"><img src="${sz(f[0],200)}" alt=""></button>`).join('');
   [...$('#lbRail').children].forEach((r,k)=>r.onclick=()=>lbShow(k,k>li?1:-1));
-  lbShow(i,0);lb.hidden=false;void lb.offsetWidth;lb.classList.add('open');setTimeout(()=>$('#lbX').focus({preventScroll:true}),50)}
-function lbClose(){lb.classList.remove('open');setTimeout(()=>{lb.hidden=true;if(lbLast)lbLast.focus({preventScroll:true})},reduce?0:400)}
+  lbShow(i,0);lb.hidden=false;void lb.offsetWidth;lb.classList.add('open');document.documentElement.style.overflow='hidden';if(lenis)lenis.stop();setTimeout(()=>$('#lbX').focus({preventScroll:true}),50)}
+function lbClose(){lb.classList.remove('open');if(dw.hidden){document.documentElement.style.overflow='';if(lenis)lenis.start()}setTimeout(()=>{lb.hidden=true;if(lbLast)lbLast.focus({preventScroll:true})},reduce?0:400)}
 $('#lbX').onclick=lbClose;$('#lbPrev').onclick=()=>lbShow(li-1,-1);$('#lbNext').onclick=()=>lbShow(li+1,1);
 $('#dwMore').onclick=()=>lbOpen(0);
 lb.addEventListener('click',e=>{if(e.target===lb||e.target.id==='lbStage')lbClose()});
@@ -987,8 +1102,8 @@ addEventListener('keydown',e=>{if(lb.hidden)return;e.stopImmediatePropagation();
 function dwStep(d){dwi=(dwi+d+N)%N;clearTimeout(dwT);dB.classList.add('swap');dI.classList.add('swap');
   dwT=setTimeout(()=>{dwFill();dS.scrollTo({top:0,behavior:'smooth'});void dB.offsetWidth;dB.classList.remove('swap');dI.classList.remove('swap')},reduce?0:320)}
 function dwOpen(){dwLast=document.activeElement;dwi=cur;dwFill();dw.hidden=false;dS.scrollTop=0;void dw.offsetWidth;dw.classList.add('open');
-  document.body.style.overflow='hidden';if(lenis)lenis.stop();setTimeout(()=>$('#dwX').focus({preventScroll:true}),60)}
-function dwClose(then){if(dw.hidden)return;dw.classList.remove('open');document.body.style.overflow='';if(lenis)lenis.start();
+  document.documentElement.style.overflow='hidden';if(lenis)lenis.stop();setTimeout(()=>$('#dwX').focus({preventScroll:true}),60)}
+function dwClose(then){if(dw.hidden)return;dw.classList.remove('open');document.documentElement.style.overflow='';if(lenis)lenis.start();
   setTimeout(()=>{dw.hidden=true;if(dwi!==cur)go(dwi);if(then)then();else if(dwLast)dwLast.focus({preventScroll:true})},reduce?0:650)}
 $('#iLink').onclick=dwOpen;
 let px0=0,moved=false;$('#stage').addEventListener('pointerdown',e=>{px0=e.clientX;moved=false});$('#stage').addEventListener('pointerup',e=>{moved=Math.abs(e.clientX-px0)>8});
@@ -1013,20 +1128,55 @@ st.addEventListener('pointerdown',e=>{sx=e.clientX});
 st.addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50)go(dx<0?(cur+1)%N:(cur-1+N)%N)});
 render(0);
 
-/* ritual gallery: arrows, drag, snap, click to enlarge */
-(()=>{const sp=$('#strip'),figs=$$('#strip figure'),n=figs.length;$('#sN').textContent=n;
+/* pre-order ticket: tear off the stub (concept, nothing is sent) */
+const tko=$('#tko');let tkT=null,tkLast=null;
+function tkOpen(){tkLast=document.activeElement;const b=BREWS[dwi],v=b.packs[pack],no='BB-'+(1000+Math.floor(Math.random()*9000));
+  $('#tkBox').innerHTML='';$('#tkDone').hidden=true;$('#tkAct').hidden=false;$('#tkH').textContent='Almost yours!';$('#tkSub').textContent='Tear off the stub to reserve your pack.';
+  const narrow=innerWidth<640;
+  tkT=window.TearTicket?window.TearTicket($('#tkBox'),Object.assign(narrow?{orientation:'vertical',width:300,height:500,stubSize:160,holes:12}:{orientation:'horizontal',width:620,height:280,stubSize:180,holes:14},
+    {radius:22,holeSize:7,notch:4,rotate:-3,tiltMax:8,parallax:8,background:'#224B2E',color:'#FFFEFA',stubBackground:'#A7B884',borderColor:'rgba(167,184,132,.5)',
+     image:DX[dwi].img,imageAlt:'',scrim:true,imageRadius:14,
+     body:`<div class="tkb"><span class="k">Pre-order</span><b>${b.name}</b><span class="r">Pack of ${pack} &middot; 330 ml bottles</span><span class="p">&#8377;${inr(v)}</span></div>`,
+     stub:`<div class="tks"><small>Ticket</small><b>${no}</b><span>Tear to reserve</span></div>`,
+     ariaLabel:'Tear off the stub to reserve '+b.name,onTear:()=>tkDone(b,v,no)})):null;
+  if(!tkT)$('#tkTear').onclick=()=>tkDone(b,v,no);
+  tko.hidden=false;void tko.offsetWidth;tko.classList.add('open');setTimeout(()=>$('#tkTear').focus({preventScroll:true}),90)}
+function tkDone(b,v,no){$('#tkH').textContent='Reserved!';$('#tkSub').textContent='Here is your ticket.';$('#tkAct').hidden=true;
+  $('#tkRows').innerHTML=`<div><dt>Ticket</dt><dd>${no}</dd></div><div><dt>Brew</dt><dd>${b.name}</dd></div><div><dt>Pack</dt><dd>${pack} bottles</dd></div><div><dt>Price</dt><dd>&#8377;${inr(v)}</dd></div>`;
+  $('#tkDone').hidden=false;setTimeout(()=>$('#tkOk').focus({preventScroll:true}),50)}
+function tkClose(){tko.classList.remove('open');setTimeout(()=>{tko.hidden=true;$('#tkBox').innerHTML='';tkT=null;if(tkLast)tkLast.focus({preventScroll:true})},reduce?0:350)}
+$('#dwOrder').onclick=tkOpen;
+$('#tkTear').onclick=()=>{if(tkT)tkT.tear()};
+$('#tkBack').onclick=tkClose;$('#tkX').onclick=tkClose;$('#tkOk').onclick=tkClose;
+let tkDown=null;tko.addEventListener('pointerdown',e=>{tkDown=e.target});tko.addEventListener('click',e=>{if(e.target===tko&&tkDown===tko)tkClose();tkDown=null});
+addEventListener('keydown',e=>{if(tko.hidden)return;e.stopImmediatePropagation();if(e.key==='Escape')tkClose();
+  if(e.key==='Tab'){const f=$$('button:not([hidden]),[tabindex="0"]',tko).filter(x=>x.offsetParent),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}},true);
+/* ritual gallery: desktop = pinned, photos slide with page scroll; phones = swipe strip. Arrows + counter in both. */
+(()=>{const sp=$('#strip'),figs=$$('#strip figure'),n=figs.length;$('#sN').textContent=n;let dragged=false;
   const MOM=figs.map(f=>{const im=f.querySelector('img');return [im.src.replace(/\?width=\d+/,'').replace('https://barelybrewing.com/cdn/shop/files/',CDN),im.alt]});
   figs.forEach((f,i)=>{f.tabIndex=0;f.setAttribute('role','button');f.setAttribute('aria-label','Open photo: '+f.querySelector('img').alt);
     f.addEventListener('click',()=>{if(!dragged)lbOpen(i,MOM,'Real moments')});f.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();lbOpen(i,MOM,'Real moments')}})});
+  const ui=pr=>{pr=Math.max(0,Math.min(1,pr));$('#sNow').textContent=Math.round(pr*(n-1))+1;$('#sBar').style.transform=`scaleX(${.15+pr*.85})`;$('#sPrev').disabled=pr<.01;$('#sNext').disabled=pr>.99};
+  let mode=null,st=null,tw=null;
+  const scrollY2=y=>{if(lenis)lenis.scrollTo(y,{duration:1.1});else scrollTo({top:y,behavior:reduce?'auto':'smooth'})};
+  /* desktop: pin + scrub */
+  function pinOn(){mode='pin';sp.classList.add('pinned');sp.scrollLeft=0;
+    const dist=()=>Math.max(0,sp.scrollWidth-sp.clientWidth);
+    tw=G.to(sp,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#ritual',start:'top top',end:()=>'+='+Math.max(dist(),innerHeight*.6),pin:true,scrub:.8,anticipatePin:1,invalidateOnRefresh:true,onUpdate:t=>ui(t.progress),onRefresh:t=>ui(t.progress)}});
+    st=tw.scrollTrigger;ui(0)}
+  function pinOff(){if(tw){tw.scrollTrigger.kill();tw.kill();tw=null;st=null}G&&G.set(sp,{clearProps:'transform'});sp.classList.remove('pinned');mode='swipe';sync()}
+  const jump=d=>{const cur=Math.round(st.progress*(n-1)),to=Math.max(0,Math.min(n-1,cur+d));scrollY2(st.start+(st.end-st.start)*to/(n-1)+1)};
+  /* phones: native swipe strip */
   const step=()=>figs[0].getBoundingClientRect().width+22;
-  const sync=()=>{const max=sp.scrollWidth-sp.clientWidth,pr=max>0?sp.scrollLeft/max:0;
-    $('#sNow').textContent=Math.min(n,Math.round(sp.scrollLeft/step())+1);$('#sBar').style.transform=`scaleX(${.15+pr*.85})`;
-    $('#sPrev').disabled=sp.scrollLeft<4;$('#sNext').disabled=sp.scrollLeft>max-4};
-  $('#sPrev').onclick=()=>sp.scrollBy({left:-step(),behavior:reduce?'auto':'smooth'});
-  $('#sNext').onclick=()=>sp.scrollBy({left:step(),behavior:reduce?'auto':'smooth'});
-  sp.addEventListener('scroll',()=>requestAnimationFrame(sync),{passive:true});addEventListener('resize',sync);sync();
-  let d=null,dragged=false;
-  sp.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;d={x:e.clientX,s:sp.scrollLeft};dragged=false});
+  const sync=()=>{if(mode==='pin')return;const max=sp.scrollWidth-sp.clientWidth;ui(max>0?sp.scrollLeft/max:0)};
+  sp.addEventListener('scroll',()=>requestAnimationFrame(sync),{passive:true});
+  $('#sPrev').onclick=()=>mode==='pin'?jump(-1):sp.scrollBy({left:-step(),behavior:reduce?'auto':'smooth'});
+  $('#sNext').onclick=()=>mode==='pin'?jump(1):sp.scrollBy({left:step(),behavior:reduce?'auto':'smooth'});
+  if(G&&!reduce){G.matchMedia().add('(min-width:901px)',()=>{pinOn();setTimeout(()=>{ScrollTrigger.sort();ScrollTrigger.refresh()},50);return pinOff})}
+  if(mode!=='pin'){mode='swipe';sync()}
+  /* mouse drag only in swipe mode */
+  let d=null;
+  sp.addEventListener('pointerdown',e=>{if(mode==='pin'||e.pointerType!=='mouse')return;d={x:e.clientX,s:sp.scrollLeft};dragged=false});
   addEventListener('pointermove',e=>{if(!d)return;const dx=e.clientX-d.x;if(Math.abs(dx)>6){dragged=true;sp.classList.add('drag')}if(dragged)sp.scrollLeft=d.s-dx});
   addEventListener('pointerup',()=>{if(!d)return;d=null;if(sp.classList.contains('drag')){const i=Math.round(sp.scrollLeft/step());sp.classList.remove('drag');sp.scrollTo({left:i*step(),behavior:'smooth'})}setTimeout(()=>dragged=false,0)});
 })();
@@ -1044,7 +1194,8 @@ LOGOS.forEach((f,i)=>{const li=document.createElement('li');li.className='tap';l
   li.innerHTML=`<div class="lever" aria-hidden="true"><span class="badge"><img src="https://barelybrewing.com/cdn/shop/files/${f}?height=240" alt=""></span><span class="handle"></span></div><span class="tbody" aria-hidden="true"></span><span class="stream" aria-hidden="true"></span><span class="glass" aria-hidden="true"><i class="fill"></i><i class="foam"></i></span><b class="nm">${NAMES[i]}</b>`;
   tapline.appendChild(li)});
 (()=>{const taps=$$('.tap'),T=taps.length;let ti=-1,hold=false,timer=null,seen=false,holdT=0;
-  const pour=i=>{ti=i;taps.forEach((t,k)=>t.classList.toggle('on',k===i))};
+  const nb=$('#nowBar');
+  const pour=i=>{if(i!==ti){nb.textContent=NAMES[i];$('#nowN').textContent=String(i+1).padStart(2,'0')+' / '+String(T).padStart(2,'0');nb.classList.remove('flip');void nb.offsetWidth;nb.classList.add('flip')}ti=i;taps.forEach((t,k)=>t.classList.toggle('on',k===i))};
   const next=()=>{if(!hold)pour((ti+1)%T)};
   const start=()=>{if(reduce||timer)return;next();timer=setInterval(next,2600)};
   const stop=()=>{clearInterval(timer);timer=null};
