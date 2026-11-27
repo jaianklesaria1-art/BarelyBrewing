@@ -400,54 +400,10 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .pour .wrap{text-align:center}
 .pour .phead{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:end;text-align:left}
 .pour h2 .ten{color:var(--sage)}
-.pside{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:8px}
-.ticket{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;column-gap:22px;min-width:300px;background:var(--cream);color:var(--green);padding:16px 26px 14px;border-radius:var(--r-sm);transform:rotate(-2deg);box-shadow:0 26px 40px -24px rgba(0,0,0,.7);
-  -webkit-mask:radial-gradient(circle at 0 50%,transparent 10px,#000 11px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 10px,#000 11px) right/51% 100% no-repeat;
-  mask:radial-gradient(circle at 0 50%,transparent 10px,#000 11px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 10px,#000 11px) right/51% 100% no-repeat}
-.ticket::after{content:"";position:absolute;top:10px;bottom:10px;right:96px;border-left:2px dashed rgba(34,75,46,.3)}
-.ticket small{grid-column:1/-1;font:700 11px Jost;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
-.ticket b{font:400 38px/1.1 Yellowtail;white-space:nowrap;display:inline-block}
-.ticket b.flip{animation:tk .55s cubic-bezier(.3,1.5,.5,1)}
-@keyframes tk{from{opacity:0;transform:translateY(14px) rotate(-4deg)}}
-.tk-n{font:800 15px Jost;letter-spacing:.06em;padding-bottom:6px;font-variant-numeric:tabular-nums}
-.backbar{position:relative;margin-top:44px;padding:20px 0 0;background:linear-gradient(180deg,var(--green-2),#163220);border-radius:var(--r-lg);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 40px 70px -40px rgba(0,0,0,.7);overflow:hidden}
-.backbar::before{content:"";position:absolute;inset:12px;border:1.5px dashed rgba(167,184,132,.22);border-radius:calc(var(--r-lg) - 8px);pointer-events:none}
-.backbar .taphint{margin:4px 0 0}
-.backbar .taps{margin-top:18px}
-.tray{position:relative;height:18px;margin:-2px 34px 30px;border-radius:var(--r-pill);background:repeating-linear-gradient(90deg,#8F8B7D 0 3px,#D8D3C2 3px 11px);box-shadow:0 10px 16px -8px rgba(0,0,0,.6)}
-@media (max-width:900px){.pour .phead{grid-template-columns:1fr;gap:18px}.ticket{min-width:0;width:100%;max-width:340px}.backbar{margin-top:30px}.tray{margin:-2px 16px 22px}}
+@media (max-width:900px){.pour .phead{grid-template-columns:1fr;gap:14px}}
 .pour h2{margin:0;font-size:clamp(44px,6vw,96px)}
 @media (max-width:600px){.pour h2{font-size:clamp(30px,9vw,40px)}.pour h2 br{display:none}}
 .pour .sub{color:#D6E0D2;margin:10px 0 0}
-.taphint{margin:18px 0 0;font:400 24px Yellowtail;color:var(--sage);text-align:center}
-.taphint .tp{display:none}
-@media (hover:none){.taphint .hv{display:none}.taphint .tp{display:inline}}
-.taps{margin-top:34px}
-.tapline{list-style:none;margin:0 auto;padding:0 24px 10px;display:flex;justify-content:center;max-width:1240px;scrollbar-width:none}
-.tapline::-webkit-scrollbar{display:none}
-.tap{position:relative;flex:0 0 112px;display:flex;flex-direction:column;align-items:center;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
-.tap::before{content:"";position:absolute;left:0;right:0;top:146px;height:18px;background:linear-gradient(#F4F1E6,#C9C4B2 55%,#8F8B7D);box-shadow:0 10px 16px -8px rgba(0,0,0,.6)}
-.tap:first-child::before{left:14px;border-radius:9px 0 0 9px}
-.tap:last-child::before{right:14px;border-radius:0 9px 9px 0}
-.lever{position:relative;z-index:2;height:156px;display:flex;flex-direction:column;align-items:center;transform-origin:50% 100%;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
-.lever .badge{width:84px;height:84px;flex:0 0 auto;border-radius:50%;overflow:hidden;background:var(--cream);border:3px solid var(--sage);box-shadow:0 14px 24px -12px rgba(0,0,0,.7);transition:border-color .3s,transform .4s var(--out)}
-.lever .badge img{width:100%;height:100%;object-fit:cover}
-.lever .handle{width:18px;flex:1;margin-top:-4px;background:linear-gradient(90deg,#8FA06C,#D3DDB6 45%,#8FA06C);border-radius:0 0 6px 6px}
-.tbody{position:relative;z-index:3;width:36px;height:26px;margin-top:-4px;background:linear-gradient(90deg,#A9A495,#F4F1E6 50%,#A9A495);border-radius:0 0 12px 12px;display:flex;justify-content:center}
-.tbody::after{content:"";position:absolute;top:100%;width:12px;height:18px;background:linear-gradient(90deg,#9F9B8C,#E9E6DA 50%,#9F9B8C);border-radius:0 0 4px 4px}
-.stream{width:6px;height:58px;margin-top:18px;border-radius:3px;background:linear-gradient(#F2B544,#E39A2C);transform:scaleY(0);transform-origin:top;transition:transform .3s ease-in}
-.glass{position:relative;width:52px;height:66px;border:3px solid rgba(255,254,250,.85);border-top:0;border-radius:0 0 14px 14px;overflow:hidden;background:rgba(255,254,250,.06)}
-.glass .fill{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(#F2B544,#C9781E);transition:height .9s ease-in}
-.glass .foam{position:absolute;left:0;right:0;bottom:0;height:12px;background:var(--cream);border-radius:3px 3px 0 0;transform:translateY(12px);transition:bottom .9s ease-in,transform .3s}
-.tap .nm{margin-top:12px;font:700 11.5px Jost;letter-spacing:.12em;text-transform:uppercase;color:#C9D4C4;white-space:nowrap;transition:color .3s}
-.tap.on .lever{transform:rotate(-22deg)}
-.tap.on .lever .badge{border-color:var(--cream);transform:scale(1.06)}
-.tap.on .stream{transform:scaleY(1);transition:transform .35s .25s ease-out}
-.tap.on .glass .fill{height:74%;transition:height 1.6s .4s cubic-bezier(.3,.6,.4,1)}
-.tap.on .glass .foam{bottom:74%;transform:none;transition:bottom 1.6s .4s cubic-bezier(.3,.6,.4,1),transform .3s .4s}
-.tap.on .nm{color:var(--sage)}
-.tap:focus-visible .badge{outline:3px solid var(--sage);outline-offset:4px}
-@media (max-width:1200px){.tapline{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px}.tap{flex-basis:104px;scroll-snap-align:center}}
 
 /* 6. membership */
 .how{padding:120px 0 120px;overflow:hidden}
@@ -685,6 +641,28 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 .dw-alt:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
 /* Now pouring heading fits its column */
 .pour .phead h2{font-size:clamp(40px,4.6vw,74px)}
+/* Now pouring: bar list with a floating logo */
+.pour .sub{max-width:300px;justify-self:end;text-align:left;margin:0 0 10px}
+.barlist{list-style:none;text-align:left;margin:56px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:56px;counter-reset:bar}
+.bl{position:relative;display:flex;align-items:center;gap:18px;padding:20px 14px;border-bottom:1.5px dashed rgba(255,254,250,.28);cursor:default;isolation:isolate;outline:none}
+.barlist .bl:nth-child(-n+2){border-top:1.5px dashed rgba(255,254,250,.28)}
+.bl::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--sage);border-radius:var(--r-sm);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
+.bl .no{font:700 13px Jost;letter-spacing:.14em;color:var(--sage);min-width:28px;transition:color .3s,transform .45s var(--out)}
+.bl .mini{display:none;width:44px;height:44px;flex:0 0 auto;border-radius:50%;overflow:hidden;background:var(--cream);border:2px solid var(--sage)}
+.bl .mini img{width:100%;height:100%;object-fit:cover}
+.bl .nm{flex:1;white-space:nowrap;font:800 clamp(28px,3.2vw,48px)/1 Jost;text-transform:uppercase;letter-spacing:-.01em;color:var(--cream);transition:color .3s,transform .5s var(--out)}
+.bl .on{font:700 11px Jost;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:var(--r-pill);border:1.5px solid rgba(255,254,250,.4);color:#D6E0D2;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.bl .on i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--sage);margin-right:7px;vertical-align:1px;animation:blink 1.6s infinite}
+.bl.hot::before{transform:scaleX(1)}
+.bl.hot .nm{color:var(--green);transform:translateX(10px)}
+.bl.hot .no{color:var(--green);transform:translateX(4px)}
+.bl.hot .on{background:var(--green);color:var(--cream);border-color:var(--green)}
+.bl:focus-visible{outline:3px solid var(--sage);outline-offset:3px;border-radius:var(--r-sm)}
+.barlogo{position:fixed;left:0;top:0;z-index:40;width:170px;height:170px;margin:-85px 0 0 -85px;border-radius:50%;overflow:hidden;background:var(--cream);border:4px solid var(--cream);box-shadow:0 30px 50px -20px rgba(0,0,0,.6);pointer-events:none;transform:scale(0);transition:transform .45s cubic-bezier(.3,1.5,.5,1)}
+.barlogo.show{transform:scale(1)}
+.barlogo img{width:100%;height:100%;object-fit:cover;transition:opacity .2s}
+@media (hover:none),(max-width:900px){.barlogo{display:none}.bl .mini{display:block}.bl .no{display:none}}
+@media (max-width:900px){.barlist{grid-template-columns:1fr;margin-top:34px}.barlist .bl:nth-child(2){border-top:0}.bl{padding:14px 8px;gap:14px}.bl .nm{font-size:clamp(20px,5.8vw,28px)}.pour .sub{justify-self:start}}
 </style>
 </head>
 <body class="loading">
@@ -813,14 +791,10 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 <section class="pour on-green" id="bars">
   <div class="wrap phead">
     <div><span class="script">Find a tap</span><h2 class="display">Now pouring at <br><span class="ten">10+</span> bars in Pune</h2></div>
-    <div class="pside"><p class="sub">Ask for Barely on tap at these spots.</p>
-      <div class="ticket"><small>Now pouring at</small><b id="nowBar" aria-live="polite">Murphies</b><span class="tk-n" id="nowN">01 / 10</span></div></div>
+    <p class="sub">Ask for Barely on tap at these spots.</p>
   </div>
-  <div class="wrap"><div class="backbar">
-    <p class="taphint" aria-hidden="true"><span class="hv">Hover a tap to pour</span><span class="tp">Tap a tap to pour</span></p>
-    <div class="taps"><ul class="tapline" id="tapline" aria-label="Bars pouring Barely"></ul></div>
-    <div class="tray" aria-hidden="true"></div>
-  </div></div>
+  <div class="wrap"><ol class="barlist" id="barlist" aria-label="Bars pouring Barely"></ol></div>
+  <div class="barlogo" id="barlogo" aria-hidden="true"><img src="" alt=""></div>
 </section>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
 
@@ -1190,23 +1164,21 @@ addEventListener('keydown',e=>{if(tko.hidden)return;e.stopImmediatePropagation()
 /* bar logos (Barely's own "Now pouring" list) */
 const LOGOS=['Murphies_Logo.png','bntr.jpg','Grove_Logo.png','Layers_Logo.jpg','Trooh_logo.jpg','Oi_Logo_62f5d1ec-6e10-4ded-84b5-923ebdcea104.jpg','LP_Logo.jpg','Malaka_Logo.png','Sante_Logo.png','Gulp_logo.jpg'];
 const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malaka Spice','Santé','Gulp'];
-const tapline=$('#tapline');
-LOGOS.forEach((f,i)=>{const li=document.createElement('li');li.className='tap';li.tabIndex=0;li.setAttribute('aria-label',NAMES[i]);
-  li.innerHTML=`<div class="lever" aria-hidden="true"><span class="badge"><img src="https://barelybrewing.com/cdn/shop/files/${f}?height=240" alt=""></span><span class="handle"></span></div><span class="tbody" aria-hidden="true"></span><span class="stream" aria-hidden="true"></span><span class="glass" aria-hidden="true"><i class="fill"></i><i class="foam"></i></span><b class="nm">${NAMES[i]}</b>`;
-  tapline.appendChild(li)});
-(()=>{const taps=$$('.tap'),T=taps.length;let ti=-1,hold=false,timer=null,seen=false,holdT=0;
-  const nb=$('#nowBar');
-  const pour=i=>{if(i!==ti){nb.textContent=NAMES[i];$('#nowN').textContent=String(i+1).padStart(2,'0')+' / '+String(T).padStart(2,'0');nb.classList.remove('flip');void nb.offsetWidth;nb.classList.add('flip')}ti=i;taps.forEach((t,k)=>t.classList.toggle('on',k===i))};
-  const next=()=>{if(!hold)pour((ti+1)%T)};
-  const start=()=>{if(reduce||timer)return;next();timer=setInterval(next,2600)};
-  const stop=()=>{clearInterval(timer);timer=null};
-  new IntersectionObserver(es=>{es[0].isIntersecting?start():stop()},{threshold:.35}).observe(tapline);
-  if(reduce)pour(0);
-  taps.forEach((t,i)=>{t.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hold=true;pour(i)}});
-    t.addEventListener('focus',()=>{hold=true;pour(i)});t.addEventListener('blur',()=>{hold=false});
-    t.addEventListener('click',()=>{hold=true;pour(i);clearTimeout(holdT);holdT=setTimeout(()=>hold=false,5000)});
-    t.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pour(i)}})});
-  tapline.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hold=false});
+const barlist=$('#barlist'),blogo=$('#barlogo'),bimg=blogo.querySelector('img');
+const logoUrl=f=>`https://barelybrewing.com/cdn/shop/files/${f}?height=340`;
+LOGOS.forEach((f,i)=>{const li=document.createElement('li');li.className='bl';li.tabIndex=0;
+  li.innerHTML=`<span class="no">${String(i+1).padStart(2,'0')}</span><span class="mini"><img src="${logoUrl(f)}" alt="" loading="lazy"></span><span class="nm">${NAMES[i]}</span><span class="on"><i></i>On tap</span>`;
+  barlist.appendChild(li);(new Image()).src=logoUrl(f)});
+(()=>{const bars=$$('.bl');let tx=0,ty=0,x=0,y=0,raf=0,vis=false,cur=-1;
+  const set=i=>{bars.forEach((b,k)=>b.classList.toggle('hot',k===i));if(i!==cur&&i>=0){bimg.src=logoUrl(LOGOS[i]);bimg.alt=''}cur=i};
+  const loop=()=>{const dx=tx-x;x+=dx*.16;y+=(ty-y)*.16;blogo.style.translate=`${x}px ${y}px`;blogo.style.rotate=Math.max(-18,Math.min(18,dx*.12))+'deg';raf=vis||Math.abs(dx)>.5?requestAnimationFrame(loop):0};
+  bars.forEach((b,i)=>{
+    b.addEventListener('pointerenter',e=>{set(i);if(e.pointerType==='mouse'){if(!vis){x=tx=e.clientX+150;y=ty=e.clientY-70}vis=true;blogo.classList.add('show');if(!raf)raf=requestAnimationFrame(loop)}});
+    b.addEventListener('pointermove',e=>{tx=e.clientX+150;ty=e.clientY-70});
+    b.addEventListener('focus',()=>set(i));b.addEventListener('blur',()=>set(-1));
+    b.addEventListener('click',()=>set(i))});
+  barlist.addEventListener('pointerleave',()=>{vis=false;blogo.classList.remove('show');set(-1)});
+  addEventListener('scroll',()=>{if(vis){vis=false;blogo.classList.remove('show');set(-1)}},{passive:true});
 })();
 
 /* forms: concept only, nothing is sent */
