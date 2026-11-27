@@ -357,16 +357,17 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .dots button{all:unset;cursor:pointer;width:9px;height:9px;border-radius:50%;background:rgba(255,254,250,.35);transition:background .3s,width .4s var(--out)}
 .dots button[aria-current="true"]{background:var(--cream);width:28px;border-radius:var(--r-pill)}
 
-.bigmq{position:relative;overflow:hidden;height:clamp(190px,20vw,260px);margin-top:40px}
-.tape{position:absolute;left:-10vw;width:120vw;top:50%;padding:18px 0;box-shadow:0 24px 40px -26px rgba(3,3,2,.55)}
-.tape.t1{background:var(--green);color:var(--cream);transform:translateY(-50%) rotate(-3deg);z-index:2}
-.tape.t2{background:var(--sage);color:var(--green);transform:translateY(-50%) rotate(2.5deg);padding:12px 0}
+.bigmq{position:relative;overflow:hidden;height:clamp(300px,30vw,420px);margin-top:20px}
+.tape{position:absolute;left:-25vw;width:150vw;top:50%;padding:18px 0;box-shadow:0 24px 40px -26px rgba(3,3,2,.55)}
+.tape.t1{background:var(--green);color:var(--cream);transform:translateY(-50%) rotate(-7deg);z-index:2}
+.tape.t2{background:var(--sage);color:var(--green);transform:translateY(-50%) rotate(7deg);padding:16px 0}
 .tape .track{display:flex;align-items:center;gap:22px;white-space:nowrap;width:max-content;will-change:transform}
 .tape span{font:800 clamp(26px,3.4vw,50px)/1 Jost;text-transform:uppercase;letter-spacing:-.005em}
 .tape em{font:400 clamp(30px,3.8vw,56px)/1 Yellowtail,cursive;color:var(--sage);margin:0 4px 0 -6px;transform:translateY(.08em)}
-.tape.t2 span{font-size:clamp(16px,1.6vw,22px);letter-spacing:.14em;font-weight:700}
+.tape.t2 span{font-size:clamp(20px,2.4vw,34px);letter-spacing:.08em;font-weight:800}
 .tape i{font-style:normal;display:grid;place-items:center;width:1.6em;height:1.6em;border-radius:50%;font-size:clamp(14px,1.3vw,20px);background:var(--sage);color:var(--green);margin:0 10px}
-.tape.t2 i{background:var(--green);color:var(--sage);font-size:12px}
+.tape.t2 i{background:var(--green);color:var(--sage);font-size:clamp(12px,1.1vw,16px)}
+@media (max-width:600px){.bigmq{height:260px}.tape.t1{transform:translateY(-50%) rotate(-12deg)}.tape.t2{transform:translateY(-50%) rotate(12deg)}}
 .ritual{padding-top:70px!important}
 /* 4. ritual: photo strip that slides with scroll */
 .ritual{padding:120px 0 110px;overflow:hidden}
