@@ -762,6 +762,95 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
   .dw-note{margin-top:6px;font-size:11.5px;text-align:center}
 }
 @media (max-width:900px) and (max-height:680px){.dw-gal{display:none}.dw-desc{-webkit-line-clamp:1}.dw-note{display:none}}
+/* ===== Phone layout (<=600px): tighter, shorter, swipe rows ===== */
+@media (max-width:600px){
+  .wrap,.hero>.wrap{width:calc(100% - 40px)}
+  /* hero */
+  .hero{padding:18px 0 44px}
+  .hero .grid{gap:22px}
+  .kicker{font-size:10.5px;padding:7px 12px;letter-spacing:.14em}
+  .hero h1{font-size:clamp(44px,13.4vw,58px);margin-top:16px}
+  .hero .sub{font-size:16px;line-height:1.55;margin-top:14px}
+  .hcta{margin-top:18px}
+  .hnote{font-size:13px;margin-top:12px}
+  .trust{margin-top:22px}
+  .trust div{padding:12px 8px 0 0}.trust div+div{padding-left:12px}
+  .trust b{font-size:21px}
+  .trust small{font-size:9.5px;letter-spacing:.06em;white-space:nowrap}
+  .hero .art{max-width:320px;margin-top:0}
+  /* about */
+  .about{padding:52px 0 56px}
+  .about h2{font-size:clamp(34px,10vw,44px)}
+  .trio{margin-top:36px;gap:26px}
+  .say b{font-size:clamp(32px,9.4vw,40px)}
+  .say p{font-size:15.5px;margin-top:10px}
+  .arch{width:min(250px,68vw)}
+  .arch .stamp{width:86px;height:86px;font-size:16px;right:-10px;bottom:40px}
+  .arch .lbl{font-size:10.5px;top:46px}
+  .cards{margin-top:40px;gap:12px}
+  .card{min-height:0;padding:14px 14px 16px}
+  .card .s{font-size:16px}
+  .card .ic{width:32px;height:32px}.card .ic svg{width:17px;height:17px}
+  .cnum b{font-size:clamp(36px,11vw,46px)}
+  .cnum small{font-size:10px}
+  /* brews */
+  .brews{padding:20px 0 44px}
+  .brews .head{flex-direction:row;align-items:flex-end;justify-content:space-between;padding-top:20px}
+  .brews h2{font-size:clamp(40px,12vw,52px);line-height:.9}
+  .brews .count{font-size:34px}
+  .info{padding:0 20px;box-sizing:border-box}
+  .info .script{font-size:24px}
+  .info h3{font-size:clamp(32px,9vw,40px);margin-bottom:8px}
+  .info p{font-size:15px;margin-bottom:12px}
+  .price{margin-top:18px}
+  .cap{width:122px;height:122px}.cap .val b{font-size:34px}
+  .specline{margin:0 20px 14px;gap:6px 16px;font-size:11px}
+  .arrows{margin-top:14px}
+  .bigmq{height:190px}
+  /* ritual */
+  .ritual{padding:44px 0 36px}
+  .ritual h2{font-size:clamp(34px,10vw,44px)}
+  .ritual .top{gap:14px}
+  .rtop-r{gap:14px;width:100%}
+  .ritual .top p{font-size:15px}
+  .strip{margin-top:20px}
+  /* pour */
+  .pour{padding:20px 0 56px}
+  /* how it works: steps + plans become swipe rows */
+  .how{padding:52px 0}
+  .how h2{font-size:clamp(38px,11vw,48px)}
+  .how .top{gap:12px}
+  .how .top p{font-size:15px}
+  .steps,.plans{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-left:-20px;margin-right:-20px;padding:6px 20px 16px;scroll-padding:0 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .steps::-webkit-scrollbar,.plans::-webkit-scrollbar{display:none}
+  .steps{margin-top:26px}
+  .step{flex:0 0 76%;scroll-snap-align:start;padding:10px 10px 18px}
+  .step .ph{aspect-ratio:4/3.2}
+  .step h3{font-size:17px;margin:12px 6px 4px}
+  .step p{font-size:13.5px;margin:0 6px}
+  .plans{margin-top:30px;align-items:stretch}
+  .plan{flex:0 0 84%;scroll-snap-align:start;padding:22px 20px;gap:6px}
+  .plan h3{font-size:20px}
+  .plan ul{font-size:14px}
+  .swipe-hint{display:flex}
+  /* faq */
+  .faq{padding:52px 0}
+  .faq h2{font-size:clamp(38px,11vw,48px)}
+  /* footer */
+  footer .top{padding-top:28px;gap:32px}
+  footer .big{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+  footer .big a{font-size:22px;line-height:1.1}
+  footer .big a:hover{transform:none}
+  footer .news h3{font-size:26px}
+  footer .sign{margin-top:24px}
+}
+.swipe-hint{display:none;align-items:center;gap:8px;margin:10px 0 0;font:700 10.5px Jost;letter-spacing:.18em;text-transform:uppercase;color:var(--green);opacity:.7}
+.swipe-hint i{width:28px;height:2px;background:currentColor;position:relative;animation:swipeHint 1.8s ease-in-out infinite}
+@keyframes swipeHint{50%{transform:translateX(8px)}}
+@media (max-width:600px){.swipe-hint{display:flex}}
+@media (max-width:600px){.nav .cta{white-space:nowrap}}
+@media (max-width:380px){.nav .cta{font-size:10.5px;padding:9px 11px;letter-spacing:.06em}.logo img{height:28px}}
+@media (prefers-reduced-motion:reduce){.swipe-hint i{animation:none}}
 </style>
 </head>
 <body class="loading">
@@ -917,12 +1006,14 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 <section class="how" id="club">
   <div class="wrap">
     <div class="top"><div><span class="script rv">The pint club</span><h2 class="display rv">How it works</h2></div><p class="rv">Join the Barely clubhouse and get fresh pints at your door every month.</p></div>
+    <p class="swipe-hint" aria-hidden="true">Swipe to see how <i></i></p>
     <div class="steps">
       <article class="step rv"><div class="ph"><img src="https://barelybrewing.com/cdn/shop/files/0_1.png?width=600" alt="" loading="lazy"><span class="n">01</span></div><h3>Delivered monthly</h3><p>2L of our flagship craft NA brews, delivered every month.</p></article>
       <article class="step rv"><div class="ph"><img src="https://barelybrewing.com/cdn/shop/files/64F7C87E-199B-44A8-9BFF-2BAC1A72BBDD_L0_001-13_2_2026_9_04_29_AM.jpg?width=600" alt="" loading="lazy"><span class="n">02</span></div><h3>Two delivery cycles</h3><p>Shipping in the 1st and 3rd week of each month.</p></article>
       <article class="step rv"><div class="ph"><img src="https://barelybrewing.com/cdn/shop/files/NVA00566.jpg?width=600" alt="" loading="lazy"><span class="n">03</span></div><h3>Member perks</h3><p>Exclusive new styles, sneak-peeks, an NA-forward WhatsApp community and surprise merch.</p></article>
       <article class="step rv"><div class="ph"><img src="https://barelybrewing.com/cdn/shop/files/bright-sun-on-beer.jpg?width=600" alt="" loading="lazy"><span class="n">04</span></div><h3>No delivery charge</h3><p>Every delivery ships free.</p></article>
     </div>
+    <p class="swipe-hint" aria-hidden="true">Swipe the plans <i></i></p>
     <div class="plans">
       <div class="plan rv"><span class="l">A</span><h3>Single subscription</h3><div class="amt">&#8377;999 <small>/ month</small></div><p class="per">about &#8377;167 a pint</p><ul><li>6 pints a month</li><li>Mix Juicy Lager and Hazy Wit</li><li>Free delivery</li></ul><a class="pill" href="https://barelybrewing.com/pages/membership">Join membership</a></div>
       <div class="plan best rv"><span class="tagb">Best value</span><span class="l">B</span><h3>Double subscription</h3><div class="amt">&#8377;1,799 <small>/ month</small></div><p class="per">about &#8377;150 a pint</p><ul><li>12 pints a month</li><li>Mix Juicy Lager and Hazy Wit</li><li>Free delivery</li></ul><a class="pill" href="https://barelybrewing.com/pages/membership">Join membership</a></div>
