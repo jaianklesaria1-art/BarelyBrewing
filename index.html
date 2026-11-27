@@ -710,9 +710,58 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 .gl-lead g{opacity:0;transition:opacity .2s}
 .gl-lead line{stroke:var(--cream);stroke-opacity:.5;stroke-width:1;vector-effect:non-scaling-stroke;transform-origin:0 0}
 .gl-lead #glLeadA{fill:rgba(255,254,250,.7)}.gl-lead #glLeadB{fill:var(--green);stroke:rgba(255,254,250,.6);stroke-width:1.2}
+@media (min-width:601px) and (max-width:900px){.pour .gl-head{text-align:center}.gl-head .sub{margin-inline:auto}.gl-stats{justify-content:center}}
 @media (max-width:900px){.gl{grid-template-columns:1fr;gap:18px}.gl-box{max-width:420px;margin:0 auto;order:2}.gl-side{display:contents}.gl-head{order:1}.gl-cardwrap{order:3;margin:6px auto 0;width:100%}.gl-lead{display:none}
   .gl-card{padding:22px 18px 18px;min-height:0}.gl-card .q{padding-right:110px;font-size:10px}.gl-card figcaption{flex-wrap:wrap}.gl-card a.go{width:100%;justify-content:center;box-sizing:border-box}}
 @media (prefers-reduced-motion:reduce){.gl-stars i,.gl-pin .pg,.gl-card .q i{animation:none}}
+/* product pop-up: fits the screen, no scrolling */
+.dw-abv,.dw-label{display:none}
+.dw-sheet{overflow:hidden}
+.dw-style{font-size:15px;letter-spacing:.14em;margin-top:8px}
+.dw-tag{margin-top:10px;font-size:20px}
+.dw-desc{margin:2px 0 14px;font-size:15.5px;line-height:1.6;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dw-specs{grid-template-columns:repeat(4,1fr)}
+.dw-specs div,.dw-specs div:nth-child(odd),.dw-specs div:nth-child(even){padding:10px 10px 9px;border-right:1.5px dashed currentColor}
+.dw-specs div:first-child{padding-left:0}.dw-specs div:last-child{border-right:0;padding-right:0}
+.dw-specs dt{font-size:16px}.dw-specs dd{font-size:clamp(14px,1.5vw,19px)}
+.dw-buy{margin:16px 0 12px}
+.dw-price b{font-size:40px}
+.dw-note{margin-top:10px;font-size:12.5px}
+@media (min-width:901px){
+  .dw-sheet{height:auto;max-height:calc(100% - 48px);grid-template-rows:auto 1fr auto;padding:18px 40px 28px}
+  .dw-stage{height:clamp(220px,calc(100vh - 360px),440px)}
+  .dw-name{font-size:clamp(44px,8vh,78px)}
+  .dw-gal{margin:12px 0 0;padding-top:12px}
+}
+@media (min-width:901px) and (max-height:760px){.dw-tag{display:none}.dw-desc{-webkit-line-clamp:2;margin-top:10px}.dw-alt{padding:10px}.dw-go{padding:6px 6px 6px 22px}.dw-go .ar{width:40px;height:40px}}
+@media (max-width:900px){
+  .dw-sheet{height:100%;height:100dvh;max-height:none;display:flex;flex-direction:column;padding:12px 20px 16px;border-radius:0}
+  .dw-top{position:relative;top:0;margin:-12px -20px 0;padding:12px 20px 6px;flex:0 0 auto}
+  .dw-nav button,.dw-x{width:40px;height:40px}
+  .dw-stage{flex:1 1 auto;height:auto;min-height:120px;margin:0}
+  .dw-stage img{max-height:94%}
+  .dw-disc{width:auto;height:92%}
+  .dw-hint{font-size:16px}
+  .dw-gal{flex:0 0 auto;margin:4px 0 0;padding-top:8px}
+  .dw-thumbs button{width:40px;height:40px;margin-left:-10px;border-width:2px}
+  .dw-more{padding:8px 14px;font-size:11px}
+  .dw-body{flex:0 0 auto}
+  .dw-kick{display:none}
+  .dw-name{font-size:clamp(34px,10vw,52px);margin-top:8px}
+  .dw-style{margin-top:4px;font-size:12px}
+  .dw-tag{display:none}
+  .dw-desc{font-size:14px;line-height:1.5;-webkit-line-clamp:2;margin:6px 0 10px}
+  .dw-specs dt{font-size:13px}.dw-specs dd{font-size:13.5px}
+  .dw-specs div,.dw-specs div:nth-child(odd),.dw-specs div:nth-child(even){padding:7px 6px 6px}
+  .dw-specs div:first-child{padding-left:0}
+  .dw-buy{margin:10px 0 8px;gap:8px}
+  .dw-packs button{padding:7px 12px;font-size:11px}
+  .dw-price b{font-size:30px}.dw-price small{font-size:15px}
+  .dw-go{font-size:13px;padding:5px 5px 5px 20px}.dw-go .ar{width:38px;height:38px;font-size:16px}
+  .dw-alt{margin-top:6px;padding:9px;font-size:11.5px}
+  .dw-note{margin-top:6px;font-size:11.5px;text-align:center}
+}
+@media (max-width:900px) and (max-height:680px){.dw-gal{display:none}.dw-desc{-webkit-line-clamp:1}.dw-note{display:none}}
 </style>
 </head>
 <body class="loading">
@@ -1271,9 +1320,9 @@ const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malak
   function feature(i,user){if(user){s.lastUser=Date.now()}if(i===cur&&card.innerHTML)return;cur=i;pins.forEach((p,k)=>{p.el.classList.toggle('on',k===i);p.el.setAttribute('aria-current',k===i?'true':'false')});render(i);growT=performance.now();kick()}
   // fan geometry (px) scales with the globe
   function place(now){const d=s.size;if(!d)return;const pt=project(V,s.phi,s.theta),px=pt.x*d,py=pt.y*d;
-    const vis=pt.depth>0?.35+.65*sm(cl(pt.depth/.3)):0,k=d/1000*.74,ps=Math.round(Math.max(28,Math.min(46,d*.078)));
+    const vis=pt.depth>0?.35+.65*sm(cl(pt.depth/.3)):0,ps=Math.round(Math.max(34,Math.min(46,d*.1))),O=offs(d,ps);
     pune.style.opacity=vis;pune.style.transform=`translate(${px-5}px,${py-10}px)`;
-    pins.forEach((p,i)=>{const x=px+p.dx*k,y=py+p.dy*k*1.25;p.el.style.setProperty('--ps',ps+'px');p.el.style.opacity=vis;p.el.style.pointerEvents=vis>.4?'auto':'none';
+    pins.forEach((p,i)=>{const x=px+O[i][0],y=py+O[i][1];p.el.style.setProperty('--ps',ps+'px');p.el.style.opacity=vis;p.el.style.pointerEvents=vis>.4?'auto':'none';
       p.el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) translate(-50%,-50%)`;p.el.style.zIndex=i===cur?20:10;
       p.ln.setAttribute('x1',px);p.ln.setAttribute('y1',py);p.ln.setAttribute('x2',x);p.ln.setAttribute('y2',y);p.ln.style.opacity=vis;p.x=x;p.y=y});
     // leader line featured pin -> card (wide layout)
@@ -1284,6 +1333,14 @@ const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malak
     $('#glLeadL').style.transform=`translate(${sx}px,${sy}px) rotate(${Math.atan2(dy,dx)}rad) scaleX(${Math.max(.001,len)})`;
     $('#glLeadA').style.transform=`translate(${sx}px,${sy}px)`;$('#glLeadB').style.transform=`translate(${ax}px,${ay}px) scale(${grow>=1?1:0})`;g.style.opacity=1;
     s.growing=grow<1}
+  /* spread pins so none overlap each other or the Pune label (relaxed once per size) */
+  let oK='',oV=null;
+  function offs(d,ps){const key=d+':'+ps;if(key===oK)return oV;const k=d/1000*.74,lim=d*.36,gap=ps*1.12;
+    const P=pins.map(p=>[p.dx*k,p.dy*k*1.25]),F=[[24,0,34]];// label: centre x,y, radius
+    for(let it=0;it<120;it++){for(let a=0;a<P.length;a++){for(let b=a+1;b<P.length;b++){const dx=P[b][0]-P[a][0],dy=P[b][1]-P[a][1],dd=Math.hypot(dx,dy)||.01;if(dd<gap){const m=(gap-dd)/2/dd;P[a][0]-=dx*m;P[a][1]-=dy*m;P[b][0]+=dx*m;P[b][1]+=dy*m}}
+        for(const f of F){const dx=P[a][0]-f[0],dy=P[a][1]-f[1],dd=Math.hypot(dx,dy)||.01,mn=f[2]+ps/2;if(dd<mn){P[a][0]+=dx/dd*(mn-dd);P[a][1]+=dy/dd*(mn-dd)}}
+        const r=Math.hypot(P[a][0],P[a][1]);if(r>lim){P[a][0]*=lim/r;P[a][1]*=lim/r}}}
+    oK=key;oV=P;return P}
   const home=()=>near(s.phi,facing(PUNE[1]));
   function frame(now){raf=0;const dt=last?Math.min((now-last)/1000,.1):0;last=now;
     if(s.turn){const t=reduce?1:cl((now-s.turn.t0)/TURN);s.phi=s.turn.from+(s.turn.to-s.turn.from)*ease(t);if(t>=1){s.turn=null;s.settled=true}}
