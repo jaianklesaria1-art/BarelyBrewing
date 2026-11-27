@@ -152,16 +152,25 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .arch .ph img{width:100%;height:118%;object-fit:cover;will-change:transform}
 .arch .stamp{position:absolute;right:-46px;bottom:60px;width:124px;height:124px;border-radius:50%;background:var(--sage);color:var(--green);display:grid;place-items:center;text-align:center;font:400 24px/1 Yellowtail;transform:rotate(-12deg);box-shadow:0 20px 40px -20px rgba(0,0,0,.5);z-index:2}
 .arch .lbl{position:absolute;left:-30px;top:70px;background:var(--cream);border:2px solid var(--green);padding:8px 14px;border-radius:var(--r-sm);font:700 12.5px Jost;letter-spacing:.1em;text-transform:uppercase;color:var(--green);transform:rotate(-6deg);z-index:2}
-.cards{display:flex;justify-content:center;gap:22px;margin-top:90px;flex-wrap:wrap}
-.card{width:230px;min-height:250px;border-radius:var(--r-lg);padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 30px 50px -34px rgba(3,3,2,.6);transition:transform .5s var(--out)}
-.card:nth-child(1){background:var(--green);color:var(--cream);transform:rotate(-6deg) translateY(10px)}
-.card:nth-child(2){background:var(--sage);color:var(--green);transform:rotate(3deg)}
-.card:nth-child(3){background:var(--cream);color:var(--green);border:2px solid var(--green);transform:rotate(-2deg) translateY(18px)}
-.card:nth-child(4){background:var(--sky);color:var(--ink);transform:rotate(5deg) translateY(4px)}
-.card:hover{transform:rotate(0) translateY(-10px)}
-.card b{font:800 clamp(46px,4.4vw,64px)/.9 Jost;letter-spacing:-.02em}
-.card small{display:block;font:600 14px/1.35 Jost;letter-spacing:.08em;text-transform:uppercase}
-.card .s{font:400 22px Yellowtail;opacity:.85}
+.cards{display:flex;justify-content:center;margin-top:100px;padding:0 10px}
+.card{--rot:0deg;--y:0px;position:relative;width:250px;min-height:300px;margin:0 -9px;border-radius:var(--r-lg);padding:24px 24px 26px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 34px 50px -30px rgba(3,3,2,.6),inset 0 1px 0 rgba(255,255,255,.25);transform:rotate(var(--rot)) translateY(var(--y));transition:transform .6s cubic-bezier(.3,1.5,.5,1),box-shadow .4s;z-index:1}
+.card::after{content:"";position:absolute;inset:10px;border:1.5px dashed currentColor;border-radius:calc(var(--r-lg) - 8px);opacity:.35;pointer-events:none}
+.c-green{background:var(--green);color:var(--cream);--rot:-7deg;--y:14px}
+.c-sage{background:var(--sage);color:var(--green);--rot:3deg;--y:-6px}
+.c-cream{background:var(--cream);color:var(--green);--rot:-3deg;--y:20px;box-shadow:0 34px 50px -30px rgba(3,3,2,.5),inset 0 0 0 2px var(--green)}
+.c-sky{background:var(--sky);color:var(--ink);--rot:6deg;--y:2px}
+.card:hover{--rot:0deg;--y:-16px;z-index:5;box-shadow:0 50px 60px -30px rgba(3,3,2,.65)}
+.ctop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card .s{font:400 24px/1 Yellowtail;opacity:.9;padding-top:4px}
+.card .ic{width:50px;height:50px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;background:currentColor;transition:transform .6s cubic-bezier(.3,1.6,.5,1)}
+.card .ic svg{width:26px;height:26px;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.c-green .ic svg{stroke:var(--green)}.c-sage .ic svg{stroke:var(--sage)}.c-cream .ic svg{stroke:var(--cream)}.c-sky .ic svg{stroke:var(--sky)}
+.card:hover .ic{transform:rotate(-14deg) scale(1.12)}
+.cnum b{display:block;font:800 clamp(64px,5.6vw,84px)/.88 Jost;letter-spacing:-.035em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.cnum small{display:block;margin-top:14px;padding-top:12px;border-top:1.5px solid currentColor;font:600 13.5px/1.35 Jost;letter-spacing:.09em;text-transform:uppercase;max-width:15em}
+[data-stamp]{display:inline-block}
+.card.go [data-stamp]{animation:stamp .7s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes stamp{from{transform:scale(2.2) rotate(-12deg);opacity:0}}
 
 /* 3. OUR BREWS: product carousel (same layout as royalbev.com's 3rd section) */
 .brews{position:relative;background:var(--green);color:var(--cream);overflow:hidden;padding:40px 0 90px}
@@ -513,8 +522,13 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
   .say.l,.say.r{justify-self:center;text-align:center}
   .arch .stamp{right:-14px;width:100px;height:100px;font-size:19px}
   .arch .lbl{left:-8px}
-  .cards{gap:16px;margin-top:60px}
-  .card{width:calc(50% - 8px);min-height:200px;padding:20px 18px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:60px;padding:0}
+  .card{width:auto;min-height:220px;margin:0;padding:18px 16px 20px;--y:0px!important}
+  .c-green{--rot:-2deg}.c-sage{--rot:2deg}.c-cream{--rot:1.5deg}.c-sky{--rot:-1.5deg}
+  .card .ic{width:38px;height:38px}.card .ic svg{width:20px;height:20px}
+  .card .s{font-size:19px}
+  .cnum b{font-size:clamp(44px,13vw,58px)}
+  .cnum small{font-size:11.5px;margin-top:10px;padding-top:9px}
   .plans,.faq .grid,footer .top{grid-template-columns:1fr}
   .brews .head{flex-direction:column;gap:6px;padding-top:24px}
   .stage{height:auto;margin-top:10px;display:flex;flex-direction:column;align-items:center;--k:.57}
@@ -638,12 +652,7 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
       </div>
       <div class="say r rv"><b>Real ferment.</b><p>0.0&ndash;0.5% ABV. Made for people who refuse to trade tomorrow for tonight.</p></div>
     </div>
-    <div class="cards" aria-label="Barely in numbers">
-      <div class="card"><span class="s">the first</span><div><b>1st</b><small>Non alcoholic craft brewery in India</small></div></div>
-      <div class="card"><span class="s">barely there</span><div><b>0.5%</b><small>ABV or under</small></div></div>
-      <div class="card"><span class="s">light</span><div><b>80</b><small>Calories a pint</small></div></div>
-      <div class="card"><span class="s">on tap</span><div><b>10+</b><small>Bars pouring in Pune</small></div></div>
-    </div>
+    <div class="cards" aria-label="Barely in numbers"><div class="card c-green"><div class="ctop"><span class="s">the first</span><span class="ic" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="13" r="8"/><path d="M11 19l-3 10 5-2 3 4 1-10M21 19l3 10-5-2-3 4"/><path d="M13 13l2 2 4-4"/></svg></span></div><div class="cnum"><b><span data-stamp>1st</span></b><small>Non alcoholic craft brewery in India</small></div></div><div class="card c-sage"><div class="ctop"><span class="s">barely there</span><span class="ic" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 22a11 11 0 0 1 22 0"/><path d="M16 22l-6-7"/><circle cx="16" cy="22" r="2"/><path d="M8 12l1 1M16 9v1.5M24 12l-1 1"/></svg></span></div><div class="cnum"><b><span data-count="0.5" data-dec="1">0.5</span>%</b><small>ABV or under</small></div></div><div class="card c-cream"><div class="ctop"><span class="s">light</span><span class="ic" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 6h14l-2 22H11z"/><path d="M9.6 12h12.8"/><circle cx="14" cy="18" r="1"/><circle cx="18" cy="21" r="1"/><circle cx="15" cy="24" r="1"/></svg></span></div><div class="cnum"><b><span data-count="80">80</span></b><small>Calories a pint</small></div></div><div class="card c-sky"><div class="ctop"><span class="s">on tap</span><span class="ic" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="13" y="3" width="6" height="11" rx="3"/><path d="M6 17h20M16 14v3M12 17v4h8v-4M16 21v3"/><path d="M16 26.5v2"/></svg></span></div><div class="cnum"><b><span data-count="10">10</span>+</b><small>Bars pouring in Pune</small></div></div></div>
   </div>
 </section>
 
@@ -1021,6 +1030,12 @@ render(0);
   addEventListener('pointermove',e=>{if(!d)return;const dx=e.clientX-d.x;if(Math.abs(dx)>6){dragged=true;sp.classList.add('drag')}if(dragged)sp.scrollLeft=d.s-dx});
   addEventListener('pointerup',()=>{if(!d)return;d=null;if(sp.classList.contains('drag')){const i=Math.round(sp.scrollLeft/step());sp.classList.remove('drag');sp.scrollTo({left:i*step(),behavior:'smooth'})}setTimeout(()=>dragged=false,0)});
 })();
+/* fact cards: count up + stamp when they come into view */
+(()=>{const cs=$$('.card');if(!cs.length)return;
+  const run=c=>{c.classList.add('go');c.querySelectorAll('[data-count]').forEach(el=>{const to=+el.dataset.count,dec=+(el.dataset.dec||0);if(reduce){el.textContent=to.toFixed(dec);return}
+    const t0=performance.now(),D=1400;const f=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,4);el.textContent=(to*e).toFixed(dec);if(k<1)requestAnimationFrame(f)};el.textContent=(0).toFixed(dec);requestAnimationFrame(f)})};
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=cs.indexOf(e.target);setTimeout(()=>run(e.target),i*140);io.unobserve(e.target)}}),{threshold:.45});
+  cs.forEach(c=>io.observe(c))})();
 /* bar logos (Barely's own "Now pouring" list) */
 const LOGOS=['Murphies_Logo.png','bntr.jpg','Grove_Logo.png','Layers_Logo.jpg','Trooh_logo.jpg','Oi_Logo_62f5d1ec-6e10-4ded-84b5-923ebdcea104.jpg','LP_Logo.jpg','Malaka_Logo.png','Sante_Logo.png','Gulp_logo.jpg'];
 const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malaka Spice','Santé','Gulp'];
