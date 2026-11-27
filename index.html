@@ -494,7 +494,8 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 </style>
 </head>
 <body class="loading">
-<div id="loader" aria-hidden="true"><div class="beer" id="beer"><div class="foam"></div><div class="bub"></div></div><b id="ct">0</b><small>pouring&hellip;</small></div>
+<!-- loading screen turned off for now: remove style="display:none" and restore the counter line in the script to bring it back -->
+<div id="loader" aria-hidden="true" style="display:none"><div class="beer" id="beer"><div class="foam"></div><div class="bub"></div></div><b id="ct">0</b><small>pouring&hellip;</small></div>
 
 <div class="bar" aria-label="Announcements"><div>
   <span>Online orders open January 2027</span><span>Join the list for early access</span><span>India&rsquo;s 1st non alcoholic craft brewery</span>
@@ -729,7 +730,7 @@ $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttri
 /* preloader */
 const ct=$('#ct');let n=0;
 function done(){$('#loader').classList.add('up');document.body.classList.remove('loading');setTimeout(()=>{$('#loader')&&$('#loader').remove()},1200);intro()}
-if(reduce)done();else{const t=setInterval(()=>{n=Math.min(100,n+Math.ceil(Math.random()*8));ct.textContent=n;$('#beer').style.height=(n*1.04)+'%';if(n>=100){clearInterval(t);setTimeout(done,450)}},45)}
+done();/* loader off for now. Was: if(reduce)done();else{const t=setInterval(()=>{n=Math.min(100,n+Math.ceil(Math.random()*8));ct.textContent=n;$('#beer').style.height=(n*1.04)+'%';if(n>=100){clearInterval(t);setTimeout(done,450)}},45)} */
 
 /* hero: split headline into letters (screen readers keep the h1 text) */
 (()=>{const h=$('.hero h1');h.setAttribute('aria-label','Craft beer. Zero compromise.');const l=h.querySelector('.ln>span');
