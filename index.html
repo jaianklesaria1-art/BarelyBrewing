@@ -641,54 +641,85 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 .dw-alt:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
 /* Now pouring heading fits its column */
 .pour .phead h2{font-size:clamp(40px,4.6vw,74px)}
-/* Now pouring: real Pune map (Leaflet + OpenStreetMap / CARTO tiles) */
+/* Now pouring: illustrated Pune map */
 .pour .phead .sub{justify-self:end;max-width:320px;margin:0 0 10px;text-align:left}
-.rmap{position:relative;margin-top:50px;display:grid;grid-template-columns:minmax(0,1fr) 320px;height:clamp(480px,46vw,620px);border-radius:var(--r-lg);overflow:hidden;background:var(--green-2);box-shadow:0 0 0 1.5px rgba(167,184,132,.25),0 40px 70px -40px rgba(0,0,0,.7)}
-.rm-map{position:relative;height:100%;background:#13291A;z-index:0}
-.rm-map .leaflet-tile-pane,.rm-map .leaflet-overlay-pane img{filter:sepia(.55) hue-rotate(58deg) saturate(1.1) brightness(1.05) contrast(1.05)}
-.rm-map::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:400;box-shadow:inset 0 0 90px rgba(10,25,15,.75)}
-.rm-map .leaflet-control-attribution{background:rgba(18,40,25,.75);color:#9fb08f;font:500 10px Jost}
-.rm-map .leaflet-control-attribution a{color:var(--sage)}
-.rm-map .leaflet-control-zoom a{background:var(--cream);color:var(--green);border-color:rgba(34,75,46,.2);font:700 18px Jost}
-.rm-map .leaflet-control-zoom{border:0;box-shadow:0 10px 20px -10px rgba(0,0,0,.6);border-radius:var(--r-sm);overflow:hidden}
-.rpin{width:56px!important;height:56px!important;margin:-64px 0 0 -28px!important;background:none;border:0}
-.rpin .hd{display:block;width:56px;height:56px;border-radius:50% 50% 50% 0;rotate:-45deg;background:var(--cream);border:3px solid var(--sage);overflow:hidden;box-shadow:0 12px 18px -8px rgba(0,0,0,.75);transition:transform .35s cubic-bezier(.3,1.6,.5,1),border-color .3s}
-.rpin img{width:100%;height:100%;object-fit:cover;rotate:45deg;scale:1.12}
-.rpin .nm{position:absolute;left:50%;bottom:calc(100% + 8px);translate:-50% 0;white-space:nowrap;font:800 11px Jost;letter-spacing:.14em;text-transform:uppercase;background:var(--cream);color:var(--green);padding:6px 11px;border-radius:var(--r-pill);opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s;pointer-events:none}
-.rpin.drop .hd{animation:pdrop .8s var(--d,0ms) cubic-bezier(.3,1.5,.5,1) both}
-@keyframes pdrop{from{transform:translateY(-70px) scale(.6);opacity:0}}
-.rpin:hover,.rpin.on{z-index:900!important}
-.rpin:hover .hd,.rpin.on .hd{transform:scale(1.2);border-color:var(--cream)}
-.rpin:hover .nm,.rpin.on .nm{opacity:1;transform:none}
-.rm-pop .leaflet-popup-content-wrapper{background:var(--cream);color:var(--green);border-radius:var(--r-md);box-shadow:0 24px 40px -18px rgba(0,0,0,.7)}
-.rm-pop .leaflet-popup-tip{background:var(--cream)}
-.rm-pop .leaflet-popup-content{margin:16px 18px;font:500 14px/1.4 Jost;min-width:190px}
-.rm-pop b{display:block;font:800 20px Jost;text-transform:uppercase;letter-spacing:.01em}
-.rm-pop .ar{display:block;font:400 19px Yellowtail;color:#5d7a3f;margin:2px 0 10px}
-.rm-pop a.go{display:inline-flex;gap:8px;align-items:center;background:var(--green);color:var(--cream)!important;text-decoration:none;font:700 11px Jost;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;border-radius:var(--r-pill)}
-.rm-pop .ap{display:block;margin-top:8px;font-size:11px;opacity:.7}
-.rm-pop a.leaflet-popup-close-button{color:var(--green)}
-.rm-side{display:flex;flex-direction:column;background:linear-gradient(180deg,var(--green),var(--green-2));border-left:1.5px dashed rgba(167,184,132,.3);min-height:0}
-.rm-k{margin:0;padding:22px 24px 12px;font:600 12px Jost;letter-spacing:.14em;text-transform:uppercase;color:#C9D4C4}
-.rm-k b{font:800 30px Jost;color:var(--sage);margin-right:6px;vertical-align:-3px}
-.rm-list{list-style:none;margin:0;padding:0 12px;overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:rgba(167,184,132,.4) transparent}
-.rm-list button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:9px 12px;border-radius:var(--r-md);transition:background .25s}
-.rm-list img{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--cream);border:2px solid var(--sage)}
-.rm-list b{display:block;font:800 15px Jost;text-transform:uppercase;letter-spacing:.04em;color:var(--cream)}
-.rm-list small{display:block;font:400 17px/1 Yellowtail;color:var(--sage);margin-top:3px}
-.rm-list button:hover,.rm-list button.on{background:rgba(167,184,132,.16)}
-.rm-list button.on b{color:var(--sage)}
-.rm-list button:focus-visible{outline:3px solid var(--sage);outline-offset:-3px}
-.rm-all{all:unset;cursor:pointer;margin:12px 24px 22px;text-align:center;font:700 12px Jost;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);padding:12px;border-radius:var(--r-pill);border:1.5px solid rgba(255,254,250,.45);transition:background .3s,color .3s}
-.rm-all:hover{background:var(--sage);color:var(--green);border-color:var(--sage)}
+.fmap{margin-top:50px;display:grid;grid-template-columns:minmax(0,1fr) 330px;border-radius:var(--r-lg);overflow:hidden;background:var(--green-2);box-shadow:0 0 0 1.5px rgba(167,184,132,.25),0 40px 70px -40px rgba(0,0,0,.7)}
+.fm-scroll{position:relative;min-width:0;overflow:hidden}
+.fm-canvas{position:relative;aspect-ratio:1000/600}
+.fm-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fm-svg .park path{fill:#DCE3C8}
+.fm-svg .road path{fill:none;stroke:#FFFEFA;stroke-width:6;stroke-linecap:round}
+.fm-svg .road.w path{stroke:#DDD6C2;stroke-width:12}
+.fm-svg .rail{fill:none;stroke:#A9A28E;stroke-width:3;stroke-dasharray:10 7}
+.fm-svg .riv path{fill:none;stroke:#8FB1D8;stroke-width:15;stroke-linecap:round;stroke-linejoin:round}
+.fm-svg .lbl text{font:700 13px Jost;letter-spacing:.28em;fill:rgba(34,75,46,.45);text-anchor:middle}
+.fm-svg .lbl text.sm{font-size:10px}
+.fm-svg .lbl.rv text{font:400 19px Yellowtail;letter-spacing:0;fill:#4F78A8}
+.fm-svg .cmp circle{fill:#FFFEFA;stroke:rgba(34,75,46,.3);stroke-width:1.5}.fm-svg .cmp path{fill:var(--green)}.fm-svg .cmp text{font:800 12px Jost;fill:var(--green);text-anchor:middle}
+.fm-svg .lines line{stroke:var(--green);stroke-width:1.6;stroke-dasharray:4 4;opacity:.55;transition:opacity .3s,stroke-width .3s}
+.fm-svg .lines line.on{opacity:1;stroke-width:2.6;stroke-dasharray:none}
+.fm-svg .dots circle{fill:var(--green);stroke:#FFFEFA;stroke-width:2.5}
+.fm-svg .dots circle.on{fill:#C9781E}
+.fm-svg .road path,.fm-svg .riv path,.fm-svg .rail{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.2s cubic-bezier(.5,0,.2,1)}
+.fm-svg .rail{stroke-dasharray:1;transition-delay:.6s}
+.fmap.in .fm-svg .road path,.fmap.in .fm-svg .riv path,.fmap.in .fm-svg .rail{stroke-dashoffset:0}
+.fmap.in .fm-svg .rail{stroke-dasharray:.012 .008}
+.fm-svg .lbl,.fm-svg .park,.fm-svg .cmp,.fm-svg .lines,.fm-svg .dots{opacity:0;transition:opacity .8s 1s}
+.fmap.in .fm-svg .lbl,.fmap.in .fm-svg .park,.fmap.in .fm-svg .cmp,.fmap.in .fm-svg .lines,.fmap.in .fm-svg .dots{opacity:1}
+.fm-pin{all:unset;box-sizing:border-box;position:absolute;left:var(--x);top:var(--y);width:clamp(42px,5.2vw,66px);aspect-ratio:1;translate:-50% -50%;border-radius:50%;background:var(--cream);border:3px solid #FFFEFA;
+  box-shadow:0 0 0 2px var(--green),0 14px 20px -10px rgba(0,0,0,.55);cursor:pointer;overflow:hidden;scale:0;transition:scale .6s var(--d) cubic-bezier(.3,1.6,.5,1),box-shadow .3s,opacity .3s,filter .3s}
+.fmap.in .fm-pin{scale:1}
+.fm-pin img{width:100%;height:100%;object-fit:cover;border-radius:50%;pointer-events:none}
+.fm-pin:hover,.fm-pin:focus-visible{scale:1.14;transition-delay:0s;z-index:3}
+.fm-pin.on{scale:1.22;z-index:4;box-shadow:0 0 0 3px #C9781E,0 18px 26px -10px rgba(0,0,0,.6);transition-delay:0s}
+.fm-pin.dim{opacity:.28;filter:grayscale(1)}
+.fm-pin:focus-visible{outline:3px solid #C9781E;outline-offset:3px}
+.fm-card{position:absolute;left:var(--x);top:var(--y);z-index:6;width:240px;translate:-50% calc(-100% - 52px);background:var(--green);color:var(--cream);border-radius:var(--r-md);padding:16px 18px 16px;box-shadow:0 26px 40px -18px rgba(0,0,0,.7);animation:fmc .45s cubic-bezier(.3,1.4,.5,1)}
+.fm-card.below{translate:-50% 52px}
+.fm-card::after{content:"";position:absolute;left:50%;bottom:-7px;width:14px;height:14px;margin-left:-7px;background:var(--green);rotate:45deg;border-radius:2px}
+.fm-card.below::after{bottom:auto;top:-7px}
+@keyframes fmc{from{opacity:0;transform:translateY(10px) scale(.94)}}
+.fm-card .n{font:700 11px Jost;letter-spacing:.16em;color:var(--sage)}
+.fm-card b{display:block;font:800 24px/1 Jost;text-transform:uppercase;margin-top:4px}
+.fm-card .ar{display:block;font:400 19px Yellowtail;color:var(--sage);margin:4px 0 12px}
+.fm-card .row{display:flex;gap:8px;align-items:center}
+.fm-card a.go{flex:1;display:inline-flex;justify-content:center;gap:8px;background:var(--sage);color:var(--green);text-decoration:none;font:700 11px Jost;letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;border-radius:var(--r-pill);transition:background .3s}
+.fm-card a.go:hover{background:var(--cream)}
+.fm-card .st{all:unset;cursor:pointer;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;border:1.5px solid rgba(255,254,250,.4);font-size:15px;transition:background .3s,color .3s}
+.fm-card .st:hover{background:var(--cream);color:var(--green)}
+.fm-card .x{all:unset;cursor:pointer;position:absolute;right:10px;top:8px;font-size:20px;opacity:.7}
+.fm-card .ap{display:block;margin-top:10px;font-size:11px;color:#C9D4C4}
+.fm-card a:focus-visible,.fm-card button:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+.fm-tag{position:absolute;left:14px;bottom:10px;margin:0;font:700 10px Jost;letter-spacing:.16em;text-transform:uppercase;color:rgba(34,75,46,.55);background:rgba(255,254,250,.8);padding:5px 9px;border-radius:var(--r-pill)}
+.fm-side{display:flex;flex-direction:column;height:0;min-height:100%;background:linear-gradient(180deg,var(--green),var(--green-2));border-left:1.5px dashed rgba(167,184,132,.3)}
+.fmap{max-height:none}
+.fm-k{margin:0;padding:22px 22px 10px;font:600 12px Jost;letter-spacing:.14em;text-transform:uppercase;color:#C9D4C4}
+.fm-k b{font:800 30px Jost;color:var(--sage);margin-right:4px;vertical-align:-3px}
+.fm-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 22px 12px}
+.fm-chips button{all:unset;cursor:pointer;font:700 11px Jost;letter-spacing:.08em;text-transform:uppercase;color:#D6E0D2;padding:7px 11px;border-radius:var(--r-pill);border:1.5px solid rgba(255,254,250,.28);transition:background .25s,color .25s,border-color .25s}
+.fm-chips button i{font-style:normal;opacity:.6;margin-left:4px}
+.fm-chips button:hover{border-color:var(--sage)}
+.fm-chips button[aria-pressed="true"]{background:var(--sage);color:var(--green);border-color:var(--sage)}
+.fm-chips button:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
+.fm-list{list-style:none;margin:0;padding:0 10px 14px;overflow-y:auto;flex:1;height:0;scrollbar-width:thin;scrollbar-color:rgba(167,184,132,.4) transparent}
+.fm-list li.hid{display:none}
+.fm-list button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:8px 12px;border-radius:var(--r-md);transition:background .25s}
+.fm-list img{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--cream);border:2px solid var(--sage)}
+.fm-list b{display:block;font:800 14.5px Jost;text-transform:uppercase;letter-spacing:.04em;color:var(--cream)}
+.fm-list small{display:block;font:400 16px/1 Yellowtail;color:var(--sage);margin-top:3px}
+.fm-list .nn{font:700 11px Jost;color:rgba(214,224,210,.5);letter-spacing:.1em}
+.fm-list button:hover,.fm-list button.on{background:rgba(167,184,132,.16)}
+.fm-list button.on b{color:var(--sage)}
+.fm-list button:focus-visible{outline:3px solid var(--sage);outline-offset:-3px}
 @media (max-width:900px){.pour .phead .sub{justify-self:start}
-  .rmap{grid-template-columns:minmax(0,1fr);grid-template-rows:400px auto;height:auto;margin-top:30px}
-  .rm-side{border-left:0;border-top:1.5px dashed rgba(167,184,132,.3)}
-  .rm-k{padding:16px 18px 8px}
-  .rm-list{display:flex;overflow-x:auto;gap:6px;padding:0 10px 4px;scroll-snap-type:x mandatory}
-  .rm-list li{flex:0 0 auto;scroll-snap-align:start}
-  .rm-list button{grid-template-columns:auto auto;padding:8px 12px 8px 8px;background:rgba(167,184,132,.1)}
-  .rm-all{margin:12px 18px 18px}}
+  .fmap{grid-template-columns:minmax(0,1fr);margin-top:30px}
+  .fm-scroll{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.fm-scroll::-webkit-scrollbar{display:none}
+  .fm-canvas{width:780px}
+  .fm-pin{width:48px}
+  .fm-side{border-left:0;border-top:1.5px dashed rgba(167,184,132,.3);height:auto;min-height:0}
+  .fm-k{padding:16px 16px 8px}.fm-chips{padding:0 16px 10px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.fm-chips button{flex:0 0 auto}
+  .fm-list{height:auto;max-height:290px;flex:none}}
+@media (prefers-reduced-motion:reduce){.fm-svg *{transition:none!important}.fm-pin{transition:none}}
 </style>
 </head>
 <body class="loading">
@@ -817,12 +848,32 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 <section class="pour on-green" id="bars">
   <div class="wrap phead">
     <div><span class="script">Find a tap</span><h2 class="display">Now pouring at <br><span class="ten">10+</span> bars in Pune</h2></div>
-    <p class="sub">Ask for Barely on tap at these spots. Pick one to find it on the map.</p>
+    <p class="sub">Ask for Barely on tap at these spots. Pick a bar to see where it is.</p>
   </div>
-  <div class="wrap"><div class="rmap">
-    <div class="rm-map" id="rmMap" role="region" aria-label="Map of Pune bars pouring Barely"></div>
-    <aside class="rm-side"><p class="rm-k"><b>10</b> bars across Pune</p><ol class="rm-list" id="rmList"></ol>
-      <button type="button" class="rm-all" id="rmAll">Show all bars</button></aside>
+  <div class="wrap"><div class="fmap" id="fmap">
+    <div class="fm-scroll" id="fmScroll"><div class="fm-canvas" id="fmCanvas">
+      <svg class="fm-svg" viewBox="0 0 1000 600" aria-hidden="true">
+        <defs><pattern id="fmGrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(34,75,46,.06)" stroke-width="1"/></pattern></defs>
+        <rect width="1000" height="600" fill="#F4F1E6"/><rect width="1000" height="600" fill="url(#fmGrid)"/>
+        <g class="park"><path d="M330 300c40-30 100-20 120 20s-20 80-70 70-90-50-50-90z"/><path d="M600 470c30-20 80-10 90 20s-30 60-70 50-50-50-20-70z"/><path d="M60 330c40-20 90 0 90 40s-50 60-90 40-30-60 0-80z"/><path d="M900 420c30-10 70 10 70 40s-40 50-70 30-30-60 0-70z"/></g>
+        <g class="road w"><path pathLength="1" d="M90 170C200 190 330 250 430 300S560 345 640 345"/><path pathLength="1" d="M640 345C720 360 800 370 1000 360"/><path pathLength="1" d="M640 345C720 300 820 230 1000 150"/><path pathLength="1" d="M520 330C515 420 505 500 500 600"/><path pathLength="1" d="M180 20C200 150 230 300 260 600"/><path pathLength="1" d="M520 330C560 250 600 160 640 0"/></g>
+        <g class="road"><path pathLength="1" d="M90 170C200 190 330 250 430 300S560 345 640 345"/><path pathLength="1" d="M640 345C720 360 800 370 1000 360"/><path pathLength="1" d="M640 345C720 300 820 230 1000 150"/><path pathLength="1" d="M520 330C515 420 505 500 500 600"/><path pathLength="1" d="M180 20C200 150 230 300 260 600"/><path pathLength="1" d="M520 330C560 250 600 160 640 0"/></g>
+        <path class="rail" pathLength="1" d="M300 600C420 470 560 400 700 390S900 330 1000 300"/>
+        <g class="riv"><path pathLength="1" d="M20 40C90 70 160 70 250 95S380 170 470 250 590 330 639 338"/><path pathLength="1" d="M330 600C400 560 440 520 460 460S500 380 560 350 620 338 639 338"/><path pathLength="1" d="M639 338C700 305 760 285 830 270S930 250 1000 268"/></g>
+        <g class="lbl"><text x="170" y="250">BANER</text><text x="870" y="72">KALYANI NAGAR</text><text x="800" y="530">KOREGAON PARK</text><text x="590" y="392">SHIVAJINAGAR</text><text x="560" y="575">DECCAN</text><text x="640" y="510" class="sm">FC ROAD</text></g>
+        <g class="lbl rv"><text x="330" y="150" transform="rotate(28 330 150)">Mula river</text><text x="690" y="280" transform="rotate(-14 690 280)">Mula-Mutha</text></g>
+        <g class="cmp" transform="translate(950 548)"><circle r="26"/><path d="M0-20L6 0 0 20-6 0z"/><text y="-30">N</text></g>
+        <g id="fmLines" class="lines"></g><g id="fmDots" class="dots"></g>
+      </svg>
+      <div class="fm-pins" id="fmPins"></div>
+      <div class="fm-card" id="fmCard" hidden role="dialog" aria-live="polite"></div>
+      <p class="fm-tag">Pune &middot; illustrated, not to scale</p>
+    </div></div>
+    <aside class="fm-side">
+      <p class="fm-k"><b>10</b> bars &middot; 4 areas</p>
+      <div class="fm-chips" id="fmChips" role="group" aria-label="Filter by area"></div>
+      <ol class="fm-list" id="fmList"></ol>
+    </aside>
   </div></div>
 </section>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
@@ -921,8 +972,6 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
   </aside>
 </div>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="js/tear-ticket.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -1195,39 +1244,46 @@ addEventListener('keydown',e=>{if(tko.hidden)return;e.stopImmediatePropagation()
 /* bar logos (Barely's own "Now pouring" list) */
 const LOGOS=['Murphies_Logo.png','bntr.jpg','Grove_Logo.png','Layers_Logo.jpg','Trooh_logo.jpg','Oi_Logo_62f5d1ec-6e10-4ded-84b5-923ebdcea104.jpg','LP_Logo.jpg','Malaka_Logo.png','Sante_Logo.png','Gulp_logo.jpg'];
 const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malaka Spice','Santé','Gulp'];
-/* real Pune map: Leaflet + Esri dark grey tiles (OSM data). Locations from OpenStreetMap + public listings (Zomato/District), checked 2026-11-27. */
-(()=>{const el=$('#rmMap');if(!el)return;
-  // [lat, lng, area, precise?]  order matches LOGOS / NAMES
-  const LOC=[[18.53662,73.89881,'Koregaon Park',1],[18.53664,73.89994,'Koregaon Park',1],[18.5590,73.7905,'Baner',0],[18.56309,73.77693,'Baner',1],[18.54876,73.90695,'Kalyani Nagar',1],
-             [18.55265,73.89971,'Kalyani Nagar',1],[18.51433,73.83863,'Deccan Gymkhana',1],[18.53743,73.89734,'Koregaon Park',1],[18.53330,73.88742,'Koregaon Park',1],[18.5228,73.8412,'FC Road',0]];
-  const LU=f=>`https://barelybrewing.com/cdn/shop/files/${f}?height=200`;
-  const list=$('#rmList');
-  LOC.forEach((l,i)=>{const li=document.createElement('li');li.innerHTML=`<button type="button" data-i="${i}"><img src="${LU(LOGOS[i])}" alt="" loading="lazy"><span><b>${NAMES[i]}</b><small>${l[2]}</small></span></button>`;list.appendChild(li)});
-  if(!window.L){el.innerHTML='<p style="padding:24px;color:#C9D4C4">Map could not load. The bars are listed alongside.</p>';return}
-  const touch=matchMedia('(hover:none)').matches;
-  const map=L.map(el,{scrollWheelZoom:false,dragging:!touch,tap:false,zoomControl:true,attributionControl:true,zoomSnap:.25}).setView([18.535,73.845],12);
-  const AT='Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors';
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:AT}).addTo(map);
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,pane:'overlayPane',opacity:.8}).addTo(map);
-  const bounds=L.latLngBounds(LOC.map(l=>[l[0],l[1]]));
-  const pins=LOC.map((l,i)=>{const ic=L.divIcon({className:'rpin',html:`<span class="hd"><img src="${LU(LOGOS[i])}" alt=""></span><span class="nm">${NAMES[i]}</span>`,iconSize:[56,56]});
-    const m=L.marker([l[0],l[1]],{icon:ic,title:NAMES[i],riseOnHover:true,keyboard:true});
-    const q=encodeURIComponent(NAMES[i]+' '+l[2]+' Pune');
-    m.bindPopup(`<b>${NAMES[i]}</b><span class="ar">${l[2]}, Pune</span><a class="go" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">Open in Maps &rarr;</a>${l[3]?'':'<span class="ap">Pin shows the area, not the exact door.</span>'}`,{className:'rm-pop',offset:[0,-58],closeButton:true});
-    m.on('click',()=>pick(i,false));m.on('popupclose',()=>{const b=list.querySelector('.on');if(b)b.classList.remove('on');m.getElement()&&m.getElement().classList.remove('on')});
-    return m});
-  const btns=[...list.querySelectorAll('button')];
-  function pick(i,fly=true){btns.forEach((b,k)=>b.classList.toggle('on',k===i));pins.forEach((m,k)=>{const e=m.getElement();if(e)e.classList.toggle('on',k===i)});
-    if(fly){map.flyTo([LOC[i][0],LOC[i][1]],15.5,{duration:reduce?0:1.2});map.once('moveend',()=>pins[i].openPopup())}
-    btns[i].scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}
-  btns.forEach((b,i)=>b.addEventListener('click',()=>pick(i)));
-  const all=()=>{map.closePopup();map.flyToBounds(bounds,{padding:[60,60],duration:reduce?0:1.2})};
-  $('#rmAll').onclick=all;
-  let shown=false;
-  new IntersectionObserver(es=>{if(!es[0].isIntersecting||shown)return;shown=true;map.invalidateSize();
-    pins.forEach((m,i)=>{m.addTo(map);const e=m.getElement();e.style.setProperty('--d',(400+i*110)+'ms');e.classList.add('drop')});
-    map.flyToBounds(bounds,{padding:innerWidth<600?[40,40]:[60,60],duration:reduce?0:1.8})},{threshold:.12}).observe(el);
+/* illustrated Pune map: bar positions projected from real coordinates (OSM + public listings, checked 2026-11-27) */
+(()=>{const fm=$('#fmap');if(!fm)return;
+  // [dot x, dot y, badge x, badge y] in a 1000x600 map, area, precise?
+  const B=[[827,325,905,392,'Koregaon Park',1],[833,325,955,300,'Koregaon Park',1],[225,157,300,95,'Baner',0],[150,127,92,205,'Baner',1],[872,234,935,175,'Kalyani Nagar',1],
+           [832,205,790,128,'Kalyani Nagar',1],[492,492,420,578-40,'Deccan',1],[818,319,830,455,'Koregaon Park',1],[763,350,700,430,'Koregaon Park',1],[507,429,595,455,'FC Road',0]];
+  const GROUP=a=>a==='Deccan'||a==='FC Road'?'Deccan & FC Road':a;
+  const LU=f=>`https://barelybrewing.com/cdn/shop/files/${f}?height=200`,NS='http://www.w3.org/2000/svg';
+  const pinsEl=$('#fmPins'),lines=$('#fmLines'),dots=$('#fmDots'),card=$('#fmCard'),list=$('#fmList'),chips=$('#fmChips');
+  const pins=[],rows=[],lns=[],dts=[];let cur=-1,filt='All';
+  B.forEach((b,i)=>{const [dx,dy,bx,by,area]=b;
+    const l=document.createElementNS(NS,'line');l.setAttribute('x1',dx);l.setAttribute('y1',dy);l.setAttribute('x2',bx);l.setAttribute('y2',by);lines.appendChild(l);lns.push(l);
+    const c=document.createElementNS(NS,'circle');c.setAttribute('cx',dx);c.setAttribute('cy',dy);c.setAttribute('r',6);dots.appendChild(c);dts.push(c);
+    const p=document.createElement('button');p.type='button';p.className='fm-pin';p.style.cssText=`--x:${bx/10}%;--y:${by/6}%;--d:${900+i*90}ms`;p.setAttribute('aria-label',NAMES[i]+', '+area);
+    p.innerHTML=`<img src="${LU(LOGOS[i])}" alt="" loading="lazy">`;p.onclick=()=>pick(cur===i?-1:i);pinsEl.appendChild(p);pins.push(p);
+    const li=document.createElement('li');li.innerHTML=`<button type="button"><img src="${LU(LOGOS[i])}" alt="" loading="lazy"><span><b>${NAMES[i]}</b><small>${area}</small></span><span class="nn">${String(i+1).padStart(2,'0')}</span></button>`;
+    li.firstChild.onclick=()=>pick(i);list.appendChild(li);rows.push(li)});
+  const groups=['All','Koregaon Park','Kalyani Nagar','Baner','Deccan & FC Road'];
+  groups.forEach(g=>{const n=g==='All'?B.length:B.filter(b=>GROUP(b[4])===g).length,bt=document.createElement('button');bt.type='button';bt.setAttribute('aria-pressed',g==='All');
+    bt.innerHTML=`${g}<i>${n}</i>`;bt.onclick=()=>filter(g);chips.appendChild(bt)});
+  function filter(g){filt=g;[...chips.children].forEach(c=>c.setAttribute('aria-pressed',c.textContent.startsWith(g)));
+    B.forEach((b,i)=>{const show=g==='All'||GROUP(b[4])===g;pins[i].classList.toggle('dim',!show);rows[i].classList.toggle('hid',!show);lns[i].style.opacity=show?'':'.12'});
+    if(cur>=0&&g!=='All'&&GROUP(B[cur][4])!==g)pick(-1)}
+  const vis=()=>B.map((b,i)=>i).filter(i=>filt==='All'||GROUP(B[i][4])===filt);
+  function pick(i){cur=i;pins.forEach((p,k)=>p.classList.toggle('on',k===i));rows.forEach((r,k)=>r.firstChild.classList.toggle('on',k===i));
+    lns.forEach((l,k)=>l.classList.toggle('on',k===i));dts.forEach((d,k)=>d.classList.toggle('on',k===i));
+    if(i<0){card.hidden=true;return}
+    const b=B[i],x=Math.min(84,Math.max(16,b[2]/10)),below=b[3]<260,q=encodeURIComponent(NAMES[i]+' '+b[4]+' Pune');
+    card.className='fm-card'+(below?' below':'');card.style.setProperty('--x',x+'%');card.style.setProperty('--y',b[3]/6+'%');
+    card.innerHTML=`<button type="button" class="x" aria-label="Close">&times;</button><span class="n">No. ${String(i+1).padStart(2,'0')} &middot; ON TAP</span><b>${NAMES[i]}</b><span class="ar">${b[4]}, Pune</span>
+      <div class="row"><button type="button" class="st" data-s="-1" aria-label="Previous bar">&larr;</button><a class="go" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">Open in Maps &rarr;</a><button type="button" class="st" data-s="1" aria-label="Next bar">&rarr;</button></div>${b[5]?'':'<span class="ap">Pin shows the area, not the exact door.</span>'}`;
+    card.hidden=false;card.style.animation='none';void card.offsetWidth;card.style.animation='';
+    card.querySelector('.x').onclick=()=>pick(-1);
+    card.querySelectorAll('.st').forEach(s=>s.onclick=()=>{const v=vis(),k=v.indexOf(i);pick(v[(k+ +s.dataset.s+v.length)%v.length])});
+    rows[i].firstChild.scrollIntoView({block:'nearest',behavior:'smooth'});
+    const sc=$('#fmScroll');if(sc.scrollWidth>sc.clientWidth)sc.scrollTo({left:b[2]/1000*sc.scrollWidth-sc.clientWidth/2,behavior:'smooth'})}
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&cur>=0)pick(-1)});
+  const sc=$('#fmScroll');requestAnimationFrame(()=>{if(sc.scrollWidth>sc.clientWidth)sc.scrollLeft=(sc.scrollWidth-sc.clientWidth)*.75});
+  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){fm.classList.add('in');o.disconnect()}}),{threshold:.12}).observe(fm);
 })();
+
 
 
 
