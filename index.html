@@ -641,126 +641,78 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 .dw-alt:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
 /* Now pouring heading fits its column */
 .pour .phead h2{font-size:clamp(40px,4.6vw,74px)}
-/* Now pouring: illustrated Pune map v2 */
-.pour .phead .sub{justify-self:end;max-width:320px;margin:0 0 10px;text-align:left}
-.fmap{margin-top:50px;display:grid;grid-template-columns:minmax(0,1fr) 340px;border-radius:var(--r-lg);overflow:hidden;background:var(--green-2);box-shadow:0 0 0 1.5px rgba(167,184,132,.25),0 50px 80px -40px rgba(0,0,0,.75)}
-.fm-scroll{position:relative;min-width:0;overflow:hidden;background:#F4F1E6}
-.fm-canvas{position:relative;aspect-ratio:1000/600;overflow:hidden}
-.fm-world{position:absolute;inset:0;transform-origin:0 0;transform:translate(var(--tx,0px),var(--ty,0px)) scale(var(--z,1));transition:transform 1s cubic-bezier(.6,0,.2,1)}
-.fm-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-.fm-svg *{vector-effect:non-scaling-stroke}
-.fm-svg .park path{fill:#E2E8CF}
-.fm-svg .zones ellipse{opacity:.95;transition:opacity .4s,filter .4s}
-.fmap[data-f]:not([data-f="All"]) .fm-svg .zones ellipse{opacity:.35}
-.fmap[data-f="Baner"] .zones [data-g="Baner"],.fmap[data-f="Kalyani Nagar"] .zones [data-g="Kalyani Nagar"],.fmap[data-f="Koregaon Park"] .zones [data-g="Koregaon Park"],.fmap[data-f="Deccan & FC Road"] .zones [data-g="Deccan & FC Road"]{opacity:1!important;filter:saturate(1.4)}
-.fm-svg .road path{fill:none;stroke:#FFFEFA;stroke-width:6;stroke-linecap:round}
-.fm-svg .road.w path{stroke:#DDD6C2;stroke-width:12}
-.fm-svg .rail{fill:none;stroke:#A9A28E;stroke-width:3}
-.fm-svg .riv path{fill:none;stroke:#8FB1D8;stroke-width:15;stroke-linecap:round;stroke-linejoin:round}
-.fm-svg .lbl text{font:700 13px Jost;letter-spacing:.28em;fill:rgba(34,75,46,.5);text-anchor:middle}
-.fm-svg .lbl.rv text{font:400 19px Yellowtail;letter-spacing:0;fill:#4F78A8}
-.fm-svg .cmp circle{fill:#FFFEFA;stroke:rgba(34,75,46,.3);stroke-width:1.5}.fm-svg .cmp path{fill:var(--green)}.fm-svg .cmp text{font:800 12px Jost;fill:var(--green);text-anchor:middle}
-.fm-svg .lines line{stroke:var(--green);stroke-width:1.6;stroke-dasharray:4 4;opacity:.5;transition:opacity .3s,stroke-width .3s}
-.fm-svg .lines line.on{opacity:1;stroke-width:2.6;stroke-dasharray:none;stroke:#C9781E}
-.fm-svg .dots circle{fill:var(--green);stroke:#FFFEFA;stroke-width:2.5}
-.fm-svg .dots circle.on{fill:#C9781E}
-.fm-svg .road path,.fm-svg .riv path,.fm-svg .rail{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.2s cubic-bezier(.5,0,.2,1)}
-.fm-svg .rail{transition-delay:.6s}
-.fmap.in .fm-svg .road path,.fmap.in .fm-svg .riv path,.fmap.in .fm-svg .rail{stroke-dashoffset:0}
-.fmap.in .fm-svg .rail{stroke-dasharray:.012 .008}
-.fm-svg .lbl,.fm-svg .park,.fm-svg .zones,.fm-svg .cmp,.fm-svg .lines,.fm-svg .dots{opacity:0;transition:opacity .8s 1s}
-.fmap.in .fm-svg .lbl,.fmap.in .fm-svg .park,.fmap.in .fm-svg .zones,.fmap.in .fm-svg .cmp,.fmap.in .fm-svg .lines,.fmap.in .fm-svg .dots{opacity:1}
-.fm-pin{all:unset;box-sizing:border-box;position:absolute;left:var(--x);top:var(--y);width:clamp(42px,5vw,64px);aspect-ratio:1;cursor:pointer;
-  transform:translate(-50%,-50%) scale(calc(1 / var(--z,1)));transition:transform 1s cubic-bezier(.6,0,.2,1),opacity .3s,filter .3s}
-.fm-pin .lg{display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--cream);border:3px solid #FFFEFA;box-shadow:0 0 0 2px var(--green),0 14px 20px -10px rgba(0,0,0,.55);
-  scale:0;transition:scale .6s var(--d) cubic-bezier(.3,1.6,.5,1),box-shadow .3s}
-.fmap.in .fm-pin .lg{scale:1}
-.fm-pin img{width:100%;height:100%;object-fit:cover;pointer-events:none}
-.fm-pin .tt{position:absolute;left:50%;top:calc(100% + 8px);translate:-50% 0;white-space:nowrap;font:800 11px Jost;letter-spacing:.12em;text-transform:uppercase;background:var(--green);color:var(--cream);padding:6px 10px;border-radius:var(--r-pill);opacity:0;transform:translateY(-4px);transition:opacity .25s,transform .25s;pointer-events:none;box-shadow:0 10px 16px -8px rgba(0,0,0,.5)}
-.fm-pin:hover,.fm-pin:focus-visible,.fm-pin.on{z-index:5}
-.fm-pin:hover .lg,.fm-pin:focus-visible .lg{scale:1.12;transition-delay:0s}
-.fm-pin:hover .tt,.fm-pin:focus-visible .tt,.fm-pin.on .tt{opacity:1;transform:none}
-.fm-pin.on .tt{background:#C9781E}
-.fm-pin.on .lg{scale:1.22;transition-delay:0s;box-shadow:0 0 0 3px #C9781E,0 18px 26px -10px rgba(0,0,0,.6)}
-.fm-pin.on::before{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px solid #C9781E;animation:fmPulse 1.6s ease-out infinite}
-@keyframes fmPulse{from{opacity:.9;scale:.8}to{opacity:0;scale:1.5}}
-.fm-pin.dim{opacity:.25;filter:grayscale(1)}
-.fm-pin:focus-visible{outline:none}.fm-pin:focus-visible .lg{outline:3px solid #C9781E;outline-offset:3px}
-.fm-tag{position:absolute;left:14px;bottom:12px;margin:0;font:700 10px Jost;letter-spacing:.16em;text-transform:uppercase;color:rgba(34,75,46,.6);background:rgba(255,254,250,.85);padding:6px 10px;border-radius:var(--r-pill)}
-.fm-reset{all:unset;cursor:pointer;position:absolute;left:14px;top:14px;z-index:6;font:700 11px Jost;letter-spacing:.12em;text-transform:uppercase;background:var(--green);color:var(--cream);padding:10px 14px;border-radius:var(--r-pill);box-shadow:0 12px 20px -10px rgba(0,0,0,.6);animation:fmc .4s cubic-bezier(.3,1.4,.5,1)}
-.fm-reset:hover{background:#C9781E}.fm-reset[hidden]{display:none}
-.fm-reset:focus-visible{outline:3px solid #C9781E;outline-offset:3px}
-@keyframes fmc{from{opacity:0;transform:translateY(-8px)}}
-.fm-side{display:flex;flex-direction:column;height:0;min-height:100%;background:linear-gradient(180deg,var(--green),var(--green-2));border-left:1.5px dashed rgba(167,184,132,.3)}
-.fm-det{margin:16px 16px 12px;padding:16px;border-radius:var(--r-md);background:rgba(255,254,250,.06);border:1.5px solid rgba(167,184,132,.25);min-height:150px;display:flex;flex-direction:column;justify-content:center}
-.fm-det.sel{background:var(--cream);color:var(--green);border-color:var(--cream);animation:fmd .45s cubic-bezier(.3,1.4,.5,1)}
-@keyframes fmd{from{opacity:.4;transform:translateY(6px) scale(.98)}}
-.fm-det .ph{display:flex;align-items:center;gap:14px}
-.fm-det .ph b{display:block;font:800 34px/1 Jost;color:var(--sage)}
-.fm-det .ph span{font:600 12px/1.4 Jost;letter-spacing:.12em;text-transform:uppercase;color:#C9D4C4}
-.fm-det .ph em{display:block;font:400 20px Yellowtail;font-style:normal;color:var(--sage);margin-top:8px;letter-spacing:0;text-transform:none}
-.fm-det .top{display:flex;gap:14px;align-items:center}
-.fm-det .top img{width:64px;height:64px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 2px var(--green)}
-.fm-det .n{font:700 10.5px Jost;letter-spacing:.16em;color:#C9781E}
-.fm-det .top b{display:block;font:800 24px/1 Jost;text-transform:uppercase;margin:3px 0 6px}
-.fm-det .ar{display:inline-flex;align-items:center;gap:6px;font:700 10.5px Jost;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px 4px 7px;border-radius:var(--r-pill);background:rgba(34,75,46,.08)}
-.fm-det .ar i,.fm-chips i.c{width:9px;height:9px;border-radius:50%;display:inline-block;background:var(--c)}
-.fm-det .row{display:flex;gap:8px;align-items:center;margin-top:14px}
-.fm-det a.go{flex:1;display:inline-flex;justify-content:center;gap:8px;background:var(--green);color:var(--cream);text-decoration:none;font:700 11px Jost;letter-spacing:.12em;text-transform:uppercase;padding:11px 12px;border-radius:var(--r-pill);transition:background .3s}
-.fm-det a.go:hover{background:#C9781E}
-.fm-det .st{all:unset;cursor:pointer;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;border:1.5px solid rgba(34,75,46,.3);font-size:15px;transition:background .3s,color .3s}
-.fm-det .st:hover{background:var(--green);color:var(--cream)}
-.fm-det .ap{display:block;margin-top:10px;font-size:11px;opacity:.7}
-.fm-det a:focus-visible,.fm-det button:focus-visible{outline:3px solid #C9781E;outline-offset:2px}
-.fm-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px}
-.fm-chips button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font:700 10.5px Jost;letter-spacing:.08em;text-transform:uppercase;color:#D6E0D2;padding:7px 11px;border-radius:var(--r-pill);border:1.5px solid rgba(255,254,250,.26);transition:background .25s,color .25s,border-color .25s}
-.fm-chips button em{font-style:normal;opacity:.6}
-.fm-chips button:hover{border-color:var(--sage)}
-.fm-chips button[aria-pressed="true"]{background:var(--cream);color:var(--green);border-color:var(--cream)}
-.fm-chips button:focus-visible{outline:3px solid var(--sage);outline-offset:2px}
-.fm-list{list-style:none;margin:0;padding:0 8px 14px;overflow-y:auto;flex:1;min-height:0;scrollbar-width:thin;scrollbar-color:rgba(167,184,132,.4) transparent;border-top:1.5px dashed rgba(167,184,132,.22);padding-top:8px}
-.fm-list li.hid{display:none}
-.fm-list button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:7px 10px;border-radius:var(--r-md);transition:background .25s,transform .25s}
-.fm-list img{width:36px;height:36px;border-radius:50%;object-fit:cover;background:var(--cream);box-shadow:0 0 0 2px var(--c)}
-.fm-list b{display:block;font:800 14px Jost;text-transform:uppercase;letter-spacing:.04em;color:var(--cream)}
-.fm-list small{display:block;font:400 15px/1 Yellowtail;color:var(--sage);margin-top:3px}
-.fm-list .nn{font:700 11px Jost;color:rgba(214,224,210,.45);letter-spacing:.1em}
-.fm-list button:hover{background:rgba(167,184,132,.14);transform:translateX(3px)}
-.fm-list button.on{background:rgba(201,120,30,.2)}
-.fm-list button.on b{color:#F2C48A}
-.fm-list button:focus-visible{outline:3px solid var(--sage);outline-offset:-3px}
-@media (max-width:900px){.pour .phead .sub{justify-self:start}
-  .fmap{grid-template-columns:minmax(0,1fr);margin-top:30px}
-  .fm-scroll{overflow-x:auto;scrollbar-width:none}.fm-scroll::-webkit-scrollbar{display:none}
-  .fm-canvas{width:780px}
-  .fm-pin{width:48px}
-  .fm-tag{position:sticky}
-  .fm-side{border-left:0;border-top:1.5px dashed rgba(167,184,132,.3);height:auto;min-height:0}
-  .fm-det{min-height:0}
-  .fm-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.fm-chips button{flex:0 0 auto}
-  .fm-list{max-height:280px;flex:none}}
-@media (prefers-reduced-motion:reduce){.fm-svg *,.fm-world,.fm-pin{transition:none!important}.fm-pin.on::before{animation:none}}
-/* map: globe-inspired touches (ping, leader line, auto tour) */
-.fmap{position:relative}
-.fm-pin::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--pc,#A7B884);opacity:0;pointer-events:none}
-.fmap.in .fm-pin::after{animation:fmPing 3s var(--pd,0s) cubic-bezier(0,0,.2,1) infinite}
-@keyframes fmPing{0%{opacity:.7;scale:1}75%,100%{opacity:0;scale:1.7}}
-.fm-pin.dim::after{display:none}
-.fm-lead{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:7;opacity:0;transition:opacity .25s}
-.fm-lead.on{opacity:1}
-.fm-lead line{stroke:#C9781E;stroke-width:1.6;stroke-dasharray:5 5;animation:fmDash 1s linear infinite}
-@keyframes fmDash{to{stroke-dashoffset:-20}}
-.fm-lead circle{fill:#C9781E}.fm-lead #fmLeadB{fill:var(--cream);stroke:#C9781E;stroke-width:2}
-.fm-auto{display:flex;align-items:center;gap:8px;margin:-4px 16px 12px;font:700 10px Jost;letter-spacing:.16em;text-transform:uppercase;color:#C9D4C4;opacity:0;transition:opacity .3s}
-.fm-auto.on{opacity:1}
-.fm-auto i{position:relative;width:40px;height:3px;border-radius:2px;background:rgba(255,254,250,.18);overflow:hidden}
-.fm-auto i::after{content:"";position:absolute;inset:0;background:var(--sage);transform-origin:left;transform:scaleX(0)}
-.fm-auto.on i::after{animation:fmBar var(--iv,3.6s) linear}
-@keyframes fmBar{to{transform:scaleX(1)}}
-.fm-det.sel{animation:fmSwap .5s cubic-bezier(.2,.8,.2,1)}
-@keyframes fmSwap{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:none}}
-@media (max-width:900px){.fm-lead{display:none}}
-@media (prefers-reduced-motion:reduce){.fm-pin::after,.fm-lead line{animation:none!important}.fm-auto{display:none}}
+/* Now pouring: testimonial-style globe (port of the cobe TestimonialGlobe Jai supplied) */
+.pour .gl{text-align:left}
+.gl{position:relative;display:grid;grid-template-columns:minmax(0,560px) minmax(0,1fr);gap:56px;align-items:center}
+.gl-box{position:relative;width:100%;aspect-ratio:1;touch-action:pan-y;user-select:none;cursor:grab}
+.gl-box:active{cursor:grabbing}
+.gl-box::before{content:"";position:absolute;inset:-12%;border-radius:50%;background:radial-gradient(circle,rgba(167,184,132,.16),transparent 62%);pointer-events:none}
+.gl-canvas{position:absolute;inset:0;opacity:0;transition:opacity .8s}
+.gl.ready .gl-canvas{opacity:1}
+.gl-canvas canvas{width:100%;height:100%;display:block}
+.gl-fallback{position:absolute;inset:10%;border-radius:50%;border:1.5px solid rgba(167,184,132,.3);background:radial-gradient(circle at 36% 30%,rgba(167,184,132,.25),rgba(167,184,132,.04) 72%);display:none}
+.gl.nogl .gl-fallback{display:block}
+.gl-stars i{position:absolute;border-radius:50%;background:rgba(255,254,250,.55);animation:glTw var(--du) var(--de) ease-in-out infinite}
+@keyframes glTw{50%{opacity:.15}}
+.gl-pins{position:absolute;inset:0;pointer-events:none}
+.gl-pin{all:unset;position:absolute;left:0;top:0;width:var(--ps,46px);height:var(--ps,46px);border-radius:50%;opacity:0;pointer-events:auto;cursor:pointer;will-change:transform}
+.gl-pin .pg{position:absolute;inset:0;border-radius:50%;border:2px solid var(--c);opacity:.25;animation:glPing 3s var(--pd) cubic-bezier(0,0,.2,1) infinite;pointer-events:none}
+.gl-pin.on .pg{opacity:.85}
+@keyframes glPing{75%,100%{transform:scale(1.9);opacity:0}}
+.gl-pin .fc{position:relative;display:block;width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--cream);box-shadow:0 0 0 2px var(--c),0 0 0 4px rgba(18,40,25,.9),0 10px 18px -8px rgba(0,0,0,.6);transition:scale .25s ease-out,box-shadow .25s}
+.gl-pin .fc img{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.gl-pin.on .fc{scale:1.35;box-shadow:0 0 0 3px var(--c),0 0 0 6px rgba(18,40,25,.9),0 14px 24px -8px rgba(0,0,0,.7)}
+.gl-pin:hover .fc{scale:1.2}.gl-pin.on:hover .fc{scale:1.4}
+.gl-pin:focus-visible .fc{outline:2px solid var(--cream);outline-offset:5px}
+.gl-pin .tt{position:absolute;left:50%;top:calc(100% + 10px);translate:-50% 0;white-space:nowrap;font:800 10px Jost;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);background:rgba(18,40,25,.85);padding:4px 8px;border-radius:var(--r-pill);opacity:0;transition:opacity .2s;pointer-events:none}
+.gl-pin:hover .tt{opacity:1}
+.gl-pune{position:absolute;left:0;top:0;pointer-events:none;opacity:0;display:flex;align-items:center;gap:6px;will-change:transform}
+.gl-pune i{width:10px;height:10px;border-radius:50%;background:#C9781E;box-shadow:0 0 0 4px rgba(201,120,30,.3)}
+.gl-pune b{font:400 20px Yellowtail;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.gl-spokes{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.gl-spokes line{stroke:rgba(255,254,250,.22);stroke-width:1;stroke-dasharray:2 4}
+.gl-side{min-width:0}
+.gl-head .script{color:var(--sage)}
+.gl-head h2{margin:0;font-size:clamp(38px,4.2vw,64px)}
+.gl-head .ten{color:var(--sage)}
+.gl-head .sub{margin:14px 0 0;max-width:420px}
+.gl-stats{display:flex;align-items:center;gap:14px;margin:22px 0 0;padding:0}
+.gl-stats div{display:flex;align-items:baseline;gap:6px}
+.gl-stats dd{margin:0;font:800 26px Jost;color:var(--cream);font-variant-numeric:tabular-nums}
+.gl-stats dt{font:600 12px Jost;letter-spacing:.14em;text-transform:uppercase;color:#C9D4C4}
+.gl-stats span{width:1px;height:16px;background:rgba(255,254,250,.25)}
+.gl-cardwrap{position:relative;margin-top:30px;max-width:520px}
+.gl-cardwrap::after{content:"";position:absolute;left:32px;right:32px;bottom:-16px;height:40px;border-radius:100%;background:#000;opacity:.4;filter:blur(24px);z-index:-1}
+.gl-card{margin:0;min-height:208px;border-radius:var(--r-lg);background:var(--cream);color:var(--green);padding:26px 26px 22px;display:flex;flex-direction:column;border:1.5px solid rgba(34,75,46,.12)}
+.gl-card.in{animation:glIn .26s cubic-bezier(.2,.8,.2,1)}
+@keyframes glIn{from{opacity:0;transform:translateY(14px)}}
+.gl-card .q{display:flex;align-items:center;gap:10px;font:700 11px Jost;letter-spacing:.16em;text-transform:uppercase;color:#C9781E;padding-right:120px}
+.gl-card .q i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3a9a4f;box-shadow:0 0 0 4px rgba(58,154,79,.18);animation:blink 1.6s infinite}
+.gl-card blockquote{margin:12px 0 0;font:400 17px/1.6 Jost;color:#33483A}
+.gl-card blockquote b{font-weight:700;color:var(--green)}
+.gl-card figcaption{margin-top:auto;padding-top:18px;display:flex;align-items:center;gap:14px}
+.gl-card figcaption img{width:52px;height:52px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 0 0 2px var(--cream),0 0 0 4px var(--c)}
+.gl-card .who{flex:1;min-width:0}
+.gl-card .who b{display:block;font:800 22px/1.05 Jost;text-transform:uppercase}
+.gl-card .who small{display:inline-flex;align-items:center;gap:6px;margin-top:5px;font:700 10.5px Jost;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+.gl-card .who small i{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.gl-card a.go{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:var(--cream);text-decoration:none;font:700 11px Jost;letter-spacing:.12em;text-transform:uppercase;padding:11px 15px;border-radius:var(--r-pill);transition:background .3s;white-space:nowrap}
+.gl-card a.go:hover{background:#C9781E}
+.gl-card a.go:focus-visible{outline:3px solid #C9781E;outline-offset:2px}
+.gl-card .ap{display:block;margin-top:8px;font-size:11px;opacity:.6}
+.gl-nav{position:absolute;right:18px;top:20px;display:flex;align-items:center;gap:2px;color:var(--green)}
+.gl-nav button{all:unset;cursor:pointer;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;transition:background .2s}
+.gl-nav button:hover{background:rgba(34,75,46,.1)}
+.gl-nav button:focus-visible{outline:2px solid #C9781E;outline-offset:2px}
+.gl-nav svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gl-nav span{min-width:52px;text-align:center;font:700 12px Jost;letter-spacing:.06em;font-variant-numeric:tabular-nums;opacity:.7}
+.gl-lead{position:absolute;left:0;top:0;width:1px;height:1px;overflow:visible;pointer-events:none;z-index:5}
+.gl-lead g{opacity:0;transition:opacity .2s}
+.gl-lead line{stroke:var(--cream);stroke-opacity:.5;stroke-width:1;vector-effect:non-scaling-stroke;transform-origin:0 0}
+.gl-lead #glLeadA{fill:rgba(255,254,250,.7)}.gl-lead #glLeadB{fill:var(--green);stroke:rgba(255,254,250,.6);stroke-width:1.2}
+@media (max-width:900px){.gl{grid-template-columns:1fr;gap:18px}.gl-box{max-width:420px;margin:0 auto;order:2}.gl-side{display:contents}.gl-head{order:1}.gl-cardwrap{order:3;margin:6px auto 0;width:100%}.gl-lead{display:none}
+  .gl-card{padding:22px 18px 18px;min-height:0}.gl-card .q{padding-right:110px;font-size:10px}.gl-card figcaption{flex-wrap:wrap}.gl-card a.go{width:100%;justify-content:center;box-sizing:border-box}}
+@media (prefers-reduced-motion:reduce){.gl-stars i,.gl-pin .pg,.gl-card .q i{animation:none}}
 </style>
 </head>
 <body class="loading">
@@ -887,41 +839,28 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 <!-- 5. NOW POURING -->
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
 <section class="pour on-green" id="bars">
-  <div class="wrap phead">
-    <div><span class="script">Find a tap</span><h2 class="display">Now pouring at <br><span class="ten">10+</span> bars in Pune</h2></div>
-    <p class="sub">Ask for Barely on tap at these spots. Pick a bar to see where it is.</p>
-  </div>
-  <div class="wrap"><div class="fmap" id="fmap">
-    <div class="fm-scroll" id="fmScroll"><div class="fm-canvas" id="fmCanvas"><div class="fm-world" id="fmWorld">
-      <svg class="fm-svg" viewBox="0 0 1000 600" aria-hidden="true">
-        <defs><pattern id="fmGrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="rgba(34,75,46,.06)" stroke-width="1"/></pattern></defs>
-        <rect width="1000" height="600" fill="#F4F1E6"/><rect width="1000" height="600" fill="url(#fmGrid)"/>
-        <filter id="fmPaper"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .13  0 0 0 0 .29  0 0 0 0 .18  0 0 0 .09 0"/></filter>
-        <g class="park"><path d="M330 300c40-30 100-20 120 20s-20 80-70 70-90-50-50-90z"/><path d="M60 360c40-20 90 0 90 40s-50 60-90 40-30-60 0-80z"/></g>
-        <g class="zones"><ellipse data-g="Baner" cx="190" cy="152" rx="150" ry="100" fill="#DCE6C3"/><ellipse data-g="Kalyani Nagar" cx="862" cy="172" rx="125" ry="88" fill="#D5E2F2"/><ellipse data-g="Koregaon Park" cx="830" cy="385" rx="165" ry="112" fill="#F5DEC4"/><ellipse data-g="Deccan &amp; FC Road" cx="505" cy="488" rx="140" ry="92" fill="#F1D6D3"/></g>
-        <g class="road w"><path pathLength="1" d="M90 170C200 190 330 250 430 300S560 345 640 345"/><path pathLength="1" d="M640 345C720 360 800 370 1000 360"/><path pathLength="1" d="M640 345C720 300 820 230 1000 150"/><path pathLength="1" d="M520 330C515 420 505 500 500 600"/><path pathLength="1" d="M180 20C200 150 230 300 260 600"/><path pathLength="1" d="M520 330C560 250 600 160 640 0"/></g>
-        <g class="road"><path pathLength="1" d="M90 170C200 190 330 250 430 300S560 345 640 345"/><path pathLength="1" d="M640 345C720 360 800 370 1000 360"/><path pathLength="1" d="M640 345C720 300 820 230 1000 150"/><path pathLength="1" d="M520 330C515 420 505 500 500 600"/><path pathLength="1" d="M180 20C200 150 230 300 260 600"/><path pathLength="1" d="M520 330C560 250 600 160 640 0"/></g>
-        <path class="rail" pathLength="1" d="M300 600C420 470 560 400 700 390S900 330 1000 300"/>
-        <g class="riv"><path pathLength="1" d="M20 40C90 70 160 70 250 95S380 170 470 250 590 330 639 338"/><path pathLength="1" d="M330 600C400 560 440 520 460 460S500 380 560 350 620 338 639 338"/><path pathLength="1" d="M639 338C700 305 760 285 830 270S930 250 1000 268"/></g>
-        <g class="lbl"><text x="190" y="270">BANER</text><text x="870" y="72">KALYANI NAGAR</text><text x="800" y="530">KOREGAON PARK</text><text x="590" y="392">SHIVAJINAGAR</text><text x="505" y="596">DECCAN &amp; FC ROAD</text></g>
-        <g class="lbl rv"><text x="330" y="150" transform="rotate(28 330 150)">Mula river</text><text x="690" y="280" transform="rotate(-14 690 280)">Mula-Mutha</text></g>
-        <g class="cmp" transform="translate(950 548)"><circle r="26"/><path d="M0-20L6 0 0 20-6 0z"/><text y="-30">N</text></g>
-        <rect width="1000" height="600" filter="url(#fmPaper)" pointer-events="none"/>
-        <g id="fmLines" class="lines"></g><g id="fmDots" class="dots"></g>
-      </svg>
-      <div class="fm-pins" id="fmPins"></div>
+  <div class="wrap gl" id="gl">
+    <div class="gl-box" id="glBox">
+      <div class="gl-stars" aria-hidden="true"></div>
+      <div class="gl-canvas" id="glCanvas" aria-hidden="true"></div>
+      <div class="gl-fallback" aria-hidden="true"></div>
+      <div class="gl-pins" id="glPins"></div>
+      <span class="gl-pune" id="glPune" aria-hidden="true"><i></i><b>Pune</b></span>
     </div>
-      <p class="fm-tag">Pune &middot; illustrated, not to scale</p>
-      <button type="button" class="fm-reset" id="fmReset" hidden>&larr; Show all bars</button>
-    </div></div>
-    <aside class="fm-side">
-      <div class="fm-det" id="fmDet" aria-live="polite"></div>
-      <p class="fm-auto" id="fmAuto"><i></i><span>Touring the bars</span></p>
-      <div class="fm-chips" id="fmChips" role="group" aria-label="Filter by area"></div>
-      <ol class="fm-list" id="fmList"></ol>
-    </aside>
-    <svg class="fm-lead" id="fmLead" aria-hidden="true"><line id="fmLeadL" x1="0" y1="0" x2="0" y2="0"/><circle id="fmLeadA" r="3"/><circle id="fmLeadB" r="4.5"/></svg>
-  </div></div>
+    <div class="gl-side">
+      <header class="gl-head">
+        <span class="script">Find a tap</span>
+        <h2 class="display">Now pouring at <span class="ten">10+</span> bars in Pune</h2>
+        <p class="sub">Ask for Barely on tap at these spots. Drag the globe, or pick a bar.</p>
+        <dl class="gl-stats"><div><dd>10</dd><dt>bars</dt></div><span></span><div><dd>4</dd><dt>areas</dt></div><span></span><div><dd>1</dd><dt>city</dt></div></dl>
+      </header>
+      <div class="gl-cardwrap" id="glCardWrap">
+        <figure class="gl-card" id="glCard" aria-live="polite"></figure>
+        <div class="gl-nav"><button type="button" id="glPrev" aria-label="Previous bar"><svg viewBox="0 0 16 16"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg></button><span id="glNum">01 / 10</span><button type="button" id="glNext" aria-label="Next bar"><svg viewBox="0 0 16 16"><path d="M6 3.5 10.5 8 6 12.5"/></svg></button></div>
+      </div>
+    </div>
+    <svg class="gl-lead" id="glLead" aria-hidden="true"><g id="glLeadG"><line id="glLeadL" x1="0" y1="0" x2="1" y2="0"/><circle id="glLeadA" r="2.5"/><circle id="glLeadB" r="4"/></g></svg>
+  </div>
 </section>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
 
@@ -1291,77 +1230,94 @@ addEventListener('keydown',e=>{if(tko.hidden)return;e.stopImmediatePropagation()
 /* bar logos (Barely's own "Now pouring" list) */
 const LOGOS=['Murphies_Logo.png','bntr.jpg','Grove_Logo.png','Layers_Logo.jpg','Trooh_logo.jpg','Oi_Logo_62f5d1ec-6e10-4ded-84b5-923ebdcea104.jpg','LP_Logo.jpg','Malaka_Logo.png','Sante_Logo.png','Gulp_logo.jpg'];
 const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malaka Spice','Santé','Gulp'];
-/* illustrated Pune map v2: bar positions projected from real coordinates (OSM + public listings, checked 2026-11-27) */
-(()=>{const fm=$('#fmap');if(!fm)return;
-  const B=[[827,325,905,392,'Koregaon Park',1],[833,325,955,300,'Koregaon Park',1],[225,157,300,95,'Baner',0],[150,127,92,205,'Baner',1],[872,234,935,175,'Kalyani Nagar',1],
-           [832,205,790,128,'Kalyani Nagar',1],[492,492,420,538,'Deccan',1],[818,319,830,455,'Koregaon Park',1],[763,350,700,430,'Koregaon Park',1],[507,429,595,455,'FC Road',0]];
-  const GROUP=a=>a==='Deccan'||a==='FC Road'?'Deccan & FC Road':a;
-  const COL={'Koregaon Park':'#E8A867','Kalyani Nagar':'#7FA6D6','Baner':'#A7B884','Deccan & FC Road':'#D98C8C'};
-  const LU=f=>`https://barelybrewing.com/cdn/shop/files/${f}?height=200`,NS='http://www.w3.org/2000/svg';
-  const world=$('#fmWorld'),canvas=$('#fmCanvas'),sc=$('#fmScroll'),pinsEl=$('#fmPins'),lines=$('#fmLines'),dots=$('#fmDots'),det=$('#fmDet'),list=$('#fmList'),chips=$('#fmChips'),reset=$('#fmReset');
-  const pins=[],rows=[],lns=[],dts=[];let cur=-1,filt='All';
-  B.forEach((b,i)=>{const [dx,dy,bx,by,area]=b,c=COL[GROUP(area)];
-    const l=document.createElementNS(NS,'line');l.setAttribute('x1',dx);l.setAttribute('y1',dy);l.setAttribute('x2',bx);l.setAttribute('y2',by);lines.appendChild(l);lns.push(l);
-    const d=document.createElementNS(NS,'circle');d.setAttribute('cx',dx);d.setAttribute('cy',dy);d.setAttribute('r',6);dots.appendChild(d);dts.push(d);
-    const p=document.createElement('button');p.type='button';p.className='fm-pin';p.style.cssText=`--x:${bx/10}%;--y:${by/6}%;--d:${900+i*90}ms;--pc:${c};--pd:${(i%5)*.6}s`;p.setAttribute('aria-label',NAMES[i]+', '+area);
-    p.innerHTML=`<span class="lg"><img src="${LU(LOGOS[i])}" alt="" loading="lazy"></span><span class="tt">${NAMES[i]}</span>`;p.onclick=()=>pick(cur===i?-1:i);pinsEl.appendChild(p);pins.push(p);
-    const li=document.createElement('li');li.style.setProperty('--c',c);li.innerHTML=`<button type="button"><img src="${LU(LOGOS[i])}" alt="" loading="lazy"><span><b>${NAMES[i]}</b><small>${area}</small></span><span class="nn">${String(i+1).padStart(2,'0')}</span></button>`;
-    li.firstChild.onclick=()=>pick(cur===i?-1:i);list.appendChild(li);rows.push(li)});
-  ['All','Koregaon Park','Kalyani Nagar','Baner','Deccan & FC Road'].forEach(g=>{const n=g==='All'?B.length:B.filter(b=>GROUP(b[4])===g).length,bt=document.createElement('button');bt.type='button';bt.dataset.g=g;bt.setAttribute('aria-pressed',g==='All');
-    bt.innerHTML=(g==='All'?'':`<i class="c" style="--c:${COL[g]}"></i>`)+`${g}<em>${n}</em>`;bt.onclick=()=>filter(g);chips.appendChild(bt)});
-  /* camera: zoom the map to a box (in 1000x600 units); off on phones where the map scrolls instead */
-  const canZoom=()=>sc.scrollWidth<=sc.clientWidth+2;
-  function cam(x0,y0,x1,y1){if(!canZoom()){world.style.setProperty('--z',1);world.style.setProperty('--tx','0px');world.style.setProperty('--ty','0px');
-      sc.scrollTo({left:((x0+x1)/2)/1000*sc.scrollWidth-sc.clientWidth/2,behavior:'smooth'});return}
-    const W=canvas.clientWidth,H=canvas.clientHeight,pad=70,bw=(x1-x0)/1000*W+pad*2,bh=(y1-y0)/600*H+pad*2;
-    const z=Math.max(1,Math.min(2.2,W/bw,H/bh)),cx=(x0+x1)/2/1000*W,cy=(y0+y1)/2/600*H;
-    const tx=Math.min(0,Math.max(W-W*z,W/2-cx*z)),ty=Math.min(0,Math.max(H-H*z,H/2-cy*z));
-    world.style.setProperty('--z',z);world.style.setProperty('--tx',tx+'px');world.style.setProperty('--ty',ty+'px');pins.forEach(p=>p.style.setProperty('--z',z))}
-  const home=()=>{world.style.setProperty('--z',1);world.style.setProperty('--tx','0px');world.style.setProperty('--ty','0px');pins.forEach(p=>p.style.setProperty('--z',1))};
-  const boxOf=ix=>{const xs=ix.flatMap(i=>[B[i][0],B[i][2]]),ys=ix.flatMap(i=>[B[i][1],B[i][3]]);return [Math.min(...xs),Math.min(...ys),Math.max(...xs),Math.max(...ys)]};
-  const vis=()=>B.map((b,i)=>i).filter(i=>filt==='All'||GROUP(B[i][4])===filt);
-  function filter(g){filt=g;fm.dataset.f=g;[...chips.children].forEach(c=>c.setAttribute('aria-pressed',c.dataset.g===g));
-    B.forEach((b,i)=>{const show=g==='All'||GROUP(b[4])===g;pins[i].classList.toggle('dim',!show);rows[i].classList.toggle('hid',!show);lns[i].style.opacity=show?'':'.12'});
-    if(cur>=0&&g!=='All'&&GROUP(B[cur][4])!==g)pick(-1,false);
-    if(g==='All'){home();reset.hidden=cur<0}else{const bx=boxOf(vis());cam(...bx);reset.hidden=false}}
-  function idle(){det.className='fm-det';det.innerHTML=`<div class="ph"><b>10</b><span>bars pouring Barely<br>across 4 areas<em>Pick a logo to find it</em></span></div>`}
-  function pick(i,move=true){cur=i;pins.forEach((p,k)=>p.classList.toggle('on',k===i));rows.forEach((r,k)=>r.firstChild.classList.toggle('on',k===i));
-    lns.forEach((l,k)=>l.classList.toggle('on',k===i));dts.forEach((d,k)=>d.classList.toggle('on',k===i));
-    if(i<0){idle();lead();if(move){if(filt==='All'){home();reset.hidden=true}else cam(...boxOf(vis()))}return}
-    const b=B[i],g=GROUP(b[4]),q=encodeURIComponent(NAMES[i]+' '+b[4]+' Pune');
-    det.className='fm-det';void det.offsetWidth;det.className='fm-det sel';
-    det.innerHTML=`<div class="top"><img src="${LU(LOGOS[i])}" alt=""><div><span class="n">NO. ${String(i+1).padStart(2,'0')} &middot; ON TAP</span><b>${NAMES[i]}</b><span class="ar" style="--c:${COL[g]}"><i></i>${b[4]}</span></div></div>
-      <div class="row"><button type="button" class="st" data-s="-1" aria-label="Previous bar">&larr;</button><a class="go" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">Open in Maps &rarr;</a><button type="button" class="st" data-s="1" aria-label="Next bar">&rarr;</button></div>${b[5]?'':'<span class="ap">Pin shows the area, not the exact door.</span>'}`;
-    det.querySelectorAll('.st').forEach(s=>s.onclick=()=>{const v=vis(),k=v.indexOf(i);pick(v[(k+ +s.dataset.s+v.length)%v.length])});
-    {const r=rows[i],t=r.offsetTop-list.offsetTop;if(t<list.scrollTop||t+r.offsetHeight>list.scrollTop+list.clientHeight)list.scrollTo({top:t-list.clientHeight/2+r.offsetHeight/2,behavior:'smooth'})}lead();
-    if(move){const [x0,y0,x1,y1]=boxOf([i]);cam(x0-90,y0-70,x1+90,y1+70);reset.hidden=false}}
-  /* leader line: featured pin -> detail card (desktop) */
-  const ld=$('#fmLead'),lL=$('#fmLeadL'),lA=$('#fmLeadA'),lB=$('#fmLeadB');let ldT=0;
-  function lead(){cancelAnimationFrame(ldT);if(cur<0||innerWidth<=900){ld.classList.remove('on');return}const t0=performance.now();
-    const f=()=>{const R=fm.getBoundingClientRect(),P=pins[cur].getBoundingClientRect(),D=det.getBoundingClientRect(),S=sc.getBoundingClientRect();
-      const x0=P.left+P.width/2-R.left,y0=P.top+P.height/2-R.top,x1=D.left-R.left,y1=D.top+D.height/2-R.top;
-      const cx=P.left+P.width/2,cy=P.top+P.height/2,inView=cx>S.left&&cx<S.right&&cy>S.top&&cy<S.bottom;
-      const dx=x1-x0,dy=y1-y0,dd=Math.hypot(dx,dy)||1,g=P.width/2+8,sx=x0+dx/dd*g,sy=y0+dy/dd*g;
-      lL.setAttribute('x1',sx);lL.setAttribute('y1',sy);lL.setAttribute('x2',x1);lL.setAttribute('y2',y1);lA.setAttribute('cx',sx);lA.setAttribute('cy',sy);lB.setAttribute('cx',x1);lB.setAttribute('cy',y1);
-      ld.classList.toggle('on',inView);if(performance.now()-t0<1300)ldT=requestAnimationFrame(f)};f()}
-  /* auto tour: feature bars one by one while nobody is using the map */
-  const IV=3600,auto=$('#fmAuto');auto.style.setProperty('--iv',IV+'ms');let tour=0,inV=false,hover=false,touched=0;
-  const canTour=()=>!reduce&&inV&&!hover&&Date.now()-touched>9000&&!document.hidden;
-  function tick(){clearTimeout(tour);auto.classList.remove('on');if(!canTour()){tour=setTimeout(tick,1500);return}
-    const v=vis(),k=v.indexOf(cur),n=v[(k+1)%v.length];pick(n,false);void auto.offsetWidth;auto.classList.add('on');tour=setTimeout(tick,IV)}
-  const userAct=()=>{touched=Date.now();auto.classList.remove('on')};
-  fm.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;auto.classList.remove('on')}});
-  fm.addEventListener('pointerleave',()=>{hover=false});
-  fm.addEventListener('pointerdown',userAct,true);fm.addEventListener('keydown',userAct,true);
-  sc.addEventListener('scroll',()=>{if(cur>=0)lead()},{passive:true});
-  new IntersectionObserver(es=>{inV=es[0].isIntersecting;if(inV&&!tour)tour=setTimeout(tick,2600)},{threshold:.4}).observe(fm);
-  reset.onclick=()=>{pick(-1,false);filter('All')};
-  addEventListener('keydown',e=>{if(e.key==='Escape'&&(cur>=0||filt!=='All'))reset.onclick()});
-  addEventListener('resize',()=>{lead();if(cur>=0)pick(cur);else if(filt!=='All')filter(filt)});
-  idle();fm.dataset.f='All';
-  requestAnimationFrame(()=>{if(sc.scrollWidth>sc.clientWidth)sc.scrollLeft=(sc.scrollWidth-sc.clientWidth)*.75});
-  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){fm.classList.add('in');o.disconnect()}}),{threshold:.12}).observe(fm);
+/* Now pouring globe: vanilla port of Jai's cobe TestimonialGlobe (same projection, pins, leader line, autoplay).
+   All 10 bars are in Pune, so the pins fan out around the Pune point in their real relative layout. */
+(()=>{const root=$('#gl');if(!root)return;
+  const PUNE=[18.5204,73.8567];
+  // relative layout from real coordinates (illustrated-map units, 1000x600), area, exact?
+  const BARS=[[905,392,'Koregaon Park',1],[955,300,'Koregaon Park',1],[300,95,'Baner',0],[92,205,'Baner',1],[935,175,'Kalyani Nagar',1],[790,128,'Kalyani Nagar',1],[420,538,'Deccan',1],[830,455,'Koregaon Park',1],[700,430,'Koregaon Park',1],[595,455,'FC Road',0]];
+  const COL={'Koregaon Park':'#E8A867','Kalyani Nagar':'#7FA6D6','Baner':'#A7B884','Deccan':'#D98C8C','FC Road':'#D98C8C'};
+  const LU=f=>`https://barelybrewing.com/cdn/shop/files/${f}?height=200`;
+  const R=.8,THETA=.32,ALT=.05,TURN=1200,IV=3600;
+  const toC=(lat,lng)=>{const la=lat*Math.PI/180,lo=lng*Math.PI/180-Math.PI,c=Math.cos(la);return [-c*Math.cos(lo),Math.sin(la),c*Math.sin(lo)]};
+  const project=([x,y,z],phi,th)=>{const cp=Math.cos(phi),sp=Math.sin(phi),ct=Math.cos(th),st=Math.sin(th),r=R*(1+ALT);
+    const sx=(cp*x+sp*z)*r,sy=(sp*st*x+ct*y-cp*st*z)*r,d=-sp*ct*x+st*y+cp*ct*z;return {x:(sx+1)/2,y:(1-sy)/2,depth:d}};
+  const facing=lng=>3*Math.PI/2-lng*Math.PI/180,near=(f,a)=>a+2*Math.PI*Math.round((f-a)/(2*Math.PI));
+  const sm=t=>t*t*(3-2*t),cl=v=>Math.min(1,Math.max(0,v)),ease=t=>t>=1?1:(1-Math.pow(2,-10*t))/(1-Math.pow(2,-10));
+  const box=$('#glBox'),host=$('#glCanvas'),pinsEl=$('#glPins'),pune=$('#glPune'),card=$('#glCard'),num=$('#glNum'),wrap=$('#glCardWrap');
+  // stars outside the sphere
+  {let sd=11;const r=()=>(sd=(sd*1103515245+12345)&0x7fffffff)/0x7fffffff;const st=box.querySelector('.gl-stars');let n=0;
+   while(n<36){const x=.02+r()*.96,y=.02+r()*.96;if(Math.hypot(x-.5,y-.5)<.44)continue;const i=document.createElement('i'),z=r()<.75?1:2;
+     i.style.cssText=`left:${x*100}%;top:${y*100}%;width:${z}px;height:${z}px;--de:${(r()*4).toFixed(2)}s;--du:${(2.5+r()*3).toFixed(2)}s`;st.appendChild(i);n++}}
+  // pins
+  const cx=BARS.reduce((a,b)=>a+b[0],0)/BARS.length,cy=BARS.reduce((a,b)=>a+b[1],0)/BARS.length;
+  const NS='http://www.w3.org/2000/svg',spokes=document.createElementNS(NS,'svg');spokes.setAttribute('class','gl-spokes');box.insertBefore(spokes,pinsEl);
+  const pins=BARS.map((b,i)=>{const el=document.createElement('button');el.type='button';el.className='gl-pin';el.setAttribute('aria-label','Show '+NAMES[i]+', '+b[2]);
+    el.style.setProperty('--c',COL[b[2]]);el.style.setProperty('--pd',(i%5)*.6+'s');
+    el.innerHTML=`<span class="pg" aria-hidden="true"></span><span class="fc"><img src="${LU(LOGOS[i])}" alt="" draggable="false"></span><span class="tt">${NAMES[i]}</span>`;
+    el.addEventListener('click',()=>{if(s.moved){s.moved=false;return}feature(i,true)});
+    el.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch'){s.hover=true;feature(i,false)}});
+    el.addEventListener('pointerleave',()=>{s.hover=false});
+    el.addEventListener('keydown',e=>{const k={ArrowRight:1,ArrowLeft:-1}[e.key];if(k){e.preventDefault();step(k);pins[cur].focus({preventScroll:true})}});
+    pinsEl.appendChild(el);const ln=document.createElementNS(NS,'line');spokes.appendChild(ln);return {el,ln,dx:(b[0]-cx),dy:(b[1]-cy)}});
+  const s={settled:true,phi:facing(PUNE[1]),theta:THETA,vel:0,drag:false,pressed:false,moved:false,px:0,lx:0,lt:0,turn:null,hover:false,touched:0,inView:false,size:0,lastUser:0};
+  const V=toC(...PUNE);let cur=0,globe=null,raf=0,last=0,auto=0,growT=0;
+  function step(d){feature((cur+d+BARS.length)%BARS.length,true)}
+  $('#glPrev').onclick=()=>step(-1);$('#glNext').onclick=()=>step(1);
+  function render(i){const b=BARS[i],q=encodeURIComponent(NAMES[i]+' '+b[2]+' Pune');card.style.setProperty('--c',COL[b[2]]);
+    card.innerHTML=`<div class="q"><i></i>On tap now</div><blockquote>Ask for <b>Barely</b> at <b>${NAMES[i]}</b>. Same pint, same clink, clear head tomorrow.</blockquote>
+      <figcaption><img src="${LU(LOGOS[i])}" alt=""><span class="who"><b>${NAMES[i]}</b><small><i></i>${b[2]}, Pune</small></span><a class="go" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">Open in Maps &rarr;</a></figcaption>${b[3]?'':'<span class="ap">Map search shows the area; check the exact spot before you go.</span>'}`;
+    card.classList.remove('in');void card.offsetWidth;card.classList.add('in');num.textContent=String(i+1).padStart(2,'0')+' / '+String(BARS.length).padStart(2,'0')}
+  function feature(i,user){if(user){s.lastUser=Date.now()}if(i===cur&&card.innerHTML)return;cur=i;pins.forEach((p,k)=>{p.el.classList.toggle('on',k===i);p.el.setAttribute('aria-current',k===i?'true':'false')});render(i);growT=performance.now();kick()}
+  // fan geometry (px) scales with the globe
+  function place(now){const d=s.size;if(!d)return;const pt=project(V,s.phi,s.theta),px=pt.x*d,py=pt.y*d;
+    const vis=pt.depth>0?.35+.65*sm(cl(pt.depth/.3)):0,k=d/1000*.74,ps=Math.round(Math.max(28,Math.min(46,d*.078)));
+    pune.style.opacity=vis;pune.style.transform=`translate(${px-5}px,${py-10}px)`;
+    pins.forEach((p,i)=>{const x=px+p.dx*k,y=py+p.dy*k*1.25;p.el.style.setProperty('--ps',ps+'px');p.el.style.opacity=vis;p.el.style.pointerEvents=vis>.4?'auto':'none';
+      p.el.style.transform=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) translate(-50%,-50%)`;p.el.style.zIndex=i===cur?20:10;
+      p.ln.setAttribute('x1',px);p.ln.setAttribute('y1',py);p.ln.setAttribute('x2',x);p.ln.setAttribute('y2',y);p.ln.style.opacity=vis;p.x=x;p.y=y});
+    // leader line featured pin -> card (wide layout)
+    const g=$('#glLeadG'),wide=innerWidth>900;if(!wide||vis<.5||s.turn){g.style.opacity=0;return}
+    const rr=root.getBoundingClientRect(),br=box.getBoundingClientRect(),cr=wrap.getBoundingClientRect(),P=pins[cur];
+    const x0=br.left-rr.left+P.x,y0=br.top-rr.top+P.y,ax=cr.left-rr.left,ay=cr.top-rr.top+Math.min(44,cr.height/2),dx=ax-x0,dy=ay-y0,dist=Math.hypot(dx,dy)||1,gap=ps/2*1.35+6;
+    const grow=reduce?1:sm(cl((now-growT)/360)),sx=x0+dx/dist*gap,sy=y0+dy/dist*gap,len=Math.max(0,dist-gap)*grow;
+    $('#glLeadL').style.transform=`translate(${sx}px,${sy}px) rotate(${Math.atan2(dy,dx)}rad) scaleX(${Math.max(.001,len)})`;
+    $('#glLeadA').style.transform=`translate(${sx}px,${sy}px)`;$('#glLeadB').style.transform=`translate(${ax}px,${ay}px) scale(${grow>=1?1:0})`;g.style.opacity=1;
+    s.growing=grow<1}
+  const home=()=>near(s.phi,facing(PUNE[1]));
+  function frame(now){raf=0;const dt=last?Math.min((now-last)/1000,.1):0;last=now;
+    if(s.turn){const t=reduce?1:cl((now-s.turn.t0)/TURN);s.phi=s.turn.from+(s.turn.to-s.turn.from)*ease(t);if(t>=1){s.turn=null;s.settled=true}}
+    else if(!s.drag){if(Math.abs(s.vel)>1e-4){const st=dt*60;s.phi+=s.vel*st;s.vel*=Math.pow(.92,st)}
+      else{s.vel=0;if(!reduce)s.wob=(s.wob||0)+dt;const tgt=home()+(reduce?0:Math.sin((s.wob||0)*.5)*.05);
+        if(s.settled)s.phi=tgt;else if(Date.now()-s.lastUser>1200)s.turn={from:s.phi,to:tgt,t0:now,home:1}}}
+    if(globe)globe.phi=s.phi;place(now);
+    if(s.inView&&!document.hidden)raf=requestAnimationFrame(frame);else last=0}
+  function kick(){if(!raf)raf=requestAnimationFrame(frame)}
+  // drag to spin
+  box.addEventListener('pointerdown',e=>{if(!e.isPrimary||(e.pointerType==='mouse'&&e.button!==0))return;s.pressed=true;s.moved=false;s.px=s.lx=e.clientX;s.lt=e.timeStamp;s.vel=0;s.turn=null;s.settled=false;s.pid=e.pointerId});
+  box.addEventListener('pointermove',e=>{if(!s.pressed||e.pointerId!==s.pid)return;if(!s.drag){if(Math.abs(e.clientX-s.px)<6)return;s.drag=true;s.moved=true;try{box.setPointerCapture(e.pointerId)}catch(_){}}
+    const dl=(e.clientX-s.lx)/Math.max(s.size,1)*Math.PI,el=Math.max(e.timeStamp-s.lt,1);s.lx=e.clientX;s.lt=e.timeStamp;s.phi+=dl;s.vel=dl/el*(1000/60);s.lastUser=Date.now();kick()});
+  const up=e=>{if(!s.pressed)return;s.pressed=false;if(s.drag){if(e.timeStamp-s.lt>80)s.vel=0;s.drag=false;s.lastUser=Date.now()}kick()};
+  box.addEventListener('pointerup',up);box.addEventListener('pointercancel',up);
+  // swipe the card on touch
+  {let sw=null;wrap.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')sw={x:e.clientX,y:e.clientY}});
+   wrap.addEventListener('pointerup',e=>{if(!sw)return;const dx=e.clientX-sw.x,dy=e.clientY-sw.y;sw=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.5)step(dx<0?1:-1)})}
+  wrap.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')s.hover=true});wrap.addEventListener('pointerleave',()=>{s.hover=false});
+  // autoplay
+  function tick(){clearTimeout(auto);if(!reduce&&s.inView&&!s.hover&&!s.drag&&Date.now()-s.lastUser>8000&&!document.hidden)feature((cur+1)%BARS.length,false);auto=setTimeout(tick,IV)}
+  // size + globe
+  const measure=()=>{s.size=box.clientWidth;if(globe){globe.width=s.size;globe.height=s.size}kick()};
+  new ResizeObserver(measure).observe(box);measure();
+  new IntersectionObserver(es=>{s.inView=es[es.length-1].isIntersecting;if(s.inView){kick();if(!auto)auto=setTimeout(tick,IV)}},{threshold:.2}).observe(root);
+  feature(0,false);
+  import('https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm').then(m=>{const create=m.default||m.createGlobe;const cv=document.createElement('canvas');host.appendChild(cv);
+    const dpr=Math.min(devicePixelRatio||1,2),st={phi:s.phi,width:s.size,height:s.size};globe=st;
+    create(cv,{devicePixelRatio:dpr,width:s.size*dpr,height:s.size*dpr,phi:s.phi,theta:THETA,dark:1,diffuse:1.2,mapSamples:16000,mapBrightness:7,
+      baseColor:[.27,.5,.32],markerColor:[.79,.47,.12],glowColor:[.5,.66,.44],markers:[{location:PUNE,size:.04}],
+      onRender:o=>{o.phi=st.phi;o.width=st.width*dpr;o.height=st.height*dpr}});
+    root.classList.add('ready')}).catch(()=>root.classList.add('nogl'));
 })();
+
 
 
 
