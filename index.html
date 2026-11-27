@@ -641,48 +641,54 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 .dw-alt:focus-visible{outline:3px solid var(--sage);outline-offset:3px}
 /* Now pouring heading fits its column */
 .pour .phead h2{font-size:clamp(40px,4.6vw,74px)}
-/* Now pouring: tap wall (taps only, no beer) */
-.pside{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-bottom:8px}
-.ticket{position:relative;display:grid;grid-template-columns:1fr auto;align-items:end;column-gap:22px;min-width:300px;background:var(--cream);color:var(--green);padding:16px 26px 14px;border-radius:var(--r-sm);transform:rotate(-2deg);box-shadow:0 26px 40px -24px rgba(0,0,0,.7);
-  -webkit-mask:radial-gradient(circle at 0 50%,transparent 10px,#000 11px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 10px,#000 11px) right/51% 100% no-repeat;
-  mask:radial-gradient(circle at 0 50%,transparent 10px,#000 11px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 10px,#000 11px) right/51% 100% no-repeat}
-.ticket::after{content:"";position:absolute;top:10px;bottom:10px;right:96px;border-left:2px dashed rgba(34,75,46,.3)}
-.ticket small{grid-column:1/-1;font:700 11px Jost;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
-.ticket b{font:400 38px/1.1 Yellowtail;white-space:nowrap;display:inline-block}
-.ticket b.flip{animation:tk .55s cubic-bezier(.3,1.5,.5,1)}
-@keyframes tk{from{opacity:0;transform:translateY(14px) rotate(-4deg)}}
-.tk-n{font:800 15px Jost;letter-spacing:.06em;padding-bottom:6px;font-variant-numeric:tabular-nums}
-.backbar{position:relative;margin-top:44px;padding:20px 0 0;background:linear-gradient(180deg,var(--green-2),#163220);border-radius:var(--r-lg);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 40px 70px -40px rgba(0,0,0,.7);overflow:hidden}
-.backbar::before{content:"";position:absolute;inset:12px;border:1.5px dashed rgba(167,184,132,.22);border-radius:calc(var(--r-lg) - 8px);pointer-events:none}
-.backbar .taphint{margin:4px 0 0}
-.backbar .taps{margin-top:18px}
-.tray{position:relative;height:18px;margin:-2px 34px 30px;border-radius:var(--r-pill);background:repeating-linear-gradient(90deg,#8F8B7D 0 3px,#D8D3C2 3px 11px);box-shadow:0 10px 16px -8px rgba(0,0,0,.6)}
-.taphint{margin:18px 0 0;font:400 24px Yellowtail;color:var(--sage);text-align:center}
-.taphint .tp{display:none}
-@media (hover:none){.taphint .hv{display:none}.taphint .tp{display:inline}}
-.taps{margin-top:34px}
-.tapline{list-style:none;margin:0 auto;padding:0 24px 10px;display:flex;justify-content:center;max-width:1240px;scrollbar-width:none}
-.tapline::-webkit-scrollbar{display:none}
-.tap{position:relative;flex:0 0 112px;display:flex;flex-direction:column;align-items:center;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
-.tap::before{content:"";position:absolute;left:0;right:0;top:146px;height:18px;background:linear-gradient(#F4F1E6,#C9C4B2 55%,#8F8B7D);box-shadow:0 10px 16px -8px rgba(0,0,0,.6)}
-.tap:first-child::before{left:14px;border-radius:9px 0 0 9px}
-.tap:last-child::before{right:14px;border-radius:0 9px 9px 0}
-.lever{position:relative;z-index:2;height:156px;display:flex;flex-direction:column;align-items:center;transform-origin:50% 100%;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
-.lever .badge{width:84px;height:84px;flex:0 0 auto;border-radius:50%;overflow:hidden;background:var(--cream);border:3px solid var(--sage);box-shadow:0 14px 24px -12px rgba(0,0,0,.7);transition:border-color .3s,transform .4s var(--out)}
-.lever .badge img{width:100%;height:100%;object-fit:cover}
-.lever .handle{width:18px;flex:1;margin-top:-4px;background:linear-gradient(90deg,#8FA06C,#D3DDB6 45%,#8FA06C);border-radius:0 0 6px 6px}
-.tbody{position:relative;z-index:3;width:36px;height:26px;margin-top:-4px;background:linear-gradient(90deg,#A9A495,#F4F1E6 50%,#A9A495);border-radius:0 0 12px 12px;display:flex;justify-content:center}
-.tbody::after{content:"";position:absolute;top:100%;width:12px;height:18px;background:linear-gradient(90deg,#9F9B8C,#E9E6DA 50%,#9F9B8C);border-radius:0 0 4px 4px}
-.tap .nm{margin-top:32px;font:700 11.5px Jost;letter-spacing:.12em;text-transform:uppercase;color:#C9D4C4;white-space:nowrap;transition:color .3s}
-.tap.on .lever{transform:rotate(-22deg)}
-.tap.on .lever .badge{border-color:var(--cream);transform:scale(1.06)}
-.tap.on .nm{color:var(--sage)}
-.tap:focus-visible .badge{outline:3px solid var(--sage);outline-offset:4px}
-@media (max-width:1200px){.tapline{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px}.tap{flex-basis:104px;scroll-snap-align:center}}
-@media (max-width:900px){.ticket{min-width:0;width:100%;max-width:340px}.backbar{margin-top:30px}.tray{margin:-2px 16px 22px}}
-.backbar .taps{margin-top:22px}
-.tap .tbody{transition:transform .5s var(--out)}
-.tap.on .tbody{transform:translateY(2px)}
+/* Now pouring: real Pune map (Leaflet + OpenStreetMap / CARTO tiles) */
+.pour .phead .sub{justify-self:end;max-width:320px;margin:0 0 10px;text-align:left}
+.rmap{position:relative;margin-top:50px;display:grid;grid-template-columns:minmax(0,1fr) 320px;height:clamp(480px,46vw,620px);border-radius:var(--r-lg);overflow:hidden;background:var(--green-2);box-shadow:0 0 0 1.5px rgba(167,184,132,.25),0 40px 70px -40px rgba(0,0,0,.7)}
+.rm-map{position:relative;height:100%;background:#13291A;z-index:0}
+.rm-map .leaflet-tile-pane,.rm-map .leaflet-overlay-pane img{filter:sepia(.55) hue-rotate(58deg) saturate(1.1) brightness(1.05) contrast(1.05)}
+.rm-map::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:400;box-shadow:inset 0 0 90px rgba(10,25,15,.75)}
+.rm-map .leaflet-control-attribution{background:rgba(18,40,25,.75);color:#9fb08f;font:500 10px Jost}
+.rm-map .leaflet-control-attribution a{color:var(--sage)}
+.rm-map .leaflet-control-zoom a{background:var(--cream);color:var(--green);border-color:rgba(34,75,46,.2);font:700 18px Jost}
+.rm-map .leaflet-control-zoom{border:0;box-shadow:0 10px 20px -10px rgba(0,0,0,.6);border-radius:var(--r-sm);overflow:hidden}
+.rpin{width:56px!important;height:56px!important;margin:-64px 0 0 -28px!important;background:none;border:0}
+.rpin .hd{display:block;width:56px;height:56px;border-radius:50% 50% 50% 0;rotate:-45deg;background:var(--cream);border:3px solid var(--sage);overflow:hidden;box-shadow:0 12px 18px -8px rgba(0,0,0,.75);transition:transform .35s cubic-bezier(.3,1.6,.5,1),border-color .3s}
+.rpin img{width:100%;height:100%;object-fit:cover;rotate:45deg;scale:1.12}
+.rpin .nm{position:absolute;left:50%;bottom:calc(100% + 8px);translate:-50% 0;white-space:nowrap;font:800 11px Jost;letter-spacing:.14em;text-transform:uppercase;background:var(--cream);color:var(--green);padding:6px 11px;border-radius:var(--r-pill);opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s;pointer-events:none}
+.rpin.drop .hd{animation:pdrop .8s var(--d,0ms) cubic-bezier(.3,1.5,.5,1) both}
+@keyframes pdrop{from{transform:translateY(-70px) scale(.6);opacity:0}}
+.rpin:hover,.rpin.on{z-index:900!important}
+.rpin:hover .hd,.rpin.on .hd{transform:scale(1.2);border-color:var(--cream)}
+.rpin:hover .nm,.rpin.on .nm{opacity:1;transform:none}
+.rm-pop .leaflet-popup-content-wrapper{background:var(--cream);color:var(--green);border-radius:var(--r-md);box-shadow:0 24px 40px -18px rgba(0,0,0,.7)}
+.rm-pop .leaflet-popup-tip{background:var(--cream)}
+.rm-pop .leaflet-popup-content{margin:16px 18px;font:500 14px/1.4 Jost;min-width:190px}
+.rm-pop b{display:block;font:800 20px Jost;text-transform:uppercase;letter-spacing:.01em}
+.rm-pop .ar{display:block;font:400 19px Yellowtail;color:#5d7a3f;margin:2px 0 10px}
+.rm-pop a.go{display:inline-flex;gap:8px;align-items:center;background:var(--green);color:var(--cream)!important;text-decoration:none;font:700 11px Jost;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;border-radius:var(--r-pill)}
+.rm-pop .ap{display:block;margin-top:8px;font-size:11px;opacity:.7}
+.rm-pop a.leaflet-popup-close-button{color:var(--green)}
+.rm-side{display:flex;flex-direction:column;background:linear-gradient(180deg,var(--green),var(--green-2));border-left:1.5px dashed rgba(167,184,132,.3);min-height:0}
+.rm-k{margin:0;padding:22px 24px 12px;font:600 12px Jost;letter-spacing:.14em;text-transform:uppercase;color:#C9D4C4}
+.rm-k b{font:800 30px Jost;color:var(--sage);margin-right:6px;vertical-align:-3px}
+.rm-list{list-style:none;margin:0;padding:0 12px;overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:rgba(167,184,132,.4) transparent}
+.rm-list button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:9px 12px;border-radius:var(--r-md);transition:background .25s}
+.rm-list img{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--cream);border:2px solid var(--sage)}
+.rm-list b{display:block;font:800 15px Jost;text-transform:uppercase;letter-spacing:.04em;color:var(--cream)}
+.rm-list small{display:block;font:400 17px/1 Yellowtail;color:var(--sage);margin-top:3px}
+.rm-list button:hover,.rm-list button.on{background:rgba(167,184,132,.16)}
+.rm-list button.on b{color:var(--sage)}
+.rm-list button:focus-visible{outline:3px solid var(--sage);outline-offset:-3px}
+.rm-all{all:unset;cursor:pointer;margin:12px 24px 22px;text-align:center;font:700 12px Jost;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);padding:12px;border-radius:var(--r-pill);border:1.5px solid rgba(255,254,250,.45);transition:background .3s,color .3s}
+.rm-all:hover{background:var(--sage);color:var(--green);border-color:var(--sage)}
+@media (max-width:900px){.pour .phead .sub{justify-self:start}
+  .rmap{grid-template-columns:minmax(0,1fr);grid-template-rows:400px auto;height:auto;margin-top:30px}
+  .rm-side{border-left:0;border-top:1.5px dashed rgba(167,184,132,.3)}
+  .rm-k{padding:16px 18px 8px}
+  .rm-list{display:flex;overflow-x:auto;gap:6px;padding:0 10px 4px;scroll-snap-type:x mandatory}
+  .rm-list li{flex:0 0 auto;scroll-snap-align:start}
+  .rm-list button{grid-template-columns:auto auto;padding:8px 12px 8px 8px;background:rgba(167,184,132,.1)}
+  .rm-all{margin:12px 18px 18px}}
 </style>
 </head>
 <body class="loading">
@@ -811,13 +817,12 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 <section class="pour on-green" id="bars">
   <div class="wrap phead">
     <div><span class="script">Find a tap</span><h2 class="display">Now pouring at <br><span class="ten">10+</span> bars in Pune</h2></div>
-    <div class="pside"><p class="sub">Ask for Barely on tap at these spots.</p>
-      <div class="ticket"><small>Now pouring at</small><b id="nowBar" aria-live="polite">Murphies</b><span class="tk-n" id="nowN">01 / 10</span></div></div>
+    <p class="sub">Ask for Barely on tap at these spots. Pick one to find it on the map.</p>
   </div>
-  <div class="wrap"><div class="backbar">
-    <p class="taphint" aria-hidden="true"><span class="hv">Hover a tap to pull it</span><span class="tp">Tap a tap to pull it</span></p>
-    <div class="taps"><ul class="tapline" id="tapline" aria-label="Bars pouring Barely"></ul></div>
-    <div class="tray" aria-hidden="true"></div>
+  <div class="wrap"><div class="rmap">
+    <div class="rm-map" id="rmMap" role="region" aria-label="Map of Pune bars pouring Barely"></div>
+    <aside class="rm-side"><p class="rm-k"><b>10</b> bars across Pune</p><ol class="rm-list" id="rmList"></ol>
+      <button type="button" class="rm-all" id="rmAll">Show all bars</button></aside>
   </div></div>
 </section>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
@@ -916,6 +921,8 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
   </aside>
 </div>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="js/tear-ticket.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -1149,7 +1156,7 @@ $('#tkTear').onclick=()=>{if(tkT)tkT.tear()};
 $('#tkBack').onclick=tkClose;$('#tkX').onclick=tkClose;$('#tkOk').onclick=tkClose;
 let tkDown=null;tko.addEventListener('pointerdown',e=>{tkDown=e.target});tko.addEventListener('click',e=>{if(e.target===tko&&tkDown===tko)tkClose();tkDown=null});
 addEventListener('keydown',e=>{if(tko.hidden)return;e.stopImmediatePropagation();if(e.key==='Escape')tkClose();
-  if(e.key==='Tab'){const f=$$('button:not([hidden]),[tabindex="0"]',tko).filter(x=>x.offsetParent),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}},true);
+  if(e.key==='Tab'){const f=[...tko.querySelectorAll('button:not([hidden]),[tabindex="0"]')].filter(x=>x.offsetParent),a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}},true);
 /* ritual gallery: desktop = pinned, photos slide with page scroll; phones = swipe strip. Arrows + counter in both. */
 (()=>{const sp=$('#strip'),figs=$$('#strip figure'),n=figs.length;$('#sN').textContent=n;let dragged=false;
   const MOM=figs.map(f=>{const im=f.querySelector('img');return [im.src.replace(/\?width=\d+/,'').replace('https://barelybrewing.com/cdn/shop/files/',CDN),im.alt]});
@@ -1188,24 +1195,40 @@ addEventListener('keydown',e=>{if(tko.hidden)return;e.stopImmediatePropagation()
 /* bar logos (Barely's own "Now pouring" list) */
 const LOGOS=['Murphies_Logo.png','bntr.jpg','Grove_Logo.png','Layers_Logo.jpg','Trooh_logo.jpg','Oi_Logo_62f5d1ec-6e10-4ded-84b5-923ebdcea104.jpg','LP_Logo.jpg','Malaka_Logo.png','Sante_Logo.png','Gulp_logo.jpg'];
 const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malaka Spice','Santé','Gulp'];
-const tapline=$('#tapline');
-LOGOS.forEach((f,i)=>{const li=document.createElement('li');li.className='tap';li.tabIndex=0;li.setAttribute('aria-label',NAMES[i]);
-  li.innerHTML=`<div class="lever" aria-hidden="true"><span class="badge"><img src="https://barelybrewing.com/cdn/shop/files/${f}?height=240" alt=""></span><span class="handle"></span></div><span class="tbody" aria-hidden="true"></span><b class="nm">${NAMES[i]}</b>`;
-  tapline.appendChild(li)});
-(()=>{const taps=$$('.tap'),T=taps.length;let ti=-1,hold=false,timer=null,seen=false,holdT=0;
-  const nb=$('#nowBar');
-  const pour=i=>{if(i!==ti){nb.textContent=NAMES[i];$('#nowN').textContent=String(i+1).padStart(2,'0')+' / '+String(T).padStart(2,'0');nb.classList.remove('flip');void nb.offsetWidth;nb.classList.add('flip')}ti=i;taps.forEach((t,k)=>t.classList.toggle('on',k===i))};
-  const next=()=>{if(!hold)pour((ti+1)%T)};
-  const start=()=>{if(reduce||timer)return;next();timer=setInterval(next,2600)};
-  const stop=()=>{clearInterval(timer);timer=null};
-  new IntersectionObserver(es=>{es[0].isIntersecting?start():stop()},{threshold:.35}).observe(tapline);
-  if(reduce)pour(0);
-  taps.forEach((t,i)=>{t.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hold=true;pour(i)}});
-    t.addEventListener('focus',()=>{hold=true;pour(i)});t.addEventListener('blur',()=>{hold=false});
-    t.addEventListener('click',()=>{hold=true;pour(i);clearTimeout(holdT);holdT=setTimeout(()=>hold=false,5000)});
-    t.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pour(i)}})});
-  tapline.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hold=false});
+/* real Pune map: Leaflet + Esri dark grey tiles (OSM data). Locations from OpenStreetMap + public listings (Zomato/District), checked 2026-11-27. */
+(()=>{const el=$('#rmMap');if(!el)return;
+  // [lat, lng, area, precise?]  order matches LOGOS / NAMES
+  const LOC=[[18.53662,73.89881,'Koregaon Park',1],[18.53664,73.89994,'Koregaon Park',1],[18.5590,73.7905,'Baner',0],[18.56309,73.77693,'Baner',1],[18.54876,73.90695,'Kalyani Nagar',1],
+             [18.55265,73.89971,'Kalyani Nagar',1],[18.51433,73.83863,'Deccan Gymkhana',1],[18.53743,73.89734,'Koregaon Park',1],[18.53330,73.88742,'Koregaon Park',1],[18.5228,73.8412,'FC Road',0]];
+  const LU=f=>`https://barelybrewing.com/cdn/shop/files/${f}?height=200`;
+  const list=$('#rmList');
+  LOC.forEach((l,i)=>{const li=document.createElement('li');li.innerHTML=`<button type="button" data-i="${i}"><img src="${LU(LOGOS[i])}" alt="" loading="lazy"><span><b>${NAMES[i]}</b><small>${l[2]}</small></span></button>`;list.appendChild(li)});
+  if(!window.L){el.innerHTML='<p style="padding:24px;color:#C9D4C4">Map could not load. The bars are listed alongside.</p>';return}
+  const touch=matchMedia('(hover:none)').matches;
+  const map=L.map(el,{scrollWheelZoom:false,dragging:!touch,tap:false,zoomControl:true,attributionControl:true,zoomSnap:.25}).setView([18.535,73.845],12);
+  const AT='Tiles &copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors';
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:AT}).addTo(map);
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,pane:'overlayPane',opacity:.8}).addTo(map);
+  const bounds=L.latLngBounds(LOC.map(l=>[l[0],l[1]]));
+  const pins=LOC.map((l,i)=>{const ic=L.divIcon({className:'rpin',html:`<span class="hd"><img src="${LU(LOGOS[i])}" alt=""></span><span class="nm">${NAMES[i]}</span>`,iconSize:[56,56]});
+    const m=L.marker([l[0],l[1]],{icon:ic,title:NAMES[i],riseOnHover:true,keyboard:true});
+    const q=encodeURIComponent(NAMES[i]+' '+l[2]+' Pune');
+    m.bindPopup(`<b>${NAMES[i]}</b><span class="ar">${l[2]}, Pune</span><a class="go" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">Open in Maps &rarr;</a>${l[3]?'':'<span class="ap">Pin shows the area, not the exact door.</span>'}`,{className:'rm-pop',offset:[0,-58],closeButton:true});
+    m.on('click',()=>pick(i,false));m.on('popupclose',()=>{const b=list.querySelector('.on');if(b)b.classList.remove('on');m.getElement()&&m.getElement().classList.remove('on')});
+    return m});
+  const btns=[...list.querySelectorAll('button')];
+  function pick(i,fly=true){btns.forEach((b,k)=>b.classList.toggle('on',k===i));pins.forEach((m,k)=>{const e=m.getElement();if(e)e.classList.toggle('on',k===i)});
+    if(fly){map.flyTo([LOC[i][0],LOC[i][1]],15.5,{duration:reduce?0:1.2});map.once('moveend',()=>pins[i].openPopup())}
+    btns[i].scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}
+  btns.forEach((b,i)=>b.addEventListener('click',()=>pick(i)));
+  const all=()=>{map.closePopup();map.flyToBounds(bounds,{padding:[60,60],duration:reduce?0:1.2})};
+  $('#rmAll').onclick=all;
+  let shown=false;
+  new IntersectionObserver(es=>{if(!es[0].isIntersecting||shown)return;shown=true;map.invalidateSize();
+    pins.forEach((m,i)=>{m.addTo(map);const e=m.getElement();e.style.setProperty('--d',(400+i*110)+'ms');e.classList.add('drop')});
+    map.flyToBounds(bounds,{padding:innerWidth<600?[40,40]:[60,60],duration:reduce?0:1.8})},{threshold:.12}).observe(el);
 })();
+
 
 
 /* forms: concept only, nothing is sent */
