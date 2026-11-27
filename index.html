@@ -231,6 +231,7 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .lb-rail button[aria-current="true"]{opacity:1;border-color:var(--sage);transform:translateY(-4px)}
 .lb-rail img{width:100%;height:100%;object-fit:cover}
 @media (max-width:600px){.lb-stage{grid-template-columns:1fr;padding:0 12px}.lb-arr{display:none}.lb-fig img{max-height:calc(100vh - 220px)}.lb-rail button{width:52px;height:52px}.dw-thumbs button{width:50px;height:50px}}
+
 /* product drawer */
 .dw{position:fixed;inset:0;z-index:80}
 .dw[hidden]{display:none}
@@ -332,7 +333,7 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .pnote{margin:10px 0 0;font-size:12.5px;line-height:1.4;color:#C9D4C4}
 .dragc{position:fixed;left:0;top:0;z-index:50;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;background:var(--sage);color:var(--green);display:grid;place-items:center;font:700 13px Jost;letter-spacing:.16em;text-transform:uppercase;pointer-events:none;transform:scale(0);transition:transform .35s var(--out)}
 .dragc.on{transform:scale(1)}
-@media (hover:hover) and (pointer:fine){.stage{cursor:none}}
+@media (hover:hover) and (pointer:fine){.stage{cursor:none}.stage button,.stage a,.stage .price,.stage .info{cursor:auto}.stage button,.stage a{cursor:pointer}}
 .arrows{position:relative;z-index:4;display:flex;justify-content:center;gap:28px;margin-top:-10px}
 .arrows button{all:unset;cursor:pointer;width:64px;height:44px;display:grid;place-items:center;color:var(--cream);transition:transform .35s var(--out),opacity .3s;opacity:.85}
 .arrows button:hover,.arrows button:focus-visible{opacity:1}
@@ -343,17 +344,36 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .dots button{all:unset;cursor:pointer;width:9px;height:9px;border-radius:50%;background:rgba(255,254,250,.35);transition:background .3s,width .4s var(--out)}
 .dots button[aria-current="true"]{background:var(--cream);width:28px;border-radius:var(--r-pill)}
 
-.bigmq{overflow:hidden;padding:70px 0 0}
-.bigmq .track{display:flex;align-items:center;gap:40px;white-space:nowrap;width:max-content;font:800 clamp(56px,9vw,150px)/1 Jost;text-transform:uppercase;letter-spacing:-.02em;color:var(--green);will-change:transform}
-.bigmq .track span:nth-of-type(even){color:transparent;-webkit-text-stroke:2px var(--green)}
-.bigmq i{font-style:normal;font-size:.5em;color:var(--sage)}
+.bigmq{position:relative;overflow:hidden;height:clamp(190px,20vw,260px);margin-top:40px}
+.tape{position:absolute;left:-10vw;width:120vw;top:50%;padding:18px 0;box-shadow:0 24px 40px -26px rgba(3,3,2,.55)}
+.tape.t1{background:var(--green);color:var(--cream);transform:translateY(-50%) rotate(-3deg);z-index:2}
+.tape.t2{background:var(--sage);color:var(--green);transform:translateY(-50%) rotate(2.5deg);padding:12px 0}
+.tape .track{display:flex;align-items:center;gap:22px;white-space:nowrap;width:max-content;will-change:transform}
+.tape span{font:800 clamp(26px,3.4vw,50px)/1 Jost;text-transform:uppercase;letter-spacing:-.005em}
+.tape em{font:400 clamp(30px,3.8vw,56px)/1 Yellowtail,cursive;color:var(--sage);margin:0 4px 0 -6px;transform:translateY(.08em)}
+.tape.t2 span{font-size:clamp(16px,1.6vw,22px);letter-spacing:.14em;font-weight:700}
+.tape i{font-style:normal;display:grid;place-items:center;width:1.6em;height:1.6em;border-radius:50%;font-size:clamp(14px,1.3vw,20px);background:var(--sage);color:var(--green);margin:0 10px}
+.tape.t2 i{background:var(--green);color:var(--sage);font-size:12px}
 .ritual{padding-top:70px!important}
 /* 4. ritual: photo strip that slides with scroll */
 .ritual{padding:120px 0 110px;overflow:hidden}
 .ritual .top{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
 .ritual h2{margin:0;color:var(--green);font-size:clamp(52px,7.4vw,118px)}
 .ritual .top p{max-width:340px;margin:0;color:#33413a}
-.strip{display:flex;gap:22px;margin-top:56px;padding-left:max(32px,calc((100vw - 1240px)/2));will-change:transform}
+.rtop-r{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+.sctl{display:flex;align-items:center;gap:12px}
+.sct{font:700 13px Jost;letter-spacing:.18em;color:var(--green);min-width:52px}
+.sbar{width:120px;height:3px;background:rgba(34,75,46,.18);border-radius:var(--r-pill);overflow:hidden}
+.sbar i{display:block;height:100%;width:100%;background:var(--green);transform-origin:left;transform:scaleX(.2);transition:transform .4s var(--out)}
+.sarr{all:unset;cursor:pointer;width:52px;height:52px;border-radius:50%;border:2px solid var(--green);color:var(--green);display:grid;place-items:center;font-size:20px;transition:background .3s,color .3s,opacity .3s,transform .3s var(--out)}
+.sarr:hover{background:var(--green);color:var(--cream)}
+.sarr:disabled{opacity:.3;cursor:default;background:none;color:var(--green)}
+.sarr:focus-visible,.strip:focus-visible,.strip figure:focus-visible{outline:3px solid var(--sage);outline-offset:4px}
+.strip{display:flex;gap:22px;margin-top:40px;padding:30px max(32px,calc((100vw - 1240px)/2)) 50px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:max(32px,calc((100vw - 1240px)/2));scrollbar-width:none;cursor:grab;overscroll-behavior-x:contain}
+.strip::-webkit-scrollbar{display:none}
+.strip.drag{cursor:grabbing;scroll-snap-type:none}
+.strip.drag img{pointer-events:none}
+.strip figure{scroll-snap-align:start;cursor:zoom-in}
 .strip figure{margin:0;flex:0 0 auto;width:clamp(230px,24vw,340px);aspect-ratio:3/4;border-radius:var(--r-lg);overflow:hidden;background:var(--sage);box-shadow:0 30px 60px -40px rgba(3,3,2,.6)}
 .strip figure:nth-child(odd){transform:rotate(-2.5deg) translateY(14px)}
 .strip figure:nth-child(even){transform:rotate(2deg)}
@@ -364,13 +384,37 @@ header.nav nav a:hover::after{transform:scaleX(1)}
 .pour{background:var(--green);color:var(--cream);padding:30px 0 100px;position:relative}
 .pour .wrap{text-align:center}
 .pour h2{margin:0;font-size:clamp(44px,6vw,96px)}
+@media (max-width:600px){.pour h2{font-size:clamp(30px,9vw,40px)}.pour h2 br{display:none}}
 .pour .sub{color:#D6E0D2;margin:10px 0 0}
-.logos{margin-top:46px;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.logos .row{display:flex;gap:26px;width:max-content;animation:mq 40s linear infinite}
-.logos:hover .row{animation-play-state:paused}
-.logos figure{margin:0;width:132px;height:132px;border-radius:50%;overflow:hidden;background:var(--cream);flex:0 0 auto;display:grid;place-items:center;border:3px solid rgba(255,254,250,.18);transition:transform .4s var(--out)}
-.logos figure:hover{transform:translateY(-8px) rotate(-4deg)}
-.logos img{width:100%;height:100%;object-fit:cover}
+.taphint{margin:18px 0 0;font:400 24px Yellowtail;color:var(--sage);text-align:center}
+.taphint .tp{display:none}
+@media (hover:none){.taphint .hv{display:none}.taphint .tp{display:inline}}
+.taps{margin-top:34px}
+.tapline{list-style:none;margin:0 auto;padding:0 24px 10px;display:flex;justify-content:center;max-width:1240px;scrollbar-width:none}
+.tapline::-webkit-scrollbar{display:none}
+.tap{position:relative;flex:0 0 112px;display:flex;flex-direction:column;align-items:center;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.tap::before{content:"";position:absolute;left:0;right:0;top:146px;height:18px;background:linear-gradient(#F4F1E6,#C9C4B2 55%,#8F8B7D);box-shadow:0 10px 16px -8px rgba(0,0,0,.6)}
+.tap:first-child::before{left:14px;border-radius:9px 0 0 9px}
+.tap:last-child::before{right:14px;border-radius:0 9px 9px 0}
+.lever{position:relative;z-index:2;height:156px;display:flex;flex-direction:column;align-items:center;transform-origin:50% 100%;transition:transform .7s cubic-bezier(.3,1.6,.5,1)}
+.lever .badge{width:84px;height:84px;flex:0 0 auto;border-radius:50%;overflow:hidden;background:var(--cream);border:3px solid var(--sage);box-shadow:0 14px 24px -12px rgba(0,0,0,.7);transition:border-color .3s,transform .4s var(--out)}
+.lever .badge img{width:100%;height:100%;object-fit:cover}
+.lever .handle{width:18px;flex:1;margin-top:-4px;background:linear-gradient(90deg,#8FA06C,#D3DDB6 45%,#8FA06C);border-radius:0 0 6px 6px}
+.tbody{position:relative;z-index:3;width:36px;height:26px;margin-top:-4px;background:linear-gradient(90deg,#A9A495,#F4F1E6 50%,#A9A495);border-radius:0 0 12px 12px;display:flex;justify-content:center}
+.tbody::after{content:"";position:absolute;top:100%;width:12px;height:18px;background:linear-gradient(90deg,#9F9B8C,#E9E6DA 50%,#9F9B8C);border-radius:0 0 4px 4px}
+.stream{width:6px;height:58px;margin-top:18px;border-radius:3px;background:linear-gradient(#F2B544,#E39A2C);transform:scaleY(0);transform-origin:top;transition:transform .3s ease-in}
+.glass{position:relative;width:52px;height:66px;border:3px solid rgba(255,254,250,.85);border-top:0;border-radius:0 0 14px 14px;overflow:hidden;background:rgba(255,254,250,.06)}
+.glass .fill{position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(#F2B544,#C9781E);transition:height .9s ease-in}
+.glass .foam{position:absolute;left:0;right:0;bottom:0;height:12px;background:var(--cream);border-radius:3px 3px 0 0;transform:translateY(12px);transition:bottom .9s ease-in,transform .3s}
+.tap .nm{margin-top:12px;font:700 11.5px Jost;letter-spacing:.12em;text-transform:uppercase;color:#C9D4C4;white-space:nowrap;transition:color .3s}
+.tap.on .lever{transform:rotate(-22deg)}
+.tap.on .lever .badge{border-color:var(--cream);transform:scale(1.06)}
+.tap.on .stream{transform:scaleY(1);transition:transform .35s .25s ease-out}
+.tap.on .glass .fill{height:74%;transition:height 1.6s .4s cubic-bezier(.3,.6,.4,1)}
+.tap.on .glass .foam{bottom:74%;transform:none;transition:bottom 1.6s .4s cubic-bezier(.3,.6,.4,1),transform .3s .4s}
+.tap.on .nm{color:var(--sage)}
+.tap:focus-visible .badge{outline:3px solid var(--sage);outline-offset:4px}
+@media (max-width:1200px){.tapline{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px}.tap{flex-basis:104px;scroll-snap-align:center}}
 
 /* 6. membership */
 .how{padding:120px 0 120px;overflow:hidden}
@@ -491,6 +535,48 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 @media (min-width:901px){.stage .spacer{display:none}}
 @media (max-width:520px){.steps{grid-template-columns:1fr}.step:nth-child(n){transform:none}}
 @media (prefers-reduced-motion:reduce){.dw-sheet{transition:none!important}.dw.open .dw-body>*,.dw.open .dw-gal,.dw.open .dw-stage img{animation:none!important}*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}#loader{display:none}}
+
+/* ---------- CTA animation + micro-interactions ---------- */
+/* shine sweep on every primary CTA */
+.btn-primary,.dw-go,.vbtn,.pill{position:relative;overflow:hidden;isolation:isolate}
+.btn-primary::before,.dw-go::before,.vbtn::before,.pill::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 35%,rgba(255,254,250,.38) 50%,transparent 65%);transform:translateX(-120%);pointer-events:none}
+.btn-primary:hover::before,.dw-go:hover::before,.vbtn:hover::before,.pill:hover::before{animation:shine .8s var(--out)}
+.hcta .btn-primary::before{animation:shine 1.1s var(--out) 2.4s,shine 1.1s var(--out) 7s}
+@keyframes shine{to{transform:translateX(120%)}}
+/* arrow: old arrow leaves right, new one slides in from left */
+.ar{overflow:hidden;position:relative}
+.ar .a1,.ar .a2{display:block;transition:transform .45s var(--out)}
+.ar .a2{position:absolute;inset:0;display:grid;place-items:center;transform:translateX(-140%)}
+.btn-primary:hover .ar,.dw-go:hover .ar,.vbtn:hover .ar{transform:none!important}
+.btn-primary:hover .ar .a1,.dw-go:hover .ar .a1,.vbtn:hover .ar .a1{transform:translateX(140%)}
+.btn-primary:hover .ar .a2,.dw-go:hover .ar .a2,.vbtn:hover .ar .a2{transform:none}
+/* press */
+.btn-primary:active,.dw-go:active,.vbtn:active,.pill:active,.sarr:active,.dw-nav button:active,.lb-arr:active,.burger:active{transform:scale(.96)!important;transition-duration:.1s}
+/* magnetic wrapper (desktop) */
+.mag{display:inline-block;transition:transform .5s var(--out)}
+/* nav CTA: soft breathing ring */
+.nav .cta{box-shadow:0 0 0 0 rgba(167,184,132,.7);animation:ring 3.2s ease-out infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(167,184,132,.7)}70%,100%{box-shadow:0 0 0 12px rgba(167,184,132,0)}}
+/* hero form states */
+.hcta.err{animation:shake .45s;border-color:#B3472F}
+@keyframes shake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
+.hcta.done{border-color:var(--sage);background:#EEF2E3}
+.hcta.done .btn-primary{background:var(--sage);color:var(--green)}
+.hcta.done .btn-primary .ar{background:var(--green);color:var(--cream)}
+.burst{position:fixed;z-index:60;width:10px;height:10px;border-radius:50%;pointer-events:none;border:2px solid var(--green);background:rgba(167,184,132,.5)}
+/* links + small things */
+.inl-link,.hnote a,.dw-note a,footer .legal a{background:linear-gradient(currentColor,currentColor) 0 100%/0 2px no-repeat;text-decoration:none;transition:background-size .35s var(--out)}
+.hnote a{background-size:100% 1.5px}
+.inl-link:hover,.hnote a:hover,.dw-note a:hover,footer .legal a:hover{background-size:100% 2px;text-decoration:none}
+.faq summary{transition:color .25s,padding-left .35s var(--out)}
+.faq summary:hover{padding-left:8px;color:var(--green-3)}
+.faq details>p{animation:faqIn .45s var(--out)}
+@keyframes faqIn{from{opacity:0;transform:translateY(-8px)}}
+.dw-packs button,.packs button{transition:background .3s,color .3s,transform .25s var(--out)}
+.dw-packs button:hover:not([aria-checked="true"]),.packs button:hover:not([aria-checked="true"]){transform:translateY(-1px);background:rgba(255,254,250,.18)}
+.plan .pill::after{content:"\2192";display:inline-block;margin-left:2px;transition:transform .35s var(--out)}
+.plan .pill:hover::after{transform:translateX(5px)}
+@media (prefers-reduced-motion:reduce){.nav .cta,.hcta .btn-primary::before{animation:none}}
 </style>
 </head>
 <body class="loading">
@@ -519,7 +605,7 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
       <form class="hcta" id="heroForm" novalidate>
         <label class="sr" for="hem">Email address</label>
         <input id="hem" type="email" placeholder="Your email address" autocomplete="email">
-        <button class="btn-primary" type="submit">Get early access <span class="ar" aria-hidden="true">&rarr;</span></button>
+        <button class="btn-primary" type="submit">Get early access <span class="ar" aria-hidden="true"><span class="a1">&rarr;</span><span class="a2">&rarr;</span></span></button>
       </form>
       <div class="hnote"><span>Online orders open January 2027.</span><a href="#brews">Explore the brews</a><p class="ok" id="hok" aria-live="polite"></p></div>
       <div class="trust"><div><b>0.0&ndash;0.5%</b><small>ABV</small></div><div><b>80</b><small>cal a pint</small></div><div><b>10+</b><small>bars in Pune</small></div></div>
@@ -581,7 +667,7 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
         <span class="script" id="iTag">The hazy one</span>
         <h3 id="iName">Hazy Wit</h3>
         <p id="iDesc"></p>
-                <button type="button" class="vbtn" id="iLink" aria-haspopup="dialog" aria-controls="dw">View product <span class="ar" aria-hidden="true">&rarr;</span></button>
+                <button type="button" class="vbtn" id="iLink" aria-haspopup="dialog" aria-controls="dw">View product <span class="ar" aria-hidden="true"><span class="a1">&rarr;</span><span class="a2">&rarr;</span></span></button>
       </div>
     </div>
     <div class="price" id="price">
@@ -600,29 +686,31 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
 </section>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V28C180 6 320 4 480 22s300 34 480 14 340-38 480-8v32z"/></svg>
 
-<div class="bigmq" aria-hidden="true"><div class="track" id="bigTrack"><span>Ritual, not intoxication</span><i>&#10042;</i><span>Craft beer. Zero compromise.</span><i>&#10042;</i><span>Tomorrow over tonight</span><i>&#10042;</i><span>Ritual, not intoxication</span><i>&#10042;</i><span>Craft beer. Zero compromise.</span><i>&#10042;</i></div></div>
+<div class="bigmq" aria-hidden="true"><div class="tape t2"><div class="track" id="tapeB"><span>Real hops</span><i>&#10042;</i><span>Real ferment</span><i>&#10042;</i><span>0.0&ndash;0.5% ABV</span><i>&#10042;</i><span>80 cal a pint</span><i>&#10042;</i><span>Brewed in Pune</span><i>&#10042;</i><span>Real hops</span><i>&#10042;</i><span>Real ferment</span><i>&#10042;</i><span>0.0&ndash;0.5% ABV</span><i>&#10042;</i><span>80 cal a pint</span><i>&#10042;</i><span>Brewed in Pune</span><i>&#10042;</i><span>Real hops</span><i>&#10042;</i><span>Real ferment</span><i>&#10042;</i><span>0.0&ndash;0.5% ABV</span><i>&#10042;</i><span>80 cal a pint</span><i>&#10042;</i><span>Brewed in Pune</span><i>&#10042;</i><span>Real hops</span><i>&#10042;</i><span>Real ferment</span><i>&#10042;</i><span>0.0&ndash;0.5% ABV</span><i>&#10042;</i><span>80 cal a pint</span><i>&#10042;</i><span>Brewed in Pune</span><i>&#10042;</i></div></div><div class="tape t1"><div class="track" id="bigTrack"><span>Ritual,</span><em>not intoxication</em><i>&#10042;</i><span>Craft beer.</span><em>zero compromise</em><i>&#10042;</i><span>Tomorrow</span><em>over tonight</em><i>&#10042;</i><span>Ritual,</span><em>not intoxication</em><i>&#10042;</i><span>Craft beer.</span><em>zero compromise</em><i>&#10042;</i><span>Tomorrow</span><em>over tonight</em><i>&#10042;</i><span>Ritual,</span><em>not intoxication</em><i>&#10042;</i><span>Craft beer.</span><em>zero compromise</em><i>&#10042;</i><span>Tomorrow</span><em>over tonight</em><i>&#10042;</i><span>Ritual,</span><em>not intoxication</em><i>&#10042;</i><span>Craft beer.</span><em>zero compromise</em><i>&#10042;</i><span>Tomorrow</span><em>over tonight</em><i>&#10042;</i></div></div></div>
 <!-- 4. RITUAL -->
 <section class="ritual" id="ritual">
   <div class="wrap top">
     <div><span class="script rv">Real moments</span><h2 class="display rv">Ritual, not<br>intoxication</h2></div>
-    <p class="rv">Same pint, same clink, same Friday. Just a clear head the morning after.</p>
+    <div class="rtop-r"><p class="rv">Same pint, same clink, same Friday. Just a clear head the morning after.</p>
+      <div class="sctl"><span class="sct"><b id="sNow">1</b> / <span id="sN">7</span></span><div class="sbar"><i id="sBar"></i></div><button type="button" class="sarr" id="sPrev" aria-label="Previous photos">&larr;</button><button type="button" class="sarr" id="sNext" aria-label="Next photos">&rarr;</button></div></div>
   </div>
-  <div class="strip" id="strip">
-    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.35.52_6.jpg?width=700" alt="Friends with glasses of Barely" loading="lazy"></figure>
-    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/2_102b5a56-b785-49ce-8b18-8c80c1def809.png?width=700" alt="A Barely moment" loading="lazy"></figure>
-    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.35.52_3.jpg?width=700" alt="Cheers with Barely" loading="lazy"></figure>
-    <figure><img src="https://barelybrewing.com/cdn/shop/files/NVA00566.jpg?width=700" alt="Barely bottles on ice" loading="lazy"></figure>
-    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.45.44_5.jpg?width=700" alt="A Barely night out" loading="lazy"></figure>
-    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.35.52.jpg?width=700" alt="People enjoying Barely" loading="lazy"></figure>
-    <figure><img src="https://barelybrewing.com/cdn/shop/files/bright-sun-on-beer.jpg?width=700" alt="A glass of Barely in the sun" loading="lazy"></figure>
+  <div class="strip" id="strip" tabindex="0" aria-label="Photos of Barely moments" data-lenis-prevent>
+    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.35.52_6.jpg?width=700" alt="Friends with glasses of Barely"></figure>
+    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/2_102b5a56-b785-49ce-8b18-8c80c1def809.png?width=700" alt="A Barely moment"></figure>
+    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.35.52_3.jpg?width=700" alt="Cheers with Barely"></figure>
+    <figure><img src="https://barelybrewing.com/cdn/shop/files/NVA00566.jpg?width=700" alt="Barely bottles on ice"></figure>
+    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.45.44_5.jpg?width=700" alt="A Barely night out"></figure>
+    <figure><img src="https://cdn.shopify.com/s/files/1/1017/7367/2740/files/WhatsApp_Image_2026-09-21_at_22.35.52.jpg?width=700" alt="People enjoying Barely"></figure>
+    <figure><img src="https://barelybrewing.com/cdn/shop/files/bright-sun-on-beer.jpg?width=700" alt="A glass of Barely in the sun"></figure>
   </div>
 </section>
 
 <!-- 5. NOW POURING -->
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
 <section class="pour on-green" id="bars">
-  <div class="wrap"><span class="script">Find a tap</span><h2 class="display">Now pouring at<br>10+ bars in Pune</h2><p class="sub">Ask for Barely on tap at these spots.</p></div>
-  <div class="logos" aria-label="Bars pouring Barely"><div class="row" id="logoRow"></div></div>
+  <div class="wrap"><span class="script">Find a tap</span><h2 class="display">Now pouring at <br>10+ bars in Pune</h2><p class="sub">Ask for Barely on tap at these spots.</p></div>
+  <p class="taphint" aria-hidden="true"><span class="hv">Hover a tap to pour</span><span class="tp">Tap a tap to pour</span></p>
+  <div class="taps"><ul class="tapline" id="tapline" aria-label="Bars pouring Barely"></ul></div>
 </section>
 <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" style="transform:scaleY(-1);margin-top:-1px"><path d="M0 60V30C200 0 360 10 540 26s340 30 520 6 280-26 380-4v32z"/></svg>
 
@@ -702,7 +790,7 @@ footer .sign{margin-top:40px;font:800 clamp(70px,16vw,250px)/.8 Jost;text-transf
         <div class="dw-packs" role="radiogroup" aria-label="Pack size"><button type="button" role="radio" data-n="4">4-pack</button><button type="button" role="radio" data-n="6">6-pack</button></div>
         <div class="dw-price" aria-live="polite"><b>&#8377;<span id="dwPrice">799</span></b><small id="dwPer">about &#8377;200 a bottle</small></div>
       </div>
-      <button type="button" class="dw-go" id="dwGo">Get early access <span class="ar" aria-hidden="true">&rarr;</span></button>
+      <button type="button" class="dw-go" id="dwGo">Get early access <span class="ar" aria-hidden="true"><span class="a1">&rarr;</span><span class="a2">&rarr;</span></span></button>
       <p class="dw-note">Online orders open January 2027. <a id="dwLive" href="https://barelybrewing.com" target="_blank" rel="noopener">Live product page <span aria-hidden="true">&nearr;</span><span class="sr"> (opens barelybrewing.com)</span></a></p>
     </div>
   </aside>
@@ -771,7 +859,7 @@ mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu(false),t
 addEventListener('keydown',e=>{if(e.key==='Escape'&&mm.classList.contains('open')){menu(false);bg.focus()}});
 /* drag cursor */
 if(matchMedia('(hover:hover) and (pointer:fine)').matches){const dc=document.createElement('div');dc.className='dragc';dc.textContent='Drag';document.body.appendChild(dc);
-  const sg=$('#stage');sg.addEventListener('pointermove',e=>{dc.style.left=e.clientX+'px';dc.style.top=e.clientY+'px'});
+  const sg=$('#stage');sg.addEventListener('pointermove',e=>{dc.style.left=e.clientX+'px';dc.style.top=e.clientY+'px';dc.classList.toggle('on',!e.target.closest('button,a,.price,.info'))});
   sg.addEventListener('pointerenter',()=>dc.classList.add('on'));sg.addEventListener('pointerleave',()=>dc.classList.remove('on'))}
 
 /* reveals */
@@ -804,9 +892,9 @@ if(G&&!reduce){
   hm.add('(max-width:900px)',()=>{G.to('#heroCooler',{yPercent:-12,rotate:4,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}})});
   $$('[data-speed]').forEach(el=>G.to(el,{y:+el.dataset.speed,ease:'none',scrollTrigger:{trigger:'.about',start:'top bottom',end:'bottom top',scrub:true}}));
   G.to('.brews .rings',{rotate:40,ease:'none',scrollTrigger:{trigger:'.brews',start:'top bottom',end:'bottom top',scrub:true}});
-  G.fromTo('#strip',{x:0},{x:()=>-Math.max(0,$('#strip').scrollWidth-innerWidth+80),ease:'none',scrollTrigger:{trigger:'.ritual',start:'top 80%',end:'bottom 10%',scrub:true,invalidateOnRefresh:true}});
   G.from('.brews .disc',{scale:.6,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:'.brews',start:'top 70%'}});
-  G.fromTo('#bigTrack',{x:0},{x:()=>-($('#bigTrack').scrollWidth-innerWidth)*.6,ease:'none',scrollTrigger:{trigger:'.bigmq',start:'top bottom',end:'bottom top',scrub:true,invalidateOnRefresh:true}});
+  G.fromTo('#bigTrack',{xPercent:0},{xPercent:-30,ease:'none',scrollTrigger:{trigger:'.bigmq',start:'top bottom',end:'bottom top',scrub:true}});
+  G.fromTo('#tapeB',{xPercent:-30},{xPercent:0,ease:'none',scrollTrigger:{trigger:'.bigmq',start:'top bottom',end:'bottom top',scrub:true}});
   G.from('footer .sign',{yPercent:60,opacity:0,ease:'none',scrollTrigger:{trigger:'footer',start:'top bottom',end:'bottom bottom',scrub:true}});
 }
 
@@ -870,11 +958,12 @@ function dwFill(){const b=BREWS[dwi],x=DX[dwi];dS.style.setProperty('--bg',x.bg)
   $('#dwMoreN').textContent='('+g.length+')';$$('#dwThumbs button').forEach(t=>t.onclick=()=>lbOpen(+t.dataset.k))}
 /* lightbox */
 const lb=$('#lb'),lI=$('#lbImg');let li=0,lbLast=null,lT=0;
-function lbShow(i,dir){const g=GAL[dwi];li=(i+g.length)%g.length;const f=g[li];
+let LG=[];
+function lbShow(i,dir){const g=LG;li=(i+g.length)%g.length;const f=g[li];
   const put=()=>{lI.src=sz(f[0],1600);lI.alt=f[1];$('#lbCap').textContent=f[1]+'. Photo: Barely Brewing';$('#lbNow').textContent=li+1;
     [...$('#lbRail').children].forEach((r,k)=>r.setAttribute('aria-current',k===li));lI.style.setProperty('--sx','0px');lI.classList.remove('swap')};
   clearTimeout(lT);if(!dir||reduce){put();return}lI.style.setProperty('--sx',(dir>0?-40:40)+'px');lI.classList.add('swap');lT=setTimeout(put,260)}
-function lbOpen(i){lbLast=document.activeElement;const g=GAL[dwi];$('#lbN').textContent=g.length;$('#lbName').textContent=BREWS[dwi].name;
+function lbOpen(i,gal,name){lbLast=document.activeElement;const g=LG=gal||GAL[dwi];$('#lbN').textContent=g.length;$('#lbName').textContent=name||BREWS[dwi].name;
   $('#lbRail').innerHTML=g.map((f,k)=>`<button type="button" aria-label="Photo ${k+1}"><img src="${sz(f[0],200)}" alt=""></button>`).join('');
   [...$('#lbRail').children].forEach((r,k)=>r.onclick=()=>lbShow(k,k>li?1:-1));
   lbShow(i,0);lb.hidden=false;void lb.offsetWidth;lb.classList.add('open');setTimeout(()=>$('#lbX').focus({preventScroll:true}),50)}
@@ -915,16 +1004,58 @@ st.addEventListener('pointerdown',e=>{sx=e.clientX});
 st.addEventListener('pointerup',e=>{if(sx===null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>50)go(dx<0?(cur+1)%N:(cur-1+N)%N)});
 render(0);
 
+/* ritual gallery: arrows, drag, snap, click to enlarge */
+(()=>{const sp=$('#strip'),figs=$$('#strip figure'),n=figs.length;$('#sN').textContent=n;
+  const MOM=figs.map(f=>{const im=f.querySelector('img');return [im.src.replace(/\?width=\d+/,'').replace('https://barelybrewing.com/cdn/shop/files/',CDN),im.alt]});
+  figs.forEach((f,i)=>{f.tabIndex=0;f.setAttribute('role','button');f.setAttribute('aria-label','Open photo: '+f.querySelector('img').alt);
+    f.addEventListener('click',()=>{if(!dragged)lbOpen(i,MOM,'Real moments')});f.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();lbOpen(i,MOM,'Real moments')}})});
+  const step=()=>figs[0].getBoundingClientRect().width+22;
+  const sync=()=>{const max=sp.scrollWidth-sp.clientWidth,pr=max>0?sp.scrollLeft/max:0;
+    $('#sNow').textContent=Math.min(n,Math.round(sp.scrollLeft/step())+1);$('#sBar').style.transform=`scaleX(${.15+pr*.85})`;
+    $('#sPrev').disabled=sp.scrollLeft<4;$('#sNext').disabled=sp.scrollLeft>max-4};
+  $('#sPrev').onclick=()=>sp.scrollBy({left:-step(),behavior:reduce?'auto':'smooth'});
+  $('#sNext').onclick=()=>sp.scrollBy({left:step(),behavior:reduce?'auto':'smooth'});
+  sp.addEventListener('scroll',()=>requestAnimationFrame(sync),{passive:true});addEventListener('resize',sync);sync();
+  let d=null,dragged=false;
+  sp.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;d={x:e.clientX,s:sp.scrollLeft};dragged=false});
+  addEventListener('pointermove',e=>{if(!d)return;const dx=e.clientX-d.x;if(Math.abs(dx)>6){dragged=true;sp.classList.add('drag')}if(dragged)sp.scrollLeft=d.s-dx});
+  addEventListener('pointerup',()=>{if(!d)return;d=null;if(sp.classList.contains('drag')){const i=Math.round(sp.scrollLeft/step());sp.classList.remove('drag');sp.scrollTo({left:i*step(),behavior:'smooth'})}setTimeout(()=>dragged=false,0)});
+})();
 /* bar logos (Barely's own "Now pouring" list) */
 const LOGOS=['Murphies_Logo.png','bntr.jpg','Grove_Logo.png','Layers_Logo.jpg','Trooh_logo.jpg','Oi_Logo_62f5d1ec-6e10-4ded-84b5-923ebdcea104.jpg','LP_Logo.jpg','Malaka_Logo.png','Sante_Logo.png','Gulp_logo.jpg'];
 const NAMES=['Murphies','BNTR','Grove','Layers','Trooh','Oi','Le Plaisir','Malaka Spice','Santé','Gulp'];
-const row=$('#logoRow');
-[0,1].forEach(k=>LOGOS.forEach((f,i)=>{const fig=document.createElement('figure');if(k)fig.setAttribute('aria-hidden','true');
-  fig.innerHTML=`<img src="https://barelybrewing.com/cdn/shop/files/${f}?height=300" alt="${k?'':NAMES[i]}" title="${NAMES[i]}" loading="lazy">`;row.appendChild(fig)}));
+const tapline=$('#tapline');
+LOGOS.forEach((f,i)=>{const li=document.createElement('li');li.className='tap';li.tabIndex=0;li.setAttribute('aria-label',NAMES[i]);
+  li.innerHTML=`<div class="lever" aria-hidden="true"><span class="badge"><img src="https://barelybrewing.com/cdn/shop/files/${f}?height=240" alt=""></span><span class="handle"></span></div><span class="tbody" aria-hidden="true"></span><span class="stream" aria-hidden="true"></span><span class="glass" aria-hidden="true"><i class="fill"></i><i class="foam"></i></span><b class="nm">${NAMES[i]}</b>`;
+  tapline.appendChild(li)});
+(()=>{const taps=$$('.tap'),T=taps.length;let ti=-1,hold=false,timer=null,seen=false,holdT=0;
+  const pour=i=>{ti=i;taps.forEach((t,k)=>t.classList.toggle('on',k===i))};
+  const next=()=>{if(!hold)pour((ti+1)%T)};
+  const start=()=>{if(reduce||timer)return;next();timer=setInterval(next,2600)};
+  const stop=()=>{clearInterval(timer);timer=null};
+  new IntersectionObserver(es=>{es[0].isIntersecting?start():stop()},{threshold:.35}).observe(tapline);
+  if(reduce)pour(0);
+  taps.forEach((t,i)=>{t.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hold=true;pour(i)}});
+    t.addEventListener('focus',()=>{hold=true;pour(i)});t.addEventListener('blur',()=>{hold=false});
+    t.addEventListener('click',()=>{hold=true;pour(i);clearTimeout(holdT);holdT=setTimeout(()=>hold=false,5000)});
+    t.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pour(i)}})});
+  tapline.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hold=false});
+})();
 
 /* forms: concept only, nothing is sent */
 const ok=/^\S+@\S+\.\S+$/;
-$('#heroForm').addEventListener('submit',e=>{e.preventDefault();$('#hok').textContent=ok.test($('#hem').value.trim())?'You\u2019re on the list. (Concept page: nothing was sent.)':'Please enter a valid email.'});
+$('#heroForm').addEventListener('submit',e=>{e.preventDefault();const f=$('#heroForm'),good=ok.test($('#hem').value.trim()),bt=f.querySelector('.btn-primary');
+  f.classList.remove('err');void f.offsetWidth;
+  if(!good){f.classList.add('err');$('#hok').textContent='Please enter a valid email.';$('#hem').focus();return}
+  f.classList.add('done');bt.firstChild.textContent='You\u2019re on the list ';bt.querySelector('.a1').textContent=bt.querySelector('.a2').textContent='\u2713';
+  $('#hok').textContent='You\u2019re on the list. (Concept page: nothing was sent.)';
+  if(!reduce){const r=bt.getBoundingClientRect();for(let i=0;i<18;i++){const d=document.createElement('i');d.className='burst';document.body.appendChild(d);
+    const a=Math.random()*6.28,v=60+Math.random()*90,sz=6+Math.random()*12;d.style.width=d.style.height=sz+'px';d.style.left=(r.right-30)+'px';d.style.top=(r.top+r.height/2)+'px';
+    d.animate([{transform:'translate(0,0) scale(.3)',opacity:1},{transform:`translate(${Math.cos(a)*v}px,${Math.sin(a)*v-40}px) scale(1)`,opacity:0}],{duration:900+Math.random()*400,easing:'cubic-bezier(.16,1,.3,1)'}).onfinish=()=>d.remove()}}});
+/* magnetic CTAs on desktop */
+if(!reduce&&matchMedia('(hover:hover) and (pointer:fine)').matches){$$('.btn-primary,.vbtn,.nav .cta,.dw-go').forEach(b=>{
+  b.addEventListener('pointermove',e=>{const r=b.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)/r.width,y=(e.clientY-r.top-r.height/2)/r.height;b.style.translate=`${x*10}px ${y*8}px`});
+  b.addEventListener('pointerleave',()=>{b.style.translate='0 0'});b.style.transition+=(b.style.transition?',':'')+'translate .4s cubic-bezier(.16,1,.3,1)'})}
 $('#nlf').addEventListener('submit',e=>{e.preventDefault();$('#nlok').textContent=ok.test($('#nl').value.trim())?'Thanks! (Concept page: nothing was sent.)':'Please enter a valid email.'});
 addEventListener('load',()=>G&&ScrollTrigger.refresh());
 })();
